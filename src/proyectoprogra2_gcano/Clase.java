@@ -11,17 +11,18 @@ import java.util.Date;
  * @author gcano
  */
 public class Clase {
-    private String nombre,semestre,periodo;
+    private String nombre,periodo;
     private Date hora; 
-    private int id, unidadesval,annio;
+    private int id, unidadesval,annio,semestre;
 
-    public Clase(String nombre, Date hora, String semestre, String periodo, int id, int unidadesval) {
+    public Clase(String nombre, Date hora, int semestre, String periodo, int id, int unidadesval,int annio) {
         this.nombre = nombre;
         this.hora = hora;
         this.semestre = semestre;
         this.periodo = periodo;
         this.id = id;
         this.unidadesval = unidadesval;
+        this.annio = annio;
     }
 
     public Clase() {
@@ -43,11 +44,11 @@ public class Clase {
         this.hora = hora;
     }
 
-    public String getSemestre() {
+    public int getSemestre() {
         return semestre;
     }
 
-    public void setSemestre(String semestre) {
+    public void setSemestre(int semestre) {
         this.semestre = semestre;
     }
 

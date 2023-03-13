@@ -3,32 +3,55 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package proyectoprogra2_gcano;
+
 import java.awt.Color;
 import java.awt.Dialog;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Random;
+import javax.swing.ButtonModel;
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author gcano
  */
 public class Principal extends javax.swing.JFrame {
-static Random ram = new Random();
+
+    static Random ram = new Random();
+
     /**
      * Creates new form Principal
      */
     public Principal() {
-        
+
         initComponents();
         //setLocationRelativeTo(null);
+        users.add(test);
+        users.add(test2);
+        masters.add(test);
+        alumnos.add(test2);
+        h.setHours(7);
+        h.setMinutes(0);
+        clases.add(tes3);
+        System.out.println(users);
         this.setExtendedState(MAXIMIZED_BOTH);
         //users.add(new Usuario("registro","admin1","registro"));
         setTitle("Pagina Prinicipal");
-        
-        
-        
+        listartablemaster(jtable_masters, masters);
+        listartablemaster(jtable_masterseliminar, masters);
+        listartablealumno(jtable_alumnoseliminar, alumnos);
+        listartablealumno(jtable_alumnos, alumnos);
+        listartableclases(jtable_clases, clases);
+        listartableclases(jtable_claseseliminar, clases);
+
         //this.setVisible(true);
     }
 
@@ -43,7 +66,6 @@ static Random ram = new Random();
 
         jf_registro = new javax.swing.JFrame();
         jp_registro = new javax.swing.JPanel();
-        jl_uniteclogo2 = new javax.swing.JLabel();
         jp_botones = new javax.swing.JPanel();
         jp_cerrar = new javax.swing.JPanel();
         jl_textcer = new javax.swing.JLabel();
@@ -69,8 +91,10 @@ static Random ram = new Random();
         jl_wlcom = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jtable_muertos = new javax.swing.JTable();
         jl_copy = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jl_uniteclogo2 = new javax.swing.JLabel();
         jd_maestro = new javax.swing.JDialog();
         jp_fondo_crudmaster = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
@@ -133,18 +157,163 @@ static Random ram = new Random();
         jp_fondo_crudmaster6 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         btn_regresarclase2 = new javax.swing.JButton();
-        btn_nuevomaster4 = new javax.swing.JButton();
+        btn_crearclase = new javax.swing.JButton();
         jl_huevos2 = new javax.swing.JLabel();
-        jtxt_nombrealmuno1 = new javax.swing.JTextField();
+        jtct_nombreclase = new javax.swing.JTextField();
         jl_getnamemaster2 = new javax.swing.JLabel();
         jl_getcorreomaster2 = new javax.swing.JLabel();
-        jtxt_correouser3 = new javax.swing.JTextField();
         jl_getprofesion2 = new javax.swing.JLabel();
-        jtxt_pwalum1 = new javax.swing.JTextField();
         jl_id2 = new javax.swing.JLabel();
-        jtxt_carrera1 = new javax.swing.JTextField();
+        jtxt_idclase = new javax.swing.JTextField();
         jl_getuserpw2 = new javax.swing.JLabel();
-        jtxt_cuenta1 = new javax.swing.JTextField();
+        js_semestre = new javax.swing.JSpinner();
+        js_uv = new javax.swing.JSpinner();
+        jyear = new com.toedter.calendar.JYearChooser();
+        js_periodo = new javax.swing.JSpinner();
+        jl_getprofesion3 = new javax.swing.JLabel();
+        jl_getprofesion4 = new javax.swing.JLabel();
+        jl_getprofesion5 = new javax.swing.JLabel();
+        jl_getprofesion6 = new javax.swing.JLabel();
+        js_hora = new javax.swing.JSpinner();
+        js_minutos = new javax.swing.JSpinner();
+        jd_modificarmaster = new javax.swing.JDialog();
+        jp_fondo_crudmaster7 = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        btn_regresarmaster4 = new javax.swing.JButton();
+        jl_huevos3 = new javax.swing.JLabel();
+        jl_getuserpw3 = new javax.swing.JLabel();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        jtable_masters = new javax.swing.JTable();
+        btn_modificarmaestrostabla = new javax.swing.JButton();
+        jd_eliminarmaster = new javax.swing.JDialog();
+        jp_fondo_crudmaster8 = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
+        btn_regresarmaster5 = new javax.swing.JButton();
+        jl_huevos4 = new javax.swing.JLabel();
+        jl_getuserpw4 = new javax.swing.JLabel();
+        btn_borrarmaster = new javax.swing.JButton();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        jtable_masterseliminar = new javax.swing.JTable();
+        jd_modificaralumno = new javax.swing.JDialog();
+        jp_fondo_crudmaster9 = new javax.swing.JPanel();
+        jLabel15 = new javax.swing.JLabel();
+        btn_regresarmaster6 = new javax.swing.JButton();
+        jl_huevos5 = new javax.swing.JLabel();
+        jl_getuserpw5 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jtable_alumnos = new javax.swing.JTable();
+        btn_modalm = new javax.swing.JButton();
+        jd_eliminaralumno = new javax.swing.JDialog();
+        jp_fondo_crudmaster10 = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
+        btn_regresaralumnoa = new javax.swing.JButton();
+        jl_huevos6 = new javax.swing.JLabel();
+        jl_getuserpw6 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jtable_alumnoseliminar = new javax.swing.JTable();
+        btn_eliminarstudenti = new javax.swing.JButton();
+        jd_modificarclase = new javax.swing.JDialog();
+        jp_fondo_crudmaster11 = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
+        btn_regresarmaster7 = new javax.swing.JButton();
+        jl_huevos7 = new javax.swing.JLabel();
+        jl_getuserpw7 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jtable_clases = new javax.swing.JTable();
+        btn_modclase = new javax.swing.JButton();
+        jd_eliminar_clase = new javax.swing.JDialog();
+        jp_fondo_crudmaster12 = new javax.swing.JPanel();
+        jLabel18 = new javax.swing.JLabel();
+        btn_regresarmaster8 = new javax.swing.JButton();
+        jl_huevos8 = new javax.swing.JLabel();
+        jl_getuserpw8 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jtable_claseseliminar = new javax.swing.JTable();
+        btn_elminar = new javax.swing.JButton();
+        jd_asig = new javax.swing.JDialog();
+        jp_fondo_crudmaster1 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        btn_regresarmaster1 = new javax.swing.JButton();
+        btn_matalum = new javax.swing.JButton();
+        btn_asignmaster = new javax.swing.JButton();
+        jb_menu3 = new javax.swing.JLabel();
+        jd_asignarmaster = new javax.swing.JDialog();
+        jp_fondo_crudmaster13 = new javax.swing.JPanel();
+        jLabel19 = new javax.swing.JLabel();
+        btn_regresaralumnoa1 = new javax.swing.JButton();
+        jl_huevos9 = new javax.swing.JLabel();
+        jl_getuserpw9 = new javax.swing.JLabel();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        jlist_master5 = new javax.swing.JList<>();
+        btn_actualizarmaster5 = new javax.swing.JButton();
+        btn_asignarmaster = new javax.swing.JButton();
+        jd_matricula = new javax.swing.JDialog();
+        jp_fondo_crudmaster14 = new javax.swing.JPanel();
+        jLabel20 = new javax.swing.JLabel();
+        btn_regresaralumnoa2 = new javax.swing.JButton();
+        jl_huevos10 = new javax.swing.JLabel();
+        jl_getuserpw10 = new javax.swing.JLabel();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        jlist_master6 = new javax.swing.JList<>();
+        btn_actualizarmatricula = new javax.swing.JButton();
+        btn_matricular = new javax.swing.JButton();
+        jd_menumodmaster = new javax.swing.JDialog();
+        jp_fondo_crudmaster18 = new javax.swing.JPanel();
+        jLabel24 = new javax.swing.JLabel();
+        btn_menumodmaster = new javax.swing.JButton();
+        jl_huevos14 = new javax.swing.JLabel();
+        jtxt_nombremastermod = new javax.swing.JTextField();
+        jl_getnamemaster6 = new javax.swing.JLabel();
+        jl_getcorreomaster6 = new javax.swing.JLabel();
+        jtxt_correousermod = new javax.swing.JTextField();
+        jl_getprofesion10 = new javax.swing.JLabel();
+        jtxt_profesionmod = new javax.swing.JTextField();
+        jl_id6 = new javax.swing.JLabel();
+        jtxt_idprofemod = new javax.swing.JTextField();
+        jl_getuserpw14 = new javax.swing.JLabel();
+        jtxt_masterpwmod = new javax.swing.JTextField();
+        jl_sueldo4 = new javax.swing.JLabel();
+        js_sueldomod = new javax.swing.JSpinner();
+        btn_cancelar = new javax.swing.JButton();
+        jd_menumodalumno = new javax.swing.JDialog();
+        jp_fondo_crudmaster19 = new javax.swing.JPanel();
+        jLabel25 = new javax.swing.JLabel();
+        btn_regresarmaster12 = new javax.swing.JButton();
+        jl_huevos15 = new javax.swing.JLabel();
+        jtxt_nombrealmunomod = new javax.swing.JTextField();
+        jl_getnamemaster7 = new javax.swing.JLabel();
+        jl_getcorreomaster7 = new javax.swing.JLabel();
+        jtxt_correousermoda = new javax.swing.JTextField();
+        jl_getprofesion11 = new javax.swing.JLabel();
+        jtxt_pwalummod = new javax.swing.JTextField();
+        jl_id7 = new javax.swing.JLabel();
+        jtxt_carreramod = new javax.swing.JTextField();
+        jl_getuserpw15 = new javax.swing.JLabel();
+        jtxt_cuentamod = new javax.swing.JTextField();
+        btn_modalma = new javax.swing.JButton();
+        jd_modclase = new javax.swing.JDialog();
+        jp_fondo_crudmaster20 = new javax.swing.JPanel();
+        jLabel26 = new javax.swing.JLabel();
+        btn_regresarclase3 = new javax.swing.JButton();
+        jl_huevos16 = new javax.swing.JLabel();
+        jtct_nombreclasemod = new javax.swing.JTextField();
+        jl_getnamemaster8 = new javax.swing.JLabel();
+        jl_getcorreomaster8 = new javax.swing.JLabel();
+        jl_getprofesion12 = new javax.swing.JLabel();
+        jl_id8 = new javax.swing.JLabel();
+        jtxt_idclasemod = new javax.swing.JTextField();
+        jl_getuserpw16 = new javax.swing.JLabel();
+        js_semestremod = new javax.swing.JSpinner();
+        js_uvmod = new javax.swing.JSpinner();
+        jyearmod = new com.toedter.calendar.JYearChooser();
+        js_periodomod = new javax.swing.JSpinner();
+        jl_getprofesion13 = new javax.swing.JLabel();
+        jl_getprofesion14 = new javax.swing.JLabel();
+        jl_getprofesion15 = new javax.swing.JLabel();
+        jl_getprofesion16 = new javax.swing.JLabel();
+        js_horamod = new javax.swing.JSpinner();
+        js_minutosmod = new javax.swing.JSpinner();
+        btn_modclassss = new javax.swing.JButton();
         jp_panelprincipal = new javax.swing.JPanel();
         jp_fondo = new javax.swing.JPanel();
         jl_uniteclogo = new javax.swing.JLabel();
@@ -175,12 +344,10 @@ static Random ram = new Random();
 
         jf_registro.setUndecorated(true);
 
-        jp_registro.setBackground(new java.awt.Color(37, 71, 106));
-
-        jl_uniteclogo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoprogra2_gcano/unitec_logo2.jpg"))); // NOI18N
+        jp_registro.setBackground(new java.awt.Color(16, 57, 92));
 
         jp_botones.setBackground(new java.awt.Color(204, 204, 204));
-        jp_botones.setBorder(new javax.swing.border.MatteBorder(null));
+        jp_botones.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jp_botones.setForeground(new java.awt.Color(204, 204, 204));
 
         jp_cerrar.setBackground(new java.awt.Color(204, 0, 0));
@@ -248,6 +415,11 @@ static Random ram = new Random();
         jp_asig.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jp_asig.setForeground(new java.awt.Color(255, 255, 255));
         jp_asig.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jp_asig.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jp_asigMouseClicked(evt);
+            }
+        });
 
         jl_asig.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jl_asig.setText("Asignacion");
@@ -411,99 +583,28 @@ static Random ram = new Random();
                 .addGap(115, 115, 115))
         );
 
-        jp_placeholder.setBackground(new java.awt.Color(204, 204, 204));
-        jp_placeholder.setBorder(new javax.swing.border.MatteBorder(null));
+        jp_placeholder.setBackground(new java.awt.Color(37, 71, 106));
+        jp_placeholder.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jp_placeholder.setForeground(new java.awt.Color(255, 255, 255));
 
-        jl_wlcom.setBackground(new java.awt.Color(102, 102, 102));
+        jl_wlcom.setBackground(new java.awt.Color(204, 204, 204));
         jl_wlcom.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 48)); // NOI18N
-        jl_wlcom.setForeground(new java.awt.Color(102, 102, 102));
+        jl_wlcom.setForeground(new java.awt.Color(255, 255, 255));
         jl_wlcom.setText("¡Bienvenido!");
 
         jLabel5.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel5.setForeground(new java.awt.Color(204, 204, 204));
         jLabel5.setText("Solucitudes a cambio de contraseña");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jtable_muertos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Nombre", "Usuario", "Rol"
             }
         ));
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane2.setViewportView(jtable_muertos);
 
         javax.swing.GroupLayout jp_placeholderLayout = new javax.swing.GroupLayout(jp_placeholder);
         jp_placeholder.setLayout(jp_placeholderLayout);
@@ -519,7 +620,7 @@ static Random ram = new Random();
                     .addGroup(jp_placeholderLayout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addComponent(jl_wlcom)))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
         jp_placeholderLayout.setVerticalGroup(
             jp_placeholderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -538,6 +639,26 @@ static Random ram = new Random();
         jl_copy.setForeground(new java.awt.Color(204, 204, 204));
         jl_copy.setText("UNITEC © 2023 | Derechos reservados.");
 
+        jPanel1.setBackground(new java.awt.Color(37, 71, 106));
+        jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jl_uniteclogo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoprogra2_gcano/unitec_logo2.jpg"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jl_uniteclogo2, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jl_uniteclogo2)
+                .addContainerGap(22, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout jp_registroLayout = new javax.swing.GroupLayout(jp_registro);
         jp_registro.setLayout(jp_registroLayout);
         jp_registroLayout.setHorizontalGroup(
@@ -545,29 +666,28 @@ static Random ram = new Random();
             .addGroup(jp_registroLayout.createSequentialGroup()
                 .addGroup(jp_registroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jp_botones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jl_uniteclogo2)
                     .addGroup(jp_registroLayout.createSequentialGroup()
-                        .addGap(36, 36, 36)
+                        .addGap(54, 54, 54)
                         .addComponent(jl_copy)))
                 .addGap(383, 383, 383)
                 .addComponent(jp_placeholder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jp_registroLayout.setVerticalGroup(
             jp_registroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jp_registroLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jl_uniteclogo2)
-                .addGroup(jp_registroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jp_registroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jp_registroLayout.createSequentialGroup()
-                        .addGap(89, 89, 89)
+                        .addGap(123, 123, 123)
+                        .addComponent(jp_placeholder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jp_registroLayout.createSequentialGroup()
+                        .addGap(79, 79, 79)
                         .addComponent(jp_botones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jl_copy))
-                    .addGroup(jp_registroLayout.createSequentialGroup()
-                        .addGap(133, 133, 133)
-                        .addComponent(jp_placeholder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(1109, Short.MAX_VALUE))
+                        .addGap(169, 169, 169)
+                        .addComponent(jl_copy)))
+                .addContainerGap(1095, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jf_registroLayout = new javax.swing.GroupLayout(jf_registro.getContentPane());
@@ -581,7 +701,10 @@ static Random ram = new Random();
             .addComponent(jp_registro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        jd_maestro.setUndecorated(true);
+
         jp_fondo_crudmaster.setBackground(new java.awt.Color(37, 71, 106));
+        jp_fondo_crudmaster.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoprogra2_gcano/unitec_logo2.jpg"))); // NOI18N
 
@@ -623,6 +746,11 @@ static Random ram = new Random();
         btn_Modmaster1.setText("Modificar Maestro");
         btn_Modmaster1.setBorder(null);
         btn_Modmaster1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_Modmaster1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_Modmaster1MouseClicked(evt);
+            }
+        });
         btn_Modmaster1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_Modmaster1ActionPerformed(evt);
@@ -682,7 +810,10 @@ static Random ram = new Random();
             .addComponent(jp_fondo_crudmaster, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        jd_alumno.setUndecorated(true);
+
         jp_fondo_crudmaster2.setBackground(new java.awt.Color(37, 71, 106));
+        jp_fondo_crudmaster2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoprogra2_gcano/unitec_logo2.jpg"))); // NOI18N
 
@@ -852,6 +983,7 @@ static Random ram = new Random();
 
         js_sueldo.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
         js_sueldo.setModel(new javax.swing.SpinnerNumberModel(40000.0d, 35000.0d, 110000.0d, 5000.0d));
+        js_sueldo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         js_sueldo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout jp_fondo_crudmaster3Layout = new javax.swing.GroupLayout(jp_fondo_crudmaster3);
@@ -916,7 +1048,7 @@ static Random ram = new Random();
                 .addComponent(jl_sueldo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(js_sueldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
                 .addGroup(jp_fondo_crudmaster3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_regresarmaster2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_nuevomaster2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -933,6 +1065,8 @@ static Random ram = new Random();
             jd_nuevomasterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jp_fondo_crudmaster3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        jd_nuevoalum.setUndecorated(true);
 
         jp_fondo_crudmaster4.setBackground(new java.awt.Color(37, 71, 106));
         jp_fondo_crudmaster4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -1070,7 +1204,10 @@ static Random ram = new Random();
             .addComponent(jp_fondo_crudmaster4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        jd_clase.setUndecorated(true);
+
         jp_fondo_crudmaster5.setBackground(new java.awt.Color(37, 71, 106));
+        jp_fondo_crudmaster5.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoprogra2_gcano/unitec_logo2.jpg"))); // NOI18N
 
@@ -1171,6 +1308,8 @@ static Random ram = new Random();
             .addComponent(jp_fondo_crudmaster5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        jd_nuevaclase.setUndecorated(true);
+
         jp_fondo_crudmaster6.setBackground(new java.awt.Color(37, 71, 106));
         jp_fondo_crudmaster6.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -1187,14 +1326,14 @@ static Random ram = new Random();
             }
         });
 
-        btn_nuevomaster4.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
-        btn_nuevomaster4.setForeground(new java.awt.Color(51, 51, 51));
-        btn_nuevomaster4.setText("Crear");
-        btn_nuevomaster4.setBorder(null);
-        btn_nuevomaster4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_nuevomaster4.addActionListener(new java.awt.event.ActionListener() {
+        btn_crearclase.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btn_crearclase.setForeground(new java.awt.Color(51, 51, 51));
+        btn_crearclase.setText("Crear");
+        btn_crearclase.setBorder(null);
+        btn_crearclase.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_crearclase.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_nuevomaster4ActionPerformed(evt);
+                btn_crearclaseActionPerformed(evt);
             }
         });
 
@@ -1202,7 +1341,7 @@ static Random ram = new Random();
         jl_huevos2.setForeground(new java.awt.Color(204, 204, 204));
         jl_huevos2.setText("Ingrese los datos de la nueva clase");
 
-        jtxt_nombrealmuno1.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 12)); // NOI18N
+        jtct_nombreclase.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 12)); // NOI18N
 
         jl_getnamemaster2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jl_getnamemaster2.setForeground(new java.awt.Color(204, 204, 204));
@@ -1210,28 +1349,59 @@ static Random ram = new Random();
 
         jl_getcorreomaster2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jl_getcorreomaster2.setForeground(new java.awt.Color(204, 204, 204));
-        jl_getcorreomaster2.setText("Correo de Usuario:");
-
-        jtxt_correouser3.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 12)); // NOI18N
+        jl_getcorreomaster2.setText("Semestre:");
 
         jl_getprofesion2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jl_getprofesion2.setForeground(new java.awt.Color(204, 204, 204));
-        jl_getprofesion2.setText("Contraseña de Usuario:");
-
-        jtxt_pwalum1.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 12)); // NOI18N
+        jl_getprofesion2.setText("Unidades Valorativas");
 
         jl_id2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jl_id2.setForeground(new java.awt.Color(204, 204, 204));
-        jl_id2.setText("Carrera:");
+        jl_id2.setText("Año:");
 
-        jtxt_carrera1.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 12)); // NOI18N
+        jtxt_idclase.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 12)); // NOI18N
 
         jl_getuserpw2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
         jl_getuserpw2.setForeground(new java.awt.Color(204, 204, 204));
-        jl_getuserpw2.setText("Numero de cuenta:");
+        jl_getuserpw2.setText("Periodo:");
 
-        jtxt_cuenta1.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 12)); // NOI18N
-        jtxt_cuenta1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        js_semestre.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        js_semestre.setModel(new javax.swing.SpinnerNumberModel(1, 1, 2, 1));
+        js_semestre.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        js_uv.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        js_uv.setModel(new javax.swing.SpinnerNumberModel(1, 1, 10, 1));
+        js_uv.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jyear.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        js_periodo.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        js_periodo.setModel(new javax.swing.SpinnerListModel(new String[] {"Q1", "Q2", "Q3", "Q4"}));
+        js_periodo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jl_getprofesion3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jl_getprofesion3.setForeground(new java.awt.Color(204, 204, 204));
+        jl_getprofesion3.setText("ID de la clase:");
+
+        jl_getprofesion4.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jl_getprofesion4.setForeground(new java.awt.Color(204, 204, 204));
+        jl_getprofesion4.setText("Hora:");
+
+        jl_getprofesion5.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jl_getprofesion5.setForeground(new java.awt.Color(204, 204, 204));
+        jl_getprofesion5.setText("Minutos:");
+
+        jl_getprofesion6.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jl_getprofesion6.setForeground(new java.awt.Color(204, 204, 204));
+        jl_getprofesion6.setText(":");
+
+        js_hora.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        js_hora.setModel(new javax.swing.SpinnerNumberModel(1, 1, 24, 1));
+        js_hora.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        js_minutos.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        js_minutos.setModel(new javax.swing.SpinnerNumberModel(0, 0, 60, 5));
+        js_minutos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         javax.swing.GroupLayout jp_fondo_crudmaster6Layout = new javax.swing.GroupLayout(jp_fondo_crudmaster6);
         jp_fondo_crudmaster6.setLayout(jp_fondo_crudmaster6Layout);
@@ -1245,22 +1415,41 @@ static Random ram = new Random();
                 .addGap(28, 28, 28)
                 .addComponent(btn_regresarclase2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_nuevomaster4, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_crearclase, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(17, 17, 17))
             .addGroup(jp_fondo_crudmaster6Layout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addGroup(jp_fondo_crudmaster6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jl_getuserpw2)
-                    .addComponent(jtxt_cuenta1, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jl_id2)
-                    .addComponent(jtxt_carrera1, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jl_getprofesion3)
+                    .addComponent(js_uv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtxt_idclase, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jl_getprofesion2)
-                    .addComponent(jtxt_pwalum1, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jl_getcorreomaster2)
-                    .addComponent(jtxt_correouser3, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jl_getnamemaster2)
                     .addComponent(jl_huevos2)
-                    .addComponent(jtxt_nombrealmuno1, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtct_nombreclase, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jp_fondo_crudmaster6Layout.createSequentialGroup()
+                        .addGroup(jp_fondo_crudmaster6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(js_semestre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_getcorreomaster2))
+                        .addGap(26, 26, 26)
+                        .addGroup(jp_fondo_crudmaster6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jyear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_id2))
+                        .addGap(36, 36, 36)
+                        .addGroup(jp_fondo_crudmaster6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jl_getuserpw2)
+                            .addComponent(js_periodo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jp_fondo_crudmaster6Layout.createSequentialGroup()
+                        .addGroup(jp_fondo_crudmaster6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jl_getprofesion4)
+                            .addGroup(jp_fondo_crudmaster6Layout.createSequentialGroup()
+                                .addComponent(js_hora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jl_getprofesion6, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jp_fondo_crudmaster6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(js_minutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_getprofesion5))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jp_fondo_crudmaster6Layout.setVerticalGroup(
@@ -1272,27 +1461,40 @@ static Random ram = new Random();
                 .addGap(18, 18, 18)
                 .addComponent(jl_getnamemaster2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jtxt_nombrealmuno1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jl_getcorreomaster2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jtxt_correouser3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jp_fondo_crudmaster6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jp_fondo_crudmaster6Layout.createSequentialGroup()
+                        .addComponent(jtct_nombreclase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jp_fondo_crudmaster6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jl_getcorreomaster2)
+                            .addComponent(jl_id2)
+                            .addComponent(jl_getuserpw2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jp_fondo_crudmaster6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(js_semestre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(js_periodo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jyear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jl_getprofesion2)
+                .addGap(18, 18, 18)
+                .addComponent(js_uv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8)
+                .addComponent(jl_getprofesion3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jtxt_pwalum1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jtxt_idclase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jp_fondo_crudmaster6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jl_getprofesion4)
+                    .addComponent(jl_getprofesion5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jl_id2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jtxt_carrera1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jl_getuserpw2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jtxt_cuenta1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
+                .addGroup(jp_fondo_crudmaster6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jl_getprofesion6)
+                    .addComponent(js_hora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(js_minutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
                 .addGroup(jp_fondo_crudmaster6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_regresarclase2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_nuevomaster4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_crearclase, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18))
         );
 
@@ -1305,6 +1507,1414 @@ static Random ram = new Random();
         jd_nuevaclaseLayout.setVerticalGroup(
             jd_nuevaclaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jp_fondo_crudmaster6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jd_modificarmaster.setUndecorated(true);
+
+        jp_fondo_crudmaster7.setBackground(new java.awt.Color(37, 71, 106));
+        jp_fondo_crudmaster7.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoprogra2_gcano/unitec_logo2.jpg"))); // NOI18N
+
+        btn_regresarmaster4.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btn_regresarmaster4.setForeground(new java.awt.Color(0, 0, 0));
+        btn_regresarmaster4.setText("Regresar");
+        btn_regresarmaster4.setBorder(null);
+        btn_regresarmaster4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_regresarmaster4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_regresarmaster4ActionPerformed(evt);
+            }
+        });
+
+        jl_huevos3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jl_huevos3.setForeground(new java.awt.Color(204, 204, 204));
+        jl_huevos3.setText("Lista de Maestros:");
+
+        jl_getuserpw3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jl_getuserpw3.setForeground(new java.awt.Color(204, 204, 204));
+        jl_getuserpw3.setText("Seleccione el maestro que desea modificar");
+
+        jtable_masters.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jtable_masters.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        jtable_masters.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Nombre", "Profesion"
+            }
+        ));
+        jScrollPane10.setViewportView(jtable_masters);
+
+        btn_modificarmaestrostabla.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btn_modificarmaestrostabla.setForeground(new java.awt.Color(0, 0, 0));
+        btn_modificarmaestrostabla.setText("Modificar");
+        btn_modificarmaestrostabla.setBorder(null);
+        btn_modificarmaestrostabla.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_modificarmaestrostabla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_modificarmaestrostablaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jp_fondo_crudmaster7Layout = new javax.swing.GroupLayout(jp_fondo_crudmaster7);
+        jp_fondo_crudmaster7.setLayout(jp_fondo_crudmaster7Layout);
+        jp_fondo_crudmaster7Layout.setHorizontalGroup(
+            jp_fondo_crudmaster7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_fondo_crudmaster7Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(jp_fondo_crudmaster7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jp_fondo_crudmaster7Layout.createSequentialGroup()
+                        .addComponent(jl_huevos3)
+                        .addGap(318, 318, 318))
+                    .addGroup(jp_fondo_crudmaster7Layout.createSequentialGroup()
+                        .addGroup(jp_fondo_crudmaster7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jp_fondo_crudmaster7Layout.createSequentialGroup()
+                                .addGap(14, 14, 14)
+                                .addComponent(btn_regresarmaster4, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btn_modificarmaestrostabla, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jp_fondo_crudmaster7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jl_getuserpw3)
+                                .addComponent(jLabel13)))
+                        .addGap(30, 30, 30)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jp_fondo_crudmaster7Layout.setVerticalGroup(
+            jp_fondo_crudmaster7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_fondo_crudmaster7Layout.createSequentialGroup()
+                .addComponent(jLabel13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jl_huevos3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jl_getuserpw3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jp_fondo_crudmaster7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_regresarmaster4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_modificarmaestrostabla, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(87, 87, 87))
+        );
+
+        javax.swing.GroupLayout jd_modificarmasterLayout = new javax.swing.GroupLayout(jd_modificarmaster.getContentPane());
+        jd_modificarmaster.getContentPane().setLayout(jd_modificarmasterLayout);
+        jd_modificarmasterLayout.setHorizontalGroup(
+            jd_modificarmasterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jp_fondo_crudmaster7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jd_modificarmasterLayout.setVerticalGroup(
+            jd_modificarmasterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jp_fondo_crudmaster7, javax.swing.GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE)
+        );
+
+        jd_eliminarmaster.setUndecorated(true);
+
+        jp_fondo_crudmaster8.setBackground(new java.awt.Color(37, 71, 106));
+        jp_fondo_crudmaster8.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoprogra2_gcano/unitec_logo2.jpg"))); // NOI18N
+
+        btn_regresarmaster5.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btn_regresarmaster5.setForeground(new java.awt.Color(0, 0, 0));
+        btn_regresarmaster5.setText("Regresar");
+        btn_regresarmaster5.setBorder(null);
+        btn_regresarmaster5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_regresarmaster5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_regresarmaster5ActionPerformed(evt);
+            }
+        });
+
+        jl_huevos4.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jl_huevos4.setForeground(new java.awt.Color(204, 204, 204));
+        jl_huevos4.setText("Lista de Maestros:");
+
+        jl_getuserpw4.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jl_getuserpw4.setForeground(new java.awt.Color(204, 204, 204));
+        jl_getuserpw4.setText("Seleccione el maestro que desea eliminar");
+
+        btn_borrarmaster.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btn_borrarmaster.setForeground(new java.awt.Color(51, 51, 51));
+        btn_borrarmaster.setText("Eliminar");
+        btn_borrarmaster.setBorder(null);
+        btn_borrarmaster.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_borrarmaster.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_borrarmasterActionPerformed(evt);
+            }
+        });
+
+        jtable_masterseliminar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jtable_masterseliminar.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        jtable_masterseliminar.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Nombre", "Profesion"
+            }
+        ));
+        jScrollPane11.setViewportView(jtable_masterseliminar);
+
+        javax.swing.GroupLayout jp_fondo_crudmaster8Layout = new javax.swing.GroupLayout(jp_fondo_crudmaster8);
+        jp_fondo_crudmaster8.setLayout(jp_fondo_crudmaster8Layout);
+        jp_fondo_crudmaster8Layout.setHorizontalGroup(
+            jp_fondo_crudmaster8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_fondo_crudmaster8Layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addGroup(jp_fondo_crudmaster8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_fondo_crudmaster8Layout.createSequentialGroup()
+                        .addGroup(jp_fondo_crudmaster8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jl_getuserpw4)
+                            .addComponent(btn_regresarmaster5, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(100, 100, 100)
+                        .addComponent(btn_borrarmaster, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_fondo_crudmaster8Layout.createSequentialGroup()
+                        .addGroup(jp_fondo_crudmaster8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jl_huevos4)
+                            .addComponent(jLabel14))
+                        .addGap(199, 199, 199)))
+                .addGap(0, 50, Short.MAX_VALUE))
+            .addGroup(jp_fondo_crudmaster8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jp_fondo_crudmaster8Layout.createSequentialGroup()
+                    .addGap(35, 35, 35)
+                    .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(36, Short.MAX_VALUE)))
+        );
+        jp_fondo_crudmaster8Layout.setVerticalGroup(
+            jp_fondo_crudmaster8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_fondo_crudmaster8Layout.createSequentialGroup()
+                .addComponent(jLabel14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jl_huevos4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 387, Short.MAX_VALUE)
+                .addGroup(jp_fondo_crudmaster8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jp_fondo_crudmaster8Layout.createSequentialGroup()
+                        .addComponent(btn_borrarmaster, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(52, 52, 52))
+                    .addGroup(jp_fondo_crudmaster8Layout.createSequentialGroup()
+                        .addComponent(jl_getuserpw4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_regresarmaster5, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(44, 44, 44))))
+            .addGroup(jp_fondo_crudmaster8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jp_fondo_crudmaster8Layout.createSequentialGroup()
+                    .addGap(98, 98, 98)
+                    .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(99, Short.MAX_VALUE)))
+        );
+
+        javax.swing.GroupLayout jd_eliminarmasterLayout = new javax.swing.GroupLayout(jd_eliminarmaster.getContentPane());
+        jd_eliminarmaster.getContentPane().setLayout(jd_eliminarmasterLayout);
+        jd_eliminarmasterLayout.setHorizontalGroup(
+            jd_eliminarmasterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jp_fondo_crudmaster8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jd_eliminarmasterLayout.setVerticalGroup(
+            jd_eliminarmasterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jp_fondo_crudmaster8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jd_modificaralumno.setUndecorated(true);
+
+        jp_fondo_crudmaster9.setBackground(new java.awt.Color(37, 71, 106));
+        jp_fondo_crudmaster9.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoprogra2_gcano/unitec_logo2.jpg"))); // NOI18N
+
+        btn_regresarmaster6.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btn_regresarmaster6.setForeground(new java.awt.Color(0, 0, 0));
+        btn_regresarmaster6.setText("Regresar");
+        btn_regresarmaster6.setBorder(null);
+        btn_regresarmaster6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_regresarmaster6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_regresarmaster6ActionPerformed(evt);
+            }
+        });
+
+        jl_huevos5.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jl_huevos5.setForeground(new java.awt.Color(204, 204, 204));
+        jl_huevos5.setText("Lista de Alumnos:");
+
+        jl_getuserpw5.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jl_getuserpw5.setForeground(new java.awt.Color(204, 204, 204));
+        jl_getuserpw5.setText("Seleccione el alumno que desea modificar");
+
+        jtable_alumnos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Cuenta", "Nombre", "Carrera"
+            }
+        ));
+        jScrollPane3.setViewportView(jtable_alumnos);
+
+        btn_modalm.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btn_modalm.setForeground(new java.awt.Color(0, 0, 0));
+        btn_modalm.setText("Modificar");
+        btn_modalm.setBorder(null);
+        btn_modalm.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_modalm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_modalmActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jp_fondo_crudmaster9Layout = new javax.swing.GroupLayout(jp_fondo_crudmaster9);
+        jp_fondo_crudmaster9.setLayout(jp_fondo_crudmaster9Layout);
+        jp_fondo_crudmaster9Layout.setHorizontalGroup(
+            jp_fondo_crudmaster9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_fondo_crudmaster9Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(jp_fondo_crudmaster9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jp_fondo_crudmaster9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jp_fondo_crudmaster9Layout.createSequentialGroup()
+                            .addComponent(jl_huevos5)
+                            .addGap(302, 302, 302))
+                        .addGroup(jp_fondo_crudmaster9Layout.createSequentialGroup()
+                            .addComponent(jLabel15)
+                            .addGap(229, 229, 229)))
+                    .addGroup(jp_fondo_crudmaster9Layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addGroup(jp_fondo_crudmaster9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jl_getuserpw5)
+                            .addGroup(jp_fondo_crudmaster9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(jp_fondo_crudmaster9Layout.createSequentialGroup()
+                                    .addComponent(btn_regresarmaster6, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btn_modalm, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(30, 30, 30))))
+        );
+        jp_fondo_crudmaster9Layout.setVerticalGroup(
+            jp_fondo_crudmaster9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_fondo_crudmaster9Layout.createSequentialGroup()
+                .addComponent(jLabel15)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jl_huevos5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jl_getuserpw5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jp_fondo_crudmaster9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_regresarmaster6, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_modalm, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18))
+        );
+
+        javax.swing.GroupLayout jd_modificaralumnoLayout = new javax.swing.GroupLayout(jd_modificaralumno.getContentPane());
+        jd_modificaralumno.getContentPane().setLayout(jd_modificaralumnoLayout);
+        jd_modificaralumnoLayout.setHorizontalGroup(
+            jd_modificaralumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jp_fondo_crudmaster9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jd_modificaralumnoLayout.setVerticalGroup(
+            jd_modificaralumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jp_fondo_crudmaster9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jd_eliminaralumno.setUndecorated(true);
+
+        jp_fondo_crudmaster10.setBackground(new java.awt.Color(37, 71, 106));
+        jp_fondo_crudmaster10.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoprogra2_gcano/unitec_logo2.jpg"))); // NOI18N
+
+        btn_regresaralumnoa.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btn_regresaralumnoa.setForeground(new java.awt.Color(0, 0, 0));
+        btn_regresaralumnoa.setText("Regresar");
+        btn_regresaralumnoa.setBorder(null);
+        btn_regresaralumnoa.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_regresaralumnoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_regresaralumnoaActionPerformed(evt);
+            }
+        });
+
+        jl_huevos6.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jl_huevos6.setForeground(new java.awt.Color(204, 204, 204));
+        jl_huevos6.setText("Lista de Alumnos:");
+
+        jl_getuserpw6.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jl_getuserpw6.setForeground(new java.awt.Color(204, 204, 204));
+        jl_getuserpw6.setText("Seleccione el alumno que desea eliminar");
+
+        jtable_alumnoseliminar.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Cuenta", "Nombre", "Carrera"
+            }
+        ));
+        jScrollPane1.setViewportView(jtable_alumnoseliminar);
+
+        btn_eliminarstudenti.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btn_eliminarstudenti.setForeground(new java.awt.Color(0, 0, 0));
+        btn_eliminarstudenti.setText("Eliminar");
+        btn_eliminarstudenti.setBorder(null);
+        btn_eliminarstudenti.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_eliminarstudenti.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_eliminarstudentiActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jp_fondo_crudmaster10Layout = new javax.swing.GroupLayout(jp_fondo_crudmaster10);
+        jp_fondo_crudmaster10.setLayout(jp_fondo_crudmaster10Layout);
+        jp_fondo_crudmaster10Layout.setHorizontalGroup(
+            jp_fondo_crudmaster10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_fondo_crudmaster10Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(jp_fondo_crudmaster10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jp_fondo_crudmaster10Layout.createSequentialGroup()
+                        .addComponent(jl_huevos6)
+                        .addGap(319, 319, 319))
+                    .addGroup(jp_fondo_crudmaster10Layout.createSequentialGroup()
+                        .addGroup(jp_fondo_crudmaster10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jp_fondo_crudmaster10Layout.createSequentialGroup()
+                                .addComponent(btn_regresaralumnoa, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btn_eliminarstudenti, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jp_fondo_crudmaster10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jl_getuserpw6)
+                                .addComponent(jLabel16)))
+                        .addGap(31, 31, 31)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jp_fondo_crudmaster10Layout.setVerticalGroup(
+            jp_fondo_crudmaster10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_fondo_crudmaster10Layout.createSequentialGroup()
+                .addComponent(jLabel16)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jl_huevos6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jl_getuserpw6)
+                .addGap(18, 18, 18)
+                .addGroup(jp_fondo_crudmaster10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_regresaralumnoa, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_eliminarstudenti, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(48, 48, 48))
+        );
+
+        javax.swing.GroupLayout jd_eliminaralumnoLayout = new javax.swing.GroupLayout(jd_eliminaralumno.getContentPane());
+        jd_eliminaralumno.getContentPane().setLayout(jd_eliminaralumnoLayout);
+        jd_eliminaralumnoLayout.setHorizontalGroup(
+            jd_eliminaralumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jp_fondo_crudmaster10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jd_eliminaralumnoLayout.setVerticalGroup(
+            jd_eliminaralumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jp_fondo_crudmaster10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jd_modificarclase.setUndecorated(true);
+
+        jp_fondo_crudmaster11.setBackground(new java.awt.Color(37, 71, 106));
+        jp_fondo_crudmaster11.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoprogra2_gcano/unitec_logo2.jpg"))); // NOI18N
+
+        btn_regresarmaster7.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btn_regresarmaster7.setForeground(new java.awt.Color(0, 0, 0));
+        btn_regresarmaster7.setText("Regresar");
+        btn_regresarmaster7.setBorder(null);
+        btn_regresarmaster7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_regresarmaster7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_regresarmaster7ActionPerformed(evt);
+            }
+        });
+
+        jl_huevos7.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jl_huevos7.setForeground(new java.awt.Color(204, 204, 204));
+        jl_huevos7.setText("Lista de Clases:");
+
+        jl_getuserpw7.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jl_getuserpw7.setForeground(new java.awt.Color(204, 204, 204));
+        jl_getuserpw7.setText("Seleccione la clase que desea modificar");
+
+        jtable_clases.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre", "Hora", "Periodo"
+            }
+        ));
+        jScrollPane4.setViewportView(jtable_clases);
+
+        btn_modclase.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btn_modclase.setForeground(new java.awt.Color(0, 0, 0));
+        btn_modclase.setText("Modificar");
+        btn_modclase.setBorder(null);
+        btn_modclase.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_modclase.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_modclaseActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jp_fondo_crudmaster11Layout = new javax.swing.GroupLayout(jp_fondo_crudmaster11);
+        jp_fondo_crudmaster11.setLayout(jp_fondo_crudmaster11Layout);
+        jp_fondo_crudmaster11Layout.setHorizontalGroup(
+            jp_fondo_crudmaster11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_fondo_crudmaster11Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jp_fondo_crudmaster11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jp_fondo_crudmaster11Layout.createSequentialGroup()
+                        .addComponent(btn_regresarmaster7, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_modclase, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 511, Short.MAX_VALUE)
+                    .addGroup(jp_fondo_crudmaster11Layout.createSequentialGroup()
+                        .addGroup(jp_fondo_crudmaster11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jp_fondo_crudmaster11Layout.createSequentialGroup()
+                                .addGap(25, 25, 25)
+                                .addComponent(jLabel17))
+                            .addGroup(jp_fondo_crudmaster11Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jl_huevos7))
+                            .addComponent(jl_getuserpw7))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jp_fondo_crudmaster11Layout.setVerticalGroup(
+            jp_fondo_crudmaster11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_fondo_crudmaster11Layout.createSequentialGroup()
+                .addComponent(jLabel17)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jl_huevos7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jl_getuserpw7)
+                .addGap(18, 18, 18)
+                .addGroup(jp_fondo_crudmaster11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_regresarmaster7, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_modclase, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(48, 48, 48))
+        );
+
+        javax.swing.GroupLayout jd_modificarclaseLayout = new javax.swing.GroupLayout(jd_modificarclase.getContentPane());
+        jd_modificarclase.getContentPane().setLayout(jd_modificarclaseLayout);
+        jd_modificarclaseLayout.setHorizontalGroup(
+            jd_modificarclaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jp_fondo_crudmaster11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jd_modificarclaseLayout.setVerticalGroup(
+            jd_modificarclaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jp_fondo_crudmaster11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jd_eliminar_clase.setUndecorated(true);
+
+        jp_fondo_crudmaster12.setBackground(new java.awt.Color(37, 71, 106));
+        jp_fondo_crudmaster12.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoprogra2_gcano/unitec_logo2.jpg"))); // NOI18N
+
+        btn_regresarmaster8.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btn_regresarmaster8.setForeground(new java.awt.Color(0, 0, 0));
+        btn_regresarmaster8.setText("Regresar");
+        btn_regresarmaster8.setBorder(null);
+        btn_regresarmaster8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_regresarmaster8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_regresarmaster8ActionPerformed(evt);
+            }
+        });
+
+        jl_huevos8.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jl_huevos8.setForeground(new java.awt.Color(204, 204, 204));
+        jl_huevos8.setText("Lista de Clases:");
+
+        jl_getuserpw8.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jl_getuserpw8.setForeground(new java.awt.Color(204, 204, 204));
+        jl_getuserpw8.setText("Seleccione la clase que desea eliminar");
+
+        jtable_claseseliminar.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre", "Hora", "Periodo"
+            }
+        ));
+        jScrollPane5.setViewportView(jtable_claseseliminar);
+
+        btn_elminar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btn_elminar.setForeground(new java.awt.Color(0, 0, 0));
+        btn_elminar.setText("Eliminar");
+        btn_elminar.setBorder(null);
+        btn_elminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_elminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_elminarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jp_fondo_crudmaster12Layout = new javax.swing.GroupLayout(jp_fondo_crudmaster12);
+        jp_fondo_crudmaster12.setLayout(jp_fondo_crudmaster12Layout);
+        jp_fondo_crudmaster12Layout.setHorizontalGroup(
+            jp_fondo_crudmaster12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_fondo_crudmaster12Layout.createSequentialGroup()
+                .addGroup(jp_fondo_crudmaster12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jp_fondo_crudmaster12Layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addGroup(jp_fondo_crudmaster12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jp_fondo_crudmaster12Layout.createSequentialGroup()
+                                .addGroup(jp_fondo_crudmaster12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jl_getuserpw8)
+                                    .addComponent(jLabel18))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jp_fondo_crudmaster12Layout.createSequentialGroup()
+                                .addComponent(btn_regresarmaster8, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btn_elminar, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jp_fondo_crudmaster12Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 511, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(jp_fondo_crudmaster12Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jl_huevos8)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jp_fondo_crudmaster12Layout.setVerticalGroup(
+            jp_fondo_crudmaster12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_fondo_crudmaster12Layout.createSequentialGroup()
+                .addComponent(jLabel18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jl_huevos8)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addComponent(jl_getuserpw8)
+                .addGroup(jp_fondo_crudmaster12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jp_fondo_crudmaster12Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_regresarmaster8, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jp_fondo_crudmaster12Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(btn_elminar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(48, 48, 48))
+        );
+
+        javax.swing.GroupLayout jd_eliminar_claseLayout = new javax.swing.GroupLayout(jd_eliminar_clase.getContentPane());
+        jd_eliminar_clase.getContentPane().setLayout(jd_eliminar_claseLayout);
+        jd_eliminar_claseLayout.setHorizontalGroup(
+            jd_eliminar_claseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jp_fondo_crudmaster12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jd_eliminar_claseLayout.setVerticalGroup(
+            jd_eliminar_claseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jp_fondo_crudmaster12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jd_asig.setUndecorated(true);
+
+        jp_fondo_crudmaster1.setBackground(new java.awt.Color(37, 71, 106));
+        jp_fondo_crudmaster1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoprogra2_gcano/unitec_logo2.jpg"))); // NOI18N
+
+        btn_regresarmaster1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btn_regresarmaster1.setForeground(new java.awt.Color(0, 0, 0));
+        btn_regresarmaster1.setText("Regresar");
+        btn_regresarmaster1.setBorder(null);
+        btn_regresarmaster1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_regresarmaster1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_regresarmaster1ActionPerformed(evt);
+            }
+        });
+
+        btn_matalum.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btn_matalum.setForeground(new java.awt.Color(51, 51, 51));
+        btn_matalum.setText("Matricular Alumno");
+        btn_matalum.setBorder(null);
+        btn_matalum.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_matalum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_matalumActionPerformed(evt);
+            }
+        });
+
+        btn_asignmaster.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btn_asignmaster.setForeground(new java.awt.Color(51, 51, 51));
+        btn_asignmaster.setText("Asignar Maestro");
+        btn_asignmaster.setBorder(null);
+        btn_asignmaster.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_asignmaster.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_asignmasterMouseClicked(evt);
+            }
+        });
+        btn_asignmaster.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_asignmasterActionPerformed(evt);
+            }
+        });
+
+        jb_menu3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
+        jb_menu3.setForeground(new java.awt.Color(204, 204, 204));
+        jb_menu3.setText("Menú");
+
+        javax.swing.GroupLayout jp_fondo_crudmaster1Layout = new javax.swing.GroupLayout(jp_fondo_crudmaster1);
+        jp_fondo_crudmaster1.setLayout(jp_fondo_crudmaster1Layout);
+        jp_fondo_crudmaster1Layout.setHorizontalGroup(
+            jp_fondo_crudmaster1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_fondo_crudmaster1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btn_regresarmaster1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
+            .addGroup(jp_fondo_crudmaster1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jp_fondo_crudmaster1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_asignmaster, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_matalum, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jp_fondo_crudmaster1Layout.createSequentialGroup()
+                .addGroup(jp_fondo_crudmaster1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jb_menu3)
+                    .addComponent(jLabel7))
+                .addGap(0, 186, Short.MAX_VALUE))
+        );
+        jp_fondo_crudmaster1Layout.setVerticalGroup(
+            jp_fondo_crudmaster1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_fondo_crudmaster1Layout.createSequentialGroup()
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jb_menu3)
+                .addGap(42, 42, 42)
+                .addComponent(btn_asignmaster, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(63, 63, 63)
+                .addComponent(btn_matalum, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 164, Short.MAX_VALUE)
+                .addComponent(btn_regresarmaster1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout jd_asigLayout = new javax.swing.GroupLayout(jd_asig.getContentPane());
+        jd_asig.getContentPane().setLayout(jd_asigLayout);
+        jd_asigLayout.setHorizontalGroup(
+            jd_asigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jp_fondo_crudmaster1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jd_asigLayout.setVerticalGroup(
+            jd_asigLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jp_fondo_crudmaster1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jd_asignarmaster.setUndecorated(true);
+
+        jp_fondo_crudmaster13.setBackground(new java.awt.Color(37, 71, 106));
+        jp_fondo_crudmaster13.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoprogra2_gcano/unitec_logo2.jpg"))); // NOI18N
+
+        btn_regresaralumnoa1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btn_regresaralumnoa1.setForeground(new java.awt.Color(0, 0, 0));
+        btn_regresaralumnoa1.setText("Regresar");
+        btn_regresaralumnoa1.setBorder(null);
+        btn_regresaralumnoa1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_regresaralumnoa1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_regresaralumnoa1ActionPerformed(evt);
+            }
+        });
+
+        jl_huevos9.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jl_huevos9.setForeground(new java.awt.Color(204, 204, 204));
+        jl_huevos9.setText("Lista de Maestros:");
+
+        jl_getuserpw9.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jl_getuserpw9.setForeground(new java.awt.Color(204, 204, 204));
+        jl_getuserpw9.setText("Seleccione el maestro que desea asignar");
+
+        jlist_master5.setBackground(new java.awt.Color(204, 204, 204));
+        jlist_master5.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jlist_master5.setModel(new DefaultListModel());
+        jScrollPane8.setViewportView(jlist_master5);
+
+        btn_actualizarmaster5.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btn_actualizarmaster5.setForeground(new java.awt.Color(51, 51, 51));
+        btn_actualizarmaster5.setText("Actualizar");
+        btn_actualizarmaster5.setBorder(null);
+        btn_actualizarmaster5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_actualizarmaster5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_actualizarmaster5ActionPerformed(evt);
+            }
+        });
+
+        btn_asignarmaster.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btn_asignarmaster.setForeground(new java.awt.Color(51, 51, 51));
+        btn_asignarmaster.setText("Asignar");
+        btn_asignarmaster.setBorder(null);
+        btn_asignarmaster.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_asignarmaster.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_asignarmasterActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jp_fondo_crudmaster13Layout = new javax.swing.GroupLayout(jp_fondo_crudmaster13);
+        jp_fondo_crudmaster13.setLayout(jp_fondo_crudmaster13Layout);
+        jp_fondo_crudmaster13Layout.setHorizontalGroup(
+            jp_fondo_crudmaster13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_fondo_crudmaster13Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(jp_fondo_crudmaster13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btn_asignarmaster, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jp_fondo_crudmaster13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jp_fondo_crudmaster13Layout.createSequentialGroup()
+                            .addComponent(jl_huevos9)
+                            .addGap(272, 272, 272))
+                        .addGroup(jp_fondo_crudmaster13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_getuserpw9)
+                            .addComponent(jLabel19))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jp_fondo_crudmaster13Layout.createSequentialGroup()
+                            .addGap(4, 4, 4)
+                            .addComponent(btn_regresaralumnoa1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_actualizarmaster5, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(0, 63, Short.MAX_VALUE))
+        );
+        jp_fondo_crudmaster13Layout.setVerticalGroup(
+            jp_fondo_crudmaster13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_fondo_crudmaster13Layout.createSequentialGroup()
+                .addComponent(jLabel19)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jl_huevos9)
+                .addGap(14, 14, 14)
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jl_getuserpw9)
+                .addGap(2, 2, 2)
+                .addComponent(btn_asignarmaster, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jp_fondo_crudmaster13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_regresaralumnoa1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_actualizarmaster5, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18))
+        );
+
+        javax.swing.GroupLayout jd_asignarmasterLayout = new javax.swing.GroupLayout(jd_asignarmaster.getContentPane());
+        jd_asignarmaster.getContentPane().setLayout(jd_asignarmasterLayout);
+        jd_asignarmasterLayout.setHorizontalGroup(
+            jd_asignarmasterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jp_fondo_crudmaster13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jd_asignarmasterLayout.setVerticalGroup(
+            jd_asignarmasterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jp_fondo_crudmaster13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jd_matricula.setUndecorated(true);
+
+        jp_fondo_crudmaster14.setBackground(new java.awt.Color(37, 71, 106));
+        jp_fondo_crudmaster14.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoprogra2_gcano/unitec_logo2.jpg"))); // NOI18N
+
+        btn_regresaralumnoa2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btn_regresaralumnoa2.setForeground(new java.awt.Color(0, 0, 0));
+        btn_regresaralumnoa2.setText("Regresar");
+        btn_regresaralumnoa2.setBorder(null);
+        btn_regresaralumnoa2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_regresaralumnoa2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_regresaralumnoa2ActionPerformed(evt);
+            }
+        });
+
+        jl_huevos10.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jl_huevos10.setForeground(new java.awt.Color(204, 204, 204));
+        jl_huevos10.setText("Lista de Alumnos:");
+
+        jl_getuserpw10.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jl_getuserpw10.setForeground(new java.awt.Color(204, 204, 204));
+        jl_getuserpw10.setText("Seleccione el alumno que desea matricular");
+
+        jlist_master6.setBackground(new java.awt.Color(204, 204, 204));
+        jlist_master6.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jlist_master6.setModel(new DefaultListModel());
+        jScrollPane9.setViewportView(jlist_master6);
+
+        btn_actualizarmatricula.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btn_actualizarmatricula.setForeground(new java.awt.Color(51, 51, 51));
+        btn_actualizarmatricula.setText("Actualizar");
+        btn_actualizarmatricula.setBorder(null);
+        btn_actualizarmatricula.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_actualizarmatricula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_actualizarmatriculaActionPerformed(evt);
+            }
+        });
+
+        btn_matricular.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btn_matricular.setForeground(new java.awt.Color(51, 51, 51));
+        btn_matricular.setText("Matricular");
+        btn_matricular.setBorder(null);
+        btn_matricular.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_matricular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_matricularActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jp_fondo_crudmaster14Layout = new javax.swing.GroupLayout(jp_fondo_crudmaster14);
+        jp_fondo_crudmaster14.setLayout(jp_fondo_crudmaster14Layout);
+        jp_fondo_crudmaster14Layout.setHorizontalGroup(
+            jp_fondo_crudmaster14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_fondo_crudmaster14Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(jp_fondo_crudmaster14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btn_matricular, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jp_fondo_crudmaster14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jp_fondo_crudmaster14Layout.createSequentialGroup()
+                            .addComponent(jl_huevos10)
+                            .addGap(272, 272, 272))
+                        .addGroup(jp_fondo_crudmaster14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_getuserpw10)
+                            .addComponent(jLabel20))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jp_fondo_crudmaster14Layout.createSequentialGroup()
+                            .addGap(4, 4, 4)
+                            .addComponent(btn_regresaralumnoa2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_actualizarmatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(0, 63, Short.MAX_VALUE))
+        );
+        jp_fondo_crudmaster14Layout.setVerticalGroup(
+            jp_fondo_crudmaster14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_fondo_crudmaster14Layout.createSequentialGroup()
+                .addComponent(jLabel20)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jl_huevos10)
+                .addGap(14, 14, 14)
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jl_getuserpw10)
+                .addGap(14, 14, 14)
+                .addComponent(btn_matricular, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jp_fondo_crudmaster14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_regresaralumnoa2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_actualizarmatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18))
+        );
+
+        javax.swing.GroupLayout jd_matriculaLayout = new javax.swing.GroupLayout(jd_matricula.getContentPane());
+        jd_matricula.getContentPane().setLayout(jd_matriculaLayout);
+        jd_matriculaLayout.setHorizontalGroup(
+            jd_matriculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jp_fondo_crudmaster14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jd_matriculaLayout.setVerticalGroup(
+            jd_matriculaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jp_fondo_crudmaster14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jd_menumodmaster.setUndecorated(true);
+
+        jp_fondo_crudmaster18.setBackground(new java.awt.Color(37, 71, 106));
+        jp_fondo_crudmaster18.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoprogra2_gcano/unitec_logo2.jpg"))); // NOI18N
+
+        btn_menumodmaster.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btn_menumodmaster.setForeground(new java.awt.Color(51, 51, 51));
+        btn_menumodmaster.setText("Modificar");
+        btn_menumodmaster.setBorder(null);
+        btn_menumodmaster.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_menumodmaster.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_menumodmasterActionPerformed(evt);
+            }
+        });
+
+        jl_huevos14.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jl_huevos14.setForeground(new java.awt.Color(204, 204, 204));
+        jl_huevos14.setText("Ingrese los nuevos datos del catedrático.");
+
+        jtxt_nombremastermod.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 12)); // NOI18N
+
+        jl_getnamemaster6.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jl_getnamemaster6.setForeground(new java.awt.Color(204, 204, 204));
+        jl_getnamemaster6.setText("Nombre:");
+
+        jl_getcorreomaster6.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jl_getcorreomaster6.setForeground(new java.awt.Color(204, 204, 204));
+        jl_getcorreomaster6.setText("Correo de Usuario:");
+
+        jtxt_correousermod.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 12)); // NOI18N
+
+        jl_getprofesion10.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jl_getprofesion10.setForeground(new java.awt.Color(204, 204, 204));
+        jl_getprofesion10.setText("Profesion:");
+
+        jtxt_profesionmod.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 12)); // NOI18N
+
+        jl_id6.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jl_id6.setForeground(new java.awt.Color(204, 204, 204));
+        jl_id6.setText("ID:");
+
+        jtxt_idprofemod.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 12)); // NOI18N
+
+        jl_getuserpw14.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jl_getuserpw14.setForeground(new java.awt.Color(204, 204, 204));
+        jl_getuserpw14.setText("Contraseña de correo:");
+
+        jtxt_masterpwmod.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 12)); // NOI18N
+
+        jl_sueldo4.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jl_sueldo4.setForeground(new java.awt.Color(204, 204, 204));
+        jl_sueldo4.setText("Sueldo:");
+
+        js_sueldomod.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        js_sueldomod.setModel(new javax.swing.SpinnerNumberModel(40000.0d, 35000.0d, 110000.0d, 5000.0d));
+        js_sueldomod.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        js_sueldomod.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        btn_cancelar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btn_cancelar.setForeground(new java.awt.Color(51, 51, 51));
+        btn_cancelar.setText("Cancelar");
+        btn_cancelar.setBorder(null);
+        btn_cancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cancelarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jp_fondo_crudmaster18Layout = new javax.swing.GroupLayout(jp_fondo_crudmaster18);
+        jp_fondo_crudmaster18.setLayout(jp_fondo_crudmaster18Layout);
+        jp_fondo_crudmaster18Layout.setHorizontalGroup(
+            jp_fondo_crudmaster18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_fondo_crudmaster18Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jLabel24)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jp_fondo_crudmaster18Layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addGroup(jp_fondo_crudmaster18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jp_fondo_crudmaster18Layout.createSequentialGroup()
+                        .addComponent(btn_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_menumodmaster, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(17, 17, 17))
+                    .addGroup(jp_fondo_crudmaster18Layout.createSequentialGroup()
+                        .addGroup(jp_fondo_crudmaster18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(js_sueldomod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_sueldo4)
+                            .addComponent(jl_getuserpw14)
+                            .addComponent(jtxt_masterpwmod, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_id6)
+                            .addComponent(jtxt_idprofemod, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_getprofesion10)
+                            .addComponent(jtxt_profesionmod, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_getcorreomaster6)
+                            .addComponent(jtxt_correousermod, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_getnamemaster6)
+                            .addComponent(jl_huevos14)
+                            .addComponent(jtxt_nombremastermod, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(18, Short.MAX_VALUE))))
+        );
+        jp_fondo_crudmaster18Layout.setVerticalGroup(
+            jp_fondo_crudmaster18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_fondo_crudmaster18Layout.createSequentialGroup()
+                .addComponent(jLabel24)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jl_huevos14)
+                .addGap(18, 18, 18)
+                .addComponent(jl_getnamemaster6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jtxt_nombremastermod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jl_getcorreomaster6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jtxt_correousermod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jl_getprofesion10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jtxt_profesionmod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jl_id6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jtxt_idprofemod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jl_getuserpw14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jtxt_masterpwmod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jl_sueldo4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(js_sueldomod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jp_fondo_crudmaster18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_menumodmaster, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18))
+        );
+
+        javax.swing.GroupLayout jd_menumodmasterLayout = new javax.swing.GroupLayout(jd_menumodmaster.getContentPane());
+        jd_menumodmaster.getContentPane().setLayout(jd_menumodmasterLayout);
+        jd_menumodmasterLayout.setHorizontalGroup(
+            jd_menumodmasterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jp_fondo_crudmaster18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jd_menumodmasterLayout.setVerticalGroup(
+            jd_menumodmasterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jp_fondo_crudmaster18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jd_menumodalumno.setUndecorated(true);
+
+        jp_fondo_crudmaster19.setBackground(new java.awt.Color(37, 71, 106));
+        jp_fondo_crudmaster19.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoprogra2_gcano/unitec_logo2.jpg"))); // NOI18N
+
+        btn_regresarmaster12.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btn_regresarmaster12.setForeground(new java.awt.Color(0, 0, 0));
+        btn_regresarmaster12.setText("Regresar");
+        btn_regresarmaster12.setBorder(null);
+        btn_regresarmaster12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_regresarmaster12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_regresarmaster12ActionPerformed(evt);
+            }
+        });
+
+        jl_huevos15.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jl_huevos15.setForeground(new java.awt.Color(204, 204, 204));
+        jl_huevos15.setText("Ingrese los nuevos datos del alumno.");
+
+        jtxt_nombrealmunomod.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 12)); // NOI18N
+
+        jl_getnamemaster7.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jl_getnamemaster7.setForeground(new java.awt.Color(204, 204, 204));
+        jl_getnamemaster7.setText("Nombre:");
+
+        jl_getcorreomaster7.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jl_getcorreomaster7.setForeground(new java.awt.Color(204, 204, 204));
+        jl_getcorreomaster7.setText("Correo de Usuario:");
+
+        jtxt_correousermoda.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 12)); // NOI18N
+
+        jl_getprofesion11.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jl_getprofesion11.setForeground(new java.awt.Color(204, 204, 204));
+        jl_getprofesion11.setText("Contraseña de Usuario:");
+
+        jtxt_pwalummod.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 12)); // NOI18N
+
+        jl_id7.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jl_id7.setForeground(new java.awt.Color(204, 204, 204));
+        jl_id7.setText("Carrera:");
+
+        jtxt_carreramod.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 12)); // NOI18N
+
+        jl_getuserpw15.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jl_getuserpw15.setForeground(new java.awt.Color(204, 204, 204));
+        jl_getuserpw15.setText("Numero de cuenta:");
+
+        jtxt_cuentamod.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 12)); // NOI18N
+        jtxt_cuentamod.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+
+        btn_modalma.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btn_modalma.setForeground(new java.awt.Color(0, 0, 0));
+        btn_modalma.setText("Modificar");
+        btn_modalma.setBorder(null);
+        btn_modalma.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_modalma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_modalmaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jp_fondo_crudmaster19Layout = new javax.swing.GroupLayout(jp_fondo_crudmaster19);
+        jp_fondo_crudmaster19.setLayout(jp_fondo_crudmaster19Layout);
+        jp_fondo_crudmaster19Layout.setHorizontalGroup(
+            jp_fondo_crudmaster19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_fondo_crudmaster19Layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addGroup(jp_fondo_crudmaster19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jl_getuserpw15)
+                    .addComponent(jl_id7)
+                    .addComponent(jtxt_carreramod, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jl_getprofesion11)
+                    .addComponent(jtxt_pwalummod, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jl_getcorreomaster7)
+                    .addComponent(jtxt_correousermoda, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jl_getnamemaster7)
+                    .addComponent(jl_huevos15)
+                    .addComponent(jtxt_nombrealmunomod, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jp_fondo_crudmaster19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jp_fondo_crudmaster19Layout.createSequentialGroup()
+                            .addComponent(btn_regresarmaster12, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_modalma, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jtxt_cuentamod, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(25, Short.MAX_VALUE))
+            .addGroup(jp_fondo_crudmaster19Layout.createSequentialGroup()
+                .addComponent(jLabel25)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jp_fondo_crudmaster19Layout.setVerticalGroup(
+            jp_fondo_crudmaster19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_fondo_crudmaster19Layout.createSequentialGroup()
+                .addComponent(jLabel25)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jl_huevos15)
+                .addGap(18, 18, 18)
+                .addComponent(jl_getnamemaster7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jtxt_nombrealmunomod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jl_getcorreomaster7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jtxt_correousermoda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jl_getprofesion11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jtxt_pwalummod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jl_id7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jtxt_carreramod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jl_getuserpw15)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jtxt_cuentamod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addGroup(jp_fondo_crudmaster19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_regresarmaster12, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_modalma, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18))
+        );
+
+        javax.swing.GroupLayout jd_menumodalumnoLayout = new javax.swing.GroupLayout(jd_menumodalumno.getContentPane());
+        jd_menumodalumno.getContentPane().setLayout(jd_menumodalumnoLayout);
+        jd_menumodalumnoLayout.setHorizontalGroup(
+            jd_menumodalumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jp_fondo_crudmaster19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jd_menumodalumnoLayout.setVerticalGroup(
+            jd_menumodalumnoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jp_fondo_crudmaster19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jd_modclase.setUndecorated(true);
+
+        jp_fondo_crudmaster20.setBackground(new java.awt.Color(37, 71, 106));
+        jp_fondo_crudmaster20.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoprogra2_gcano/unitec_logo2.jpg"))); // NOI18N
+
+        btn_regresarclase3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btn_regresarclase3.setForeground(new java.awt.Color(0, 0, 0));
+        btn_regresarclase3.setText("Regresar");
+        btn_regresarclase3.setBorder(null);
+        btn_regresarclase3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_regresarclase3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_regresarclase3ActionPerformed(evt);
+            }
+        });
+
+        jl_huevos16.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jl_huevos16.setForeground(new java.awt.Color(204, 204, 204));
+        jl_huevos16.setText("Ingrese los nuevos  datos de la clase.");
+
+        jtct_nombreclasemod.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 12)); // NOI18N
+
+        jl_getnamemaster8.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jl_getnamemaster8.setForeground(new java.awt.Color(204, 204, 204));
+        jl_getnamemaster8.setText("Nombre:");
+
+        jl_getcorreomaster8.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jl_getcorreomaster8.setForeground(new java.awt.Color(204, 204, 204));
+        jl_getcorreomaster8.setText("Semestre:");
+
+        jl_getprofesion12.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jl_getprofesion12.setForeground(new java.awt.Color(204, 204, 204));
+        jl_getprofesion12.setText("Unidades Valorativas");
+
+        jl_id8.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jl_id8.setForeground(new java.awt.Color(204, 204, 204));
+        jl_id8.setText("Año:");
+
+        jtxt_idclasemod.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 12)); // NOI18N
+
+        jl_getuserpw16.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jl_getuserpw16.setForeground(new java.awt.Color(204, 204, 204));
+        jl_getuserpw16.setText("Periodo:");
+
+        js_semestremod.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        js_semestremod.setModel(new javax.swing.SpinnerNumberModel(1, 1, 2, 1));
+        js_semestremod.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        js_uvmod.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        js_uvmod.setModel(new javax.swing.SpinnerNumberModel(1, 1, 10, 1));
+        js_uvmod.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jyearmod.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        js_periodomod.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        js_periodomod.setModel(new javax.swing.SpinnerListModel(new String[] {"Q1", "Q2", "Q3", "Q4"}));
+        js_periodomod.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jl_getprofesion13.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jl_getprofesion13.setForeground(new java.awt.Color(204, 204, 204));
+        jl_getprofesion13.setText("ID de la clase:");
+
+        jl_getprofesion14.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jl_getprofesion14.setForeground(new java.awt.Color(204, 204, 204));
+        jl_getprofesion14.setText("Hora:");
+
+        jl_getprofesion15.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jl_getprofesion15.setForeground(new java.awt.Color(204, 204, 204));
+        jl_getprofesion15.setText("Minutos:");
+
+        jl_getprofesion16.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jl_getprofesion16.setForeground(new java.awt.Color(204, 204, 204));
+        jl_getprofesion16.setText(":");
+
+        js_horamod.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        js_horamod.setModel(new javax.swing.SpinnerNumberModel(1, 1, 24, 1));
+        js_horamod.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        js_minutosmod.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        js_minutosmod.setModel(new javax.swing.SpinnerNumberModel(0, 0, 60, 5));
+        js_minutosmod.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        btn_modclassss.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btn_modclassss.setForeground(new java.awt.Color(0, 0, 0));
+        btn_modclassss.setText("Modificar");
+        btn_modclassss.setBorder(null);
+        btn_modclassss.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_modclassss.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_modclassssActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jp_fondo_crudmaster20Layout = new javax.swing.GroupLayout(jp_fondo_crudmaster20);
+        jp_fondo_crudmaster20.setLayout(jp_fondo_crudmaster20Layout);
+        jp_fondo_crudmaster20Layout.setHorizontalGroup(
+            jp_fondo_crudmaster20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_fondo_crudmaster20Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jLabel26)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jp_fondo_crudmaster20Layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addGroup(jp_fondo_crudmaster20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jl_getprofesion13)
+                    .addComponent(js_uvmod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jl_getprofesion12)
+                    .addComponent(jl_getnamemaster8)
+                    .addComponent(jl_huevos16)
+                    .addComponent(jtct_nombreclasemod, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jp_fondo_crudmaster20Layout.createSequentialGroup()
+                        .addGroup(jp_fondo_crudmaster20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(js_semestremod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_getcorreomaster8))
+                        .addGap(26, 26, 26)
+                        .addGroup(jp_fondo_crudmaster20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jyearmod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_id8))
+                        .addGap(36, 36, 36)
+                        .addGroup(jp_fondo_crudmaster20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jl_getuserpw16)
+                            .addComponent(js_periodomod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jp_fondo_crudmaster20Layout.createSequentialGroup()
+                        .addGroup(jp_fondo_crudmaster20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jl_getprofesion14)
+                            .addGroup(jp_fondo_crudmaster20Layout.createSequentialGroup()
+                                .addComponent(js_horamod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jl_getprofesion16, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jp_fondo_crudmaster20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(js_minutosmod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jl_getprofesion15)))
+                    .addGroup(jp_fondo_crudmaster20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jp_fondo_crudmaster20Layout.createSequentialGroup()
+                            .addComponent(btn_regresarclase3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_modclassss, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jtxt_idclasemod, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(27, Short.MAX_VALUE))
+        );
+        jp_fondo_crudmaster20Layout.setVerticalGroup(
+            jp_fondo_crudmaster20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_fondo_crudmaster20Layout.createSequentialGroup()
+                .addComponent(jLabel26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jl_huevos16)
+                .addGap(18, 18, 18)
+                .addComponent(jl_getnamemaster8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jp_fondo_crudmaster20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jp_fondo_crudmaster20Layout.createSequentialGroup()
+                        .addComponent(jtct_nombreclasemod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jp_fondo_crudmaster20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jl_getcorreomaster8)
+                            .addComponent(jl_id8)
+                            .addComponent(jl_getuserpw16))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jp_fondo_crudmaster20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(js_semestremod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(js_periodomod, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jyearmod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jl_getprofesion12)
+                .addGap(18, 18, 18)
+                .addComponent(js_uvmod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8)
+                .addComponent(jl_getprofesion13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jtxt_idclasemod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jp_fondo_crudmaster20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jl_getprofesion14)
+                    .addComponent(jl_getprofesion15))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jp_fondo_crudmaster20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jl_getprofesion16)
+                    .addComponent(js_horamod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(js_minutosmod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addGroup(jp_fondo_crudmaster20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_regresarclase3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_modclassss, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18))
+        );
+
+        javax.swing.GroupLayout jd_modclaseLayout = new javax.swing.GroupLayout(jd_modclase.getContentPane());
+        jd_modclase.getContentPane().setLayout(jd_modclaseLayout);
+        jd_modclaseLayout.setHorizontalGroup(
+            jd_modclaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jp_fondo_crudmaster20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jd_modclaseLayout.setVerticalGroup(
+            jd_modclaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jp_fondo_crudmaster20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -1719,48 +3329,47 @@ static Random ram = new Random();
     }//GEN-LAST:event_jp_salirMouseClicked
 
     private void jtxt_correoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtxt_correoMousePressed
-        if(jtxt_correo.getText().equals("Ingrese su usuario de correo")){
-        jtxt_correo.setText("");
-        
-        jtxt_correo.setForeground(Color.black);
+        if (jtxt_correo.getText().equals("Ingrese su usuario de correo")) {
+            jtxt_correo.setText("");
+
+            jtxt_correo.setForeground(Color.black);
         }
-        if(String.valueOf(jtxt_pass.getPassword()).isEmpty()){
-        jtxt_pass.setText("********");
-        jtxt_pass.setForeground(Color.gray);
+        if (String.valueOf(jtxt_pass.getPassword()).isEmpty()) {
+            jtxt_pass.setText("********");
+            jtxt_pass.setForeground(Color.gray);
         }
     }//GEN-LAST:event_jtxt_correoMousePressed
 
     private void jtxt_passMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtxt_passMousePressed
-        if(String.valueOf(jtxt_pass.getPassword()).equals("********")){
-        jtxt_pass.setText("");
-        jtxt_pass.setForeground(Color.black);
+        if (String.valueOf(jtxt_pass.getPassword()).equals("********")) {
+            jtxt_pass.setText("");
+            jtxt_pass.setForeground(Color.black);
         }
-        if(jtxt_correo.getText().isEmpty()){
-        jtxt_correo.setText("Ingrese su usuario de correo");
-        jtxt_correo.setForeground(Color.gray);
+        if (jtxt_correo.getText().isEmpty()) {
+            jtxt_correo.setText("Ingrese su usuario de correo");
+            jtxt_correo.setForeground(Color.gray);
         }
     }//GEN-LAST:event_jtxt_passMousePressed
 
     private void jp_ingresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jp_ingresarMouseClicked
-       
-            if(jtxt_correo.getText().equals("registro")&String.valueOf(jtxt_pass.getPassword()).equals("admin1")){
+
+        if (jtxt_correo.getText().equals("registro") & String.valueOf(jtxt_pass.getPassword()).equals("admin1")) {
             jf_registro.setVisible(true);
             jf_registro.setExtendedState(MAXIMIZED_BOTH);
-            
-                
-            }else{
-                JOptionPane.showMessageDialog(this, "Credenciales no validas");
-                jtxt_correo.setForeground(Color.gray);
-                jtxt_correo.setText("Ingrese su usuario de correo");
-                jtxt_pass.setForeground(Color.gray);
-                jtxt_pass.setText("********");
-            }
-                jtxt_correo.setForeground(Color.gray);
-                jtxt_correo.setText("Ingrese su usuario de correo");
-                jtxt_pass.setForeground(Color.gray);
-                jtxt_pass.setText("********");
-        
-        
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Credenciales no validas");
+            jtxt_correo.setForeground(Color.gray);
+            jtxt_correo.setText("Ingrese su usuario de correo");
+            jtxt_pass.setForeground(Color.gray);
+            jtxt_pass.setText("********");
+        }
+        jtxt_correo.setForeground(Color.gray);
+        jtxt_correo.setText("Ingrese su usuario de correo");
+        jtxt_pass.setForeground(Color.gray);
+        jtxt_pass.setText("********");
+
+
     }//GEN-LAST:event_jp_ingresarMouseClicked
 
     private void jtxt_correoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxt_correoKeyPressed
@@ -1768,18 +3377,17 @@ static Random ram = new Random();
     }//GEN-LAST:event_jtxt_correoKeyPressed
 
     private void jp_cerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jp_cerrarMouseClicked
-       jf_registro.setVisible(false);
-       this.setVisible(true);
+        jf_registro.setVisible(false);
+        this.setVisible(true);
     }//GEN-LAST:event_jp_cerrarMouseClicked
 
     private void jp_maestrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jp_maestrosMouseClicked
-       jd_maestro.pack();
-       jd_maestro.setLocationRelativeTo(jf_registro);
-       jd_maestro.setModal(true);
-       jd_maestro.setVisible(true);
-       
-      
-      
+        jd_maestro.pack();
+        jd_maestro.setLocationRelativeTo(jf_registro);
+        jd_maestro.setModal(true);
+        jd_maestro.setVisible(true);
+
+
     }//GEN-LAST:event_jp_maestrosMouseClicked
 
     private void btn_regresarmasterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_regresarmasterActionPerformed
@@ -1787,18 +3395,26 @@ static Random ram = new Random();
     }//GEN-LAST:event_btn_regresarmasterActionPerformed
 
     private void btn_nuevomasterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nuevomasterActionPerformed
-       jd_nuevomaster.pack();
-       jd_nuevomaster.setLocationRelativeTo(jd_maestro);
-       jd_nuevomaster.setModal(true);
-       jd_nuevomaster.setVisible(true);       
+        jd_nuevomaster.pack();
+        jd_nuevomaster.setLocationRelativeTo(jd_maestro);
+        jd_nuevomaster.setModal(true);
+        jd_nuevomaster.setVisible(true);
     }//GEN-LAST:event_btn_nuevomasterActionPerformed
 
     private void btn_eliminarmasterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarmasterActionPerformed
-        // TODO add your handling code here:
+        jd_eliminarmaster.pack();
+        jd_eliminarmaster.setLocationRelativeTo(jd_maestro);
+        jd_eliminarmaster.setModal(true);
+        jd_eliminarmaster.setVisible(true);
     }//GEN-LAST:event_btn_eliminarmasterActionPerformed
 
     private void btn_Modmaster1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Modmaster1ActionPerformed
-        // TODO add your handling code here:
+        jd_modificarmaster.pack();
+        jd_modificarmaster.setLocationRelativeTo(jd_maestro);
+        jd_modificarmaster.setModal(true);
+        jd_modificarmaster.setVisible(true);
+
+
     }//GEN-LAST:event_btn_Modmaster1ActionPerformed
 
     private void btn_regresaralumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_regresaralumActionPerformed
@@ -1806,25 +3422,31 @@ static Random ram = new Random();
     }//GEN-LAST:event_btn_regresaralumActionPerformed
 
     private void btn_nuevoalumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nuevoalumnoActionPerformed
-       jd_nuevoalum.pack();
-       jd_nuevoalum.setLocationRelativeTo(jd_alumno);
-       jd_nuevoalum.setModal(true);
-       jd_nuevoalum.setVisible(true);     
+        jd_nuevoalum.pack();
+        jd_nuevoalum.setLocationRelativeTo(jd_alumno);
+        jd_nuevoalum.setModal(true);
+        jd_nuevoalum.setVisible(true);
     }//GEN-LAST:event_btn_nuevoalumnoActionPerformed
 
     private void btn_eliminaralumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminaralumActionPerformed
-        // TODO add your handling code here:
+        jd_eliminaralumno.pack();
+        jd_eliminaralumno.setLocationRelativeTo(jd_alumno);
+        jd_eliminaralumno.setModal(true);
+        jd_eliminaralumno.setVisible(true);
     }//GEN-LAST:event_btn_eliminaralumActionPerformed
 
     private void btn_ModalumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ModalumActionPerformed
-        // TODO add your handling code here:
+        jd_modificaralumno.pack();
+        jd_modificaralumno.setLocationRelativeTo(jd_alumno);
+        jd_modificaralumno.setModal(true);
+        jd_modificaralumno.setVisible(true);
     }//GEN-LAST:event_btn_ModalumActionPerformed
 
     private void jp_alumMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jp_alumMouseClicked
-       jd_alumno.pack();
-       jd_alumno.setLocationRelativeTo(jf_registro);
-       jd_alumno.setModal(true);
-       jd_alumno.setVisible(true);
+        jd_alumno.pack();
+        jd_alumno.setLocationRelativeTo(jf_registro);
+        jd_alumno.setModal(true);
+        jd_alumno.setVisible(true);
     }//GEN-LAST:event_jp_alumMouseClicked
 
     private void btn_regresarmaster2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_regresarmaster2ActionPerformed
@@ -1837,49 +3459,75 @@ static Random ram = new Random();
     }//GEN-LAST:event_btn_regresarmaster2ActionPerformed
 
     private void btn_nuevomaster2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nuevomaster2ActionPerformed
-        try{
+        try {
             Integer.parseInt(jtxt_idprofe.getText());
-            }catch(NumberFormatException e){
-            JOptionPane.showMessageDialog(jd_nuevomaster, "El numero de ID unicamente puede incluir numeros enteros");
-        
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(jd_nuevomaster, "El numero de ID unicamente puede incluir numeros enteros.");
+
         }
-        users.add(new Maestro(Integer.parseInt(jtxt_idprofe.getText()),
-                jtxt_nombremaster.getText(),
-                jtxt_profesion.getText(), (double) js_sueldo.getValue(),
-                jtxt_masterpw.getText(),jtxt_correouser.getText(),
-                "Profesor"));
-        jd_nuevomaster.setVisible(false);
-        jd_maestro.setVisible(false);
-        jtxt_idprofe.setText("");
-        jtxt_nombremaster.setText("");
-        jtxt_profesion.setText("");
-        jtxt_masterpw.setText("");
-        jtxt_correouser.setText("");
-        JOptionPane.showMessageDialog(jf_registro, "Maestro agregado a la base de datos exitosamente.");
-        
+        if (jtxt_idprofe.getText().equals("") || jtxt_nombremaster.getText().equals("") || jtxt_profesion.getText().equals("") || jtxt_masterpw.getText().equals("") || jtxt_correouser.getText().equals("")) {
+            JOptionPane.showMessageDialog(jd_nuevomaster, "Uno o mas campos estan vacios.");
+        } else {
+            Maestro nuevo = new Maestro(Integer.parseInt(jtxt_idprofe.getText()),
+                    jtxt_nombremaster.getText(),
+                    jtxt_profesion.getText(), (double) js_sueldo.getValue(),
+                    jtxt_masterpw.getText(), jtxt_correouser.getText(),
+                    "Profesor");
+            users.add(nuevo);
+            masters.add(nuevo);
+
+            jd_nuevomaster.setVisible(false);
+            //jd_maestro.setVisible(false);
+            jtxt_idprofe.setText("");
+            jtxt_nombremaster.setText("");
+            jtxt_profesion.setText("");
+            jtxt_masterpw.setText("");
+            jtxt_correouser.setText("");
+            js_sueldomod.setValue(40000);
+            JOptionPane.showMessageDialog(jd_maestro, "Maestro agregado a la base de datos exitosamente.");
+            //actualizartables(jtable_masters, jtable_masterseliminar);
+            limpiartabla(jtable_masters);
+            listartablemaster(jtable_masters, masters);
+            limpiartabla(jtable_masterseliminar);
+            listartablemaster(jtable_masterseliminar, masters);
+        }
+
+
     }//GEN-LAST:event_btn_nuevomaster2ActionPerformed
 
     private void btn_nuevomaster3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nuevomaster3ActionPerformed
-        try{
+        try {
             Integer.parseInt(jtxt_cuenta.getText());
-        }catch(NumberFormatException e){
-            JOptionPane.showMessageDialog(jd_nuevoalum, "El numero de cuenta unicamente puede incluir numeros enteros ");
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(jd_nuevoalum, "El numero de cuenta unicamente puede incluir numeros enteros. ");
         }
-        users.add(new Alumno(Integer.parseInt(jtxt_cuenta.getText()),
-            jtxt_nombrealmuno.getText(),
-                jtxt_carrera.getText(),
-                jtxt_pwalum.getText(),
-                jtxt_correouser2.getText(),
-                "Alumno"));
-        jd_nuevoalum.setVisible(false);
-        jd_alumno.setVisible(false);
-        jtxt_cuenta.setText("");
-        jtxt_nombrealmuno.setText("");
-        jtxt_carrera.setText("");
-        jtxt_pwalum.setText("");
-        jtxt_correouser2.setText("");
-        JOptionPane.showMessageDialog(jf_registro, "Alumno agregado a la base de datos exitosamente");
-        
+        if (jtxt_cuenta.getText().equals("") || jtxt_nombrealmuno.getText().equals("") || jtxt_carrera.getText().equals("") || jtxt_pwalum.getText().equals("") || jtxt_correouser2.getText().equals("")) {
+            JOptionPane.showMessageDialog(jd_nuevomaster, "Uno o mas campos estan vacios.");
+        } else {
+            Alumno nuevoalum = new Alumno(Integer.parseInt(jtxt_cuenta.getText()),
+                    jtxt_nombrealmuno.getText(),
+                    jtxt_carrera.getText(),
+                    jtxt_pwalum.getText(),
+                    jtxt_correouser2.getText(),
+                    "Alumno");
+
+            users.add(nuevoalum);
+            alumnos.add(nuevoalum);
+            jd_nuevoalum.setVisible(false);
+            //jd_alumno.setVisible(false);
+            jtxt_cuenta.setText("");
+            jtxt_nombrealmuno.setText("");
+            jtxt_carrera.setText("");
+            jtxt_pwalum.setText("");
+            jtxt_correouser2.setText("");
+            JOptionPane.showMessageDialog(jd_alumno, "Alumno agregado a la base de datos exitosamente.");
+            limpiartabla(jtable_alumnos);
+            listartablealumno(jtable_alumnos, alumnos);
+            limpiartabla(jtable_alumnoseliminar);
+            listartablealumno(jtable_alumnoseliminar, alumnos);
+            //nuevoalum = new Alumno();
+        }
+
     }//GEN-LAST:event_btn_nuevomaster3ActionPerformed
 
     private void btn_regresarmaster3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_regresarmaster3ActionPerformed
@@ -1892,38 +3540,450 @@ static Random ram = new Random();
     }//GEN-LAST:event_btn_regresarmaster3ActionPerformed
 
     private void btn_regresarclasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_regresarclasActionPerformed
-       jd_clase.setVisible(false);
+        jd_clase.setVisible(false);
     }//GEN-LAST:event_btn_regresarclasActionPerformed
 
     private void btn_nuevaclaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nuevaclaseActionPerformed
-       jd_nuevaclase.pack();
-       jd_nuevaclase.setLocationRelativeTo(jd_clase);
-       jd_nuevaclase.setModal(true);
-       jd_nuevaclase.setVisible(true);    
+        jd_nuevaclase.pack();
+        jd_nuevaclase.setLocationRelativeTo(jd_clase);
+        jd_nuevaclase.setModal(true);
+        jd_nuevaclase.setVisible(true);
     }//GEN-LAST:event_btn_nuevaclaseActionPerformed
 
     private void btn_eliminarclaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarclaseActionPerformed
-        // TODO add your handling code here:
+        jd_eliminar_clase.pack();
+        jd_eliminar_clase.setLocationRelativeTo(jd_clase);
+        jd_eliminar_clase.setModal(true);
+        jd_eliminar_clase.setVisible(true);
     }//GEN-LAST:event_btn_eliminarclaseActionPerformed
 
     private void btn_modificarclaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarclaseActionPerformed
-        // TODO add your handling code here:
+        jd_modificarclase.pack();
+        jd_modificarclase.setLocationRelativeTo(jd_clase);
+        jd_modificarclase.setModal(true);
+        jd_modificarclase.setVisible(true);
     }//GEN-LAST:event_btn_modificarclaseActionPerformed
 
     private void jp_clasesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jp_clasesMouseClicked
-       jd_clase.pack();
-       jd_clase.setLocationRelativeTo(jf_registro);
-       jd_clase.setModal(true);
-       jd_clase.setVisible(true);
+        jd_clase.pack();
+        jd_clase.setLocationRelativeTo(jf_registro);
+        jd_clase.setModal(true);
+        jd_clase.setVisible(true);
     }//GEN-LAST:event_jp_clasesMouseClicked
 
     private void btn_regresarclase2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_regresarclase2ActionPerformed
         jd_nuevaclase.setVisible(false);
+        jtxt_idclase.setText("");
+        jtct_nombreclase.setText("");
     }//GEN-LAST:event_btn_regresarclase2ActionPerformed
 
-    private void btn_nuevomaster4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nuevomaster4ActionPerformed
+    private void btn_crearclaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_crearclaseActionPerformed
+        try {
+            Integer.parseInt(jtxt_idclase.getText());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(jd_nuevaclase, "El ID de la clase unicamente puede incluir numeros enteros. ");
+        }
+        if (jtct_nombreclase.getText().equals("") || jtxt_idclase.getText().equals("")) {
+            JOptionPane.showMessageDialog(jd_nuevomaster, "Uno o mas campos estan vacios.");
+        } else {
+            Date hora = new Date();
+            hora.setHours((int) js_hora.getValue());
+            hora.setMinutes((int) js_minutos.getValue());
+
+            Clase nuevaclase = new Clase(jtct_nombreclase.getText(),
+                    hora, ((int) js_semestre.getValue()), (String) js_periodo.getValue().toString(),
+                    Integer.parseInt(jtxt_idclase.getText()),
+                    (int) js_uv.getValue(),
+                    jyear.getValue());
+
+            clases.add(nuevaclase);
+            jtxt_idclase.setText("");
+            jtct_nombreclase.setText("");
+            js_hora.setValue(1);
+            js_minutos.setValue(0);
+            js_uv.setValue(1);
+
+            jd_nuevaclase.setVisible(false);
+            //jd_clase.setVisible(false);
+            JOptionPane.showMessageDialog(jd_clase, "Clase agregada a la base de datos.");
+            limpiartabla(jtable_clases);
+            listartableclases(jtable_clases, clases);
+
+            limpiartabla(jtable_claseseliminar);
+            listartableclases(jtable_claseseliminar, clases);
+        }
+    }//GEN-LAST:event_btn_crearclaseActionPerformed
+
+    private void btn_regresarmaster4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_regresarmaster4ActionPerformed
+        jd_modificarmaster.setVisible(false);
+    }//GEN-LAST:event_btn_regresarmaster4ActionPerformed
+
+    private void btn_Modmaster1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_Modmaster1MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_nuevomaster4ActionPerformed
+    }//GEN-LAST:event_btn_Modmaster1MouseClicked
+
+    private void btn_regresarmaster5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_regresarmaster5ActionPerformed
+        jd_eliminarmaster.setVisible(false);
+    }//GEN-LAST:event_btn_regresarmaster5ActionPerformed
+
+    private void btn_borrarmasterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_borrarmasterActionPerformed
+
+        eliminartable(jtable_masterseliminar, masters, jd_eliminarmaster, jd_maestro);
+        limpiartabla(jtable_masters);
+        listartablemaster(jtable_masters, masters);
+        limpiartabla(jtable_masterseliminar);
+        listartablemaster(jtable_masterseliminar, masters);
+
+
+    }//GEN-LAST:event_btn_borrarmasterActionPerformed
+
+    private void btn_regresarmaster6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_regresarmaster6ActionPerformed
+        jd_modificaralumno.setVisible(false);
+    }//GEN-LAST:event_btn_regresarmaster6ActionPerformed
+
+    private void btn_regresaralumnoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_regresaralumnoaActionPerformed
+        jd_eliminaralumno.setVisible(false);
+    }//GEN-LAST:event_btn_regresaralumnoaActionPerformed
+
+    private void btn_regresarmaster7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_regresarmaster7ActionPerformed
+        jd_modificarclase.setVisible(false);
+    }//GEN-LAST:event_btn_regresarmaster7ActionPerformed
+
+    private void btn_regresarmaster8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_regresarmaster8ActionPerformed
+        jd_eliminar_clase.setVisible(false);
+    }//GEN-LAST:event_btn_regresarmaster8ActionPerformed
+
+    private void jp_asigMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jp_asigMouseClicked
+        jd_asig.pack();
+        jd_asig.setLocationRelativeTo(jf_registro);
+        jd_asig.setModal(true);
+        jd_asig.setVisible(true);
+    }//GEN-LAST:event_jp_asigMouseClicked
+
+    private void btn_regresarmaster1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_regresarmaster1ActionPerformed
+        jd_asig.setVisible(false);
+    }//GEN-LAST:event_btn_regresarmaster1ActionPerformed
+
+    private void btn_matalumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_matalumActionPerformed
+        jd_matricula.pack();
+        jd_matricula.setLocationRelativeTo(jf_registro);
+        jd_matricula.setModal(true);
+        jd_matricula.setVisible(true);
+    }//GEN-LAST:event_btn_matalumActionPerformed
+
+    private void btn_asignmasterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_asignmasterMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_asignmasterMouseClicked
+
+    private void btn_asignmasterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_asignmasterActionPerformed
+        jd_asignarmaster.pack();
+        jd_asignarmaster.setLocationRelativeTo(jd_asig);
+        jd_asignarmaster.setModal(true);
+        jd_asignarmaster.setVisible(true);
+    }//GEN-LAST:event_btn_asignmasterActionPerformed
+
+    private void btn_regresaralumnoa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_regresaralumnoa1ActionPerformed
+        jd_asignarmaster.setVisible(false);
+    }//GEN-LAST:event_btn_regresaralumnoa1ActionPerformed
+
+    private void btn_actualizarmaster5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarmaster5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_actualizarmaster5ActionPerformed
+
+    private void btn_regresaralumnoa2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_regresaralumnoa2ActionPerformed
+        jd_matricula.setVisible(false);
+    }//GEN-LAST:event_btn_regresaralumnoa2ActionPerformed
+
+    private void btn_actualizarmatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarmatriculaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_actualizarmatriculaActionPerformed
+
+    private void btn_matricularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_matricularActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_matricularActionPerformed
+
+    private void btn_asignarmasterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_asignarmasterActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_asignarmasterActionPerformed
+
+    private void btn_modificarmaestrostablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarmaestrostablaActionPerformed
+        if (jtable_masters.getSelectionModel().isSelectionEmpty()) {
+            JOptionPane.showMessageDialog(jd_modificarmaster, "Seleccione un elemento a modificar de la tabla.");
+        } else {
+            //DefaultTableModel modelo = (DefaultTableModel) jtable_masters.getModel();
+            masterselected = masters.get(jtable_masters.getSelectedRow());
+            jtxt_nombremastermod.setText(masterselected.getNombre());
+
+            jtxt_correousermod.setText(masterselected.getUser());
+            pos = jtable_masters.getSelectedRow();
+
+            jtxt_profesionmod.setText(masterselected.getProfesion());
+            jtxt_idprofemod.setText(String.valueOf(masterselected.getId()));
+            jtxt_masterpwmod.setText(masterselected.getPassword());
+            js_sueldomod.setValue(masterselected.getSueldo());
+            jd_menumodmaster.pack();
+            jd_menumodmaster.setLocationRelativeTo(jd_modificarmaster);
+            jd_menumodmaster.setModal(true);
+            jd_menumodmaster.setVisible(true);
+            //ButtonModel boton = (ButtonModel) btn_menumodmaster.getModel();
+
+        }
+    }//GEN-LAST:event_btn_modificarmaestrostablaActionPerformed
+
+    private void btn_menumodmasterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_menumodmasterActionPerformed
+        try {
+            Integer.parseInt(jtxt_idprofemod.getText());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(jd_menumodmaster, "El numero de ID unicamente puede incluir numeros enteros.");
+
+        }
+        if (jtxt_idprofemod.getText().equals("") || jtxt_nombremastermod.getText().equals("") || jtxt_profesionmod.getText().equals("") || jtxt_masterpwmod.getText().equals("") || jtxt_correousermod.getText().equals("")) {
+            JOptionPane.showMessageDialog(jd_nuevomaster, "Uno o mas campos estan vacios.");
+        } else {
+            masterselected.setNombre(jtxt_nombremastermod.getText());
+            masterselected.setId(Integer.parseInt(jtxt_idprofemod.getText()));
+            masterselected.setPassword(jtxt_masterpwmod.getText());
+            masterselected.setSueldo((double) js_sueldomod.getValue());
+            masterselected.setUser(jtxt_correousermod.getText());
+            masterselected.setProfesion(jtxt_profesionmod.getText());
+            masterselected.setRol("Profe");
+
+            masterselected = masters.get(pos);
+            jd_menumodmaster.setVisible(false);
+
+            jtxt_nombremastermod.setText("");
+            jtxt_correousermod.setText("");
+            jtxt_profesionmod.setText("");
+            jtxt_idprofemod.setText("");
+            jtxt_masterpwmod.setText("");
+            //js_sueldomod.setValue(40000);
+
+            js_sueldomod.setValue(40000);
+            JOptionPane.showMessageDialog(jd_modificarmaster, "Maestro modificado exitosamente.");
+            limpiartabla(jtable_masters);
+            listartablemaster(jtable_masters, masters);
+            limpiartabla(jtable_masterseliminar);
+            listartablemaster(jtable_masterseliminar, masters);
+            masterselected = new Maestro();
+        }
+    }//GEN-LAST:event_btn_menumodmasterActionPerformed
+
+    private void btn_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarActionPerformed
+        jd_menumodmaster.setVisible(false);
+        jtxt_nombremastermod.setText("");
+        jtxt_correousermod.setText("");
+        jtxt_profesionmod.setText("");
+        jtxt_idprofemod.setText("");
+        jtxt_masterpwmod.setText("");
+        js_sueldomod.setValue(40000);
+    }//GEN-LAST:event_btn_cancelarActionPerformed
+
+    private void btn_eliminarstudentiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarstudentiActionPerformed
+        eliminartable(jtable_alumnoseliminar, alumnos, jd_eliminaralumno, jd_alumno);
+        limpiartabla(jtable_alumnos);
+        listartablealumno(jtable_alumnos, alumnos);
+        limpiartabla(jtable_alumnoseliminar);
+        listartablealumno(jtable_alumnoseliminar, alumnos);
+    }//GEN-LAST:event_btn_eliminarstudentiActionPerformed
+
+    private void btn_regresarmaster12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_regresarmaster12ActionPerformed
+        jd_menumodalumno.setVisible(false);
+    }//GEN-LAST:event_btn_regresarmaster12ActionPerformed
+
+    private void btn_modalmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modalmActionPerformed
+        if (jtable_alumnos.getSelectionModel().isSelectionEmpty()) {
+            JOptionPane.showMessageDialog(jd_modificaralumno, "Seleccione un elemento a modificar de la tabla.");
+        } else {
+            alumnoselected = alumnos.get(jtable_alumnos.getSelectedRow());
+
+            pos = jtable_alumnos.getSelectedRow();
+
+            jtxt_cuentamod.setText(String.valueOf(alumnoselected.getCuenta()));
+            jtxt_nombrealmunomod.setText(alumnoselected.getNombre());
+            jtxt_carreramod.setText(alumnoselected.getCarrera());
+            jtxt_pwalummod.setText(alumnoselected.getPassword());
+            jtxt_correousermoda.setText(alumnoselected.getUser());
+
+            jd_menumodalumno.pack();
+            jd_menumodalumno.setLocationRelativeTo(jd_modificaralumno);
+            jd_menumodalumno.setModal(true);
+            jd_menumodalumno.setVisible(true);
+
+        }
+    }//GEN-LAST:event_btn_modalmActionPerformed
+
+    private void btn_modalmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modalmaActionPerformed
+        try {
+            Integer.parseInt(jtxt_cuentamod.getText());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(jd_menumodalumno, "El numero de cuenta unicamente puede incluir numeros enteros. ");
+        }
+        if (jtxt_cuentamod.getText().equals("") || jtxt_nombrealmunomod.getText().equals("") || jtxt_carreramod.getText().equals("") || jtxt_pwalummod.getText().equals("") || jtxt_correousermoda.getText().equals("")) {
+            JOptionPane.showMessageDialog(jd_menumodalumno, "Uno o mas campos estan vacios.");
+        } else {
+            alumnoselected.setNombre(jtxt_nombrealmunomod.getText());
+            alumnoselected.setCarrera(jtxt_carreramod.getText());
+            alumnoselected.setPassword(jtxt_pwalummod.getText());
+            alumnoselected.setUser(jtxt_correousermoda.getText());
+            alumnoselected.setCuenta(Integer.parseInt(jtxt_cuentamod.getText()));
+            alumnoselected.setRol("Estudiante");
+
+            alumnoselected = alumnos.get(pos);
+            jd_menumodalumno.setVisible(false);
+
+            JOptionPane.showMessageDialog(jd_modificaralumno, "Alumno modificado exitosamente.");
+
+            jtxt_cuentamod.setText("");
+            jtxt_nombrealmunomod.setText("");
+            jtxt_carreramod.setText("");
+            jtxt_pwalummod.setText("");
+            jtxt_correousermoda.setText("");
+            limpiartabla(jtable_alumnos);
+            listartablealumno(jtable_alumnos, alumnos);
+            limpiartabla(jtable_alumnoseliminar);
+            listartablealumno(jtable_alumnoseliminar, alumnos);
+            alumnoselected = new Alumno();
+
+        }
+    }//GEN-LAST:event_btn_modalmaActionPerformed
+
+    private void btn_elminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_elminarActionPerformed
+        eliminartable(jtable_claseseliminar, clases, jd_eliminar_clase, jd_clase);
+        limpiartabla(jtable_clases);
+        listartableclases(jtable_clases, clases);
+        limpiartabla(jtable_claseseliminar);
+        listartableclases(jtable_claseseliminar, clases);
+    }//GEN-LAST:event_btn_elminarActionPerformed
+
+    private void btn_regresarclase3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_regresarclase3ActionPerformed
+        jd_modclase.setVisible(false);
+    }//GEN-LAST:event_btn_regresarclase3ActionPerformed
+
+    private void btn_modclassssActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modclassssActionPerformed
+        try {
+            Integer.parseInt(jtxt_idclasemod.getText());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(jd_modclase, "El ID de la clase unicamente puede incluir numeros enteros. ");
+        }
+        if (jtct_nombreclasemod.getText().equals("") || jtxt_idclasemod.getText().equals("")) {
+            JOptionPane.showMessageDialog(jd_modclase, "Uno o mas campos estan vacios.");
+        } else {
+            Date hora = new Date();
+            hora.setHours((int) js_horamod.getValue());
+            hora.setMinutes((int) js_minutosmod.getValue());
+
+            claseselected.setNombre(jtct_nombreclasemod.getText());
+            claseselected.setId(Integer.parseInt(jtxt_idclasemod.getText()));
+            claseselected.setHora(hora);
+            claseselected.setPeriodo((String) js_periodomod.getValue().toString());
+            claseselected.setUnidadesval((int) js_uvmod.getValue());
+            claseselected.setAnnio(jyearmod.getValue());
+            claseselected.setSemestre((int) js_semestremod.getValue());
+
+            claseselected = clases.get(pos);
+            jd_modclase.setVisible(false);
+            
+                JOptionPane.showMessageDialog(jd_modificarclase, "Clase modificada exitosamente");
+
+            limpiartabla(jtable_clases);
+            listartableclases(jtable_clases, clases);
+            limpiartabla(jtable_claseseliminar);
+            listartableclases(jtable_claseseliminar, clases);
+
+        }
+    }//GEN-LAST:event_btn_modclassssActionPerformed
+
+    private void btn_modclaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modclaseActionPerformed
+        if (jtable_clases.getSelectionModel().isSelectionEmpty()) {
+            JOptionPane.showMessageDialog(jd_modificarclase, "Seleccione un elemento a modificar de la tabla.");
+        } else {
+            claseselected = clases.get(jtable_clases.getSelectedRow());
+            pos = jtable_clases.getSelectedRow();
+
+            jtxt_idclasemod.setText(String.valueOf(claseselected.getId()));
+            jtct_nombreclasemod.setText(claseselected.getNombre());
+            js_horamod.setValue(claseselected.getHora().getHours());
+            js_minutosmod.setValue(claseselected.getHora().getMinutes());
+            js_uvmod.setValue(claseselected.getUnidadesval());
+            js_periodomod.setValue(claseselected.getPeriodo());
+            jyearmod.setValue(claseselected.getAnnio());
+            js_semestremod.setValue(claseselected.getSemestre());
+            jd_modclase.pack();
+            jd_modclase.setLocationRelativeTo(jd_modificarclase);
+            jd_modclase.setModal(true);
+            jd_modclase.setVisible(true);
+
+        }
+    }//GEN-LAST:event_btn_modclaseActionPerformed
+    public void listartablemaster(JTable tabla, ArrayList users) {
+        DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+        Object[] ob = new Object[3];
+        for (int i = 0; i < users.size(); i++) {
+            if (users.get(i) instanceof Maestro) {
+                ob[0] = ((Maestro) users.get(i)).getId();
+                ob[1] = ((Maestro) users.get(i)).getNombre();
+                ob[2] = ((Maestro) users.get(i)).getProfesion();
+                modelo.addRow(ob);
+            }
+        }
+    }
+
+    public void listartablealumno(JTable table, ArrayList users) {
+        DefaultTableModel modelo = (DefaultTableModel) table.getModel();
+        Object[] ob = new Object[3];
+        for (int i = 0; i < users.size(); i++) {
+            if (users.get(i) instanceof Alumno) {
+                ob[0] = ((Alumno) users.get(i)).getCuenta();
+                ob[1] = ((Alumno) users.get(i)).getNombre();
+                ob[2] = ((Alumno) users.get(i)).getCarrera();
+                modelo.addRow(ob);
+            }
+        }
+    }
+
+    public void actualizartables(JTable tabl1, JTable tabl2) {
+        DefaultTableModel modelo = (DefaultTableModel) tabl1.getModel();
+        DefaultTableModel modelo2 = (DefaultTableModel) tabl2.getModel();
+        modelo.fireTableDataChanged();
+        modelo2.fireTableDataChanged();
+
+    }
+
+    public void listartableclases(JTable table, ArrayList users) {
+        DefaultTableModel modelo = (DefaultTableModel) table.getModel();
+        Object[] ob = new Object[3];
+
+        for (int i = 0; i < users.size(); i++) {
+            SimpleDateFormat sdf = new SimpleDateFormat("hh:mm");
+            ob[0] = ((Clase) users.get(i)).getNombre();
+            ob[1] = sdf.format(((Clase) users.get(i)).getHora());
+            ob[2] = ((Clase) users.get(i)).getPeriodo();
+            modelo.addRow(ob);
+
+        }
+    }
+
+    public void limpiartabla(JTable table) {
+        DefaultTableModel modelo = (DefaultTableModel) table.getModel();
+        for (int i = 0; i < table.getRowCount(); i++) {
+            modelo.removeRow(i);
+            i--;
+        }
+    }
+
+    public void eliminartable(JTable tabla, ArrayList lista, JDialog ventana, JDialog padre) {
+        if (tabla.getSelectionModel().isSelectionEmpty()) {
+            JOptionPane.showMessageDialog(ventana, "Seleccione un elemento a eliminar de la tabla.");
+        } else {
+
+            DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
+            lista.remove(tabla.getSelectedRow());
+            modelo.removeRow(tabla.getSelectedRow());
+            ventana.setVisible(false);
+            JOptionPane.showMessageDialog(padre, "Elemento eliminado de la base de datos.");
+
+        }
+    }
 
     /**
      * @param args the command line arguments
@@ -1952,13 +4012,7 @@ static Random ram = new Random();
         }
         //</editor-fold>
 
-        
-        
-        ArrayList <JLabel> fondo  = new ArrayList();
-       
-        
-        
-        
+        //ArrayList <JLabel> fondo  = new ArrayList();
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Principal().setVisible(true);
@@ -1970,32 +4024,75 @@ static Random ram = new Random();
     private javax.swing.JPanel Jp_login;
     private javax.swing.JButton btn_Modalum;
     private javax.swing.JButton btn_Modmaster1;
-    private javax.swing.JButton btn_Modmaster2;
+    private javax.swing.JButton btn_actualizarmaster5;
+    private javax.swing.JButton btn_actualizarmatricula;
+    private javax.swing.JButton btn_asignarmaster;
+    private javax.swing.JButton btn_asignmaster;
+    private javax.swing.JButton btn_borrarmaster;
+    private javax.swing.JButton btn_cancelar;
+    private javax.swing.JButton btn_crearclase;
     private javax.swing.JButton btn_eliminaralum;
     private javax.swing.JButton btn_eliminarclase;
     private javax.swing.JButton btn_eliminarmaster;
-    private javax.swing.JButton btn_eliminarmaster1;
+    private javax.swing.JButton btn_eliminarstudenti;
+    private javax.swing.JButton btn_elminar;
+    private javax.swing.JButton btn_matalum;
+    private javax.swing.JButton btn_matricular;
+    private javax.swing.JButton btn_menumodmaster;
+    private javax.swing.JButton btn_modalm;
+    private javax.swing.JButton btn_modalma;
+    private javax.swing.JButton btn_modclase;
+    private javax.swing.JButton btn_modclassss;
     private javax.swing.JButton btn_modificarclase;
+    private javax.swing.JButton btn_modificarmaestrostabla;
     private javax.swing.JButton btn_nuevaclase;
     private javax.swing.JButton btn_nuevoalumno;
     private javax.swing.JButton btn_nuevomaster;
-    private javax.swing.JButton btn_nuevomaster1;
     private javax.swing.JButton btn_nuevomaster2;
     private javax.swing.JButton btn_nuevomaster3;
     private javax.swing.JButton btn_nuevomaster4;
+    private javax.swing.JButton btn_nuevomaster5;
+    private javax.swing.JButton btn_nuevomaster6;
     private javax.swing.JButton btn_regresaralum;
+    private javax.swing.JButton btn_regresaralumnoa;
+    private javax.swing.JButton btn_regresaralumnoa1;
+    private javax.swing.JButton btn_regresaralumnoa2;
     private javax.swing.JButton btn_regresarclas;
     private javax.swing.JButton btn_regresarclase2;
+    private javax.swing.JButton btn_regresarclase3;
     private javax.swing.JButton btn_regresarmaster;
     private javax.swing.JButton btn_regresarmaster1;
+    private javax.swing.JButton btn_regresarmaster10;
+    private javax.swing.JButton btn_regresarmaster11;
+    private javax.swing.JButton btn_regresarmaster12;
     private javax.swing.JButton btn_regresarmaster2;
     private javax.swing.JButton btn_regresarmaster3;
+    private javax.swing.JButton btn_regresarmaster4;
+    private javax.swing.JButton btn_regresarmaster5;
+    private javax.swing.JButton btn_regresarmaster6;
+    private javax.swing.JButton btn_regresarmaster7;
+    private javax.swing.JButton btn_regresarmaster8;
+    private javax.swing.JButton btn_regresarmaster9;
     private javax.swing.JPanel fondo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -2003,21 +4100,41 @@ static Random ram = new Random();
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane10;
+    private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel jb_menu2;
     private javax.swing.JLabel jb_menu3;
     private javax.swing.JLabel jb_menu4;
     private javax.swing.JLabel jb_menu5;
     private javax.swing.JDialog jd_alumno;
+    private javax.swing.JDialog jd_asig;
+    private javax.swing.JDialog jd_asignarmaster;
     private javax.swing.JDialog jd_clase;
+    private javax.swing.JDialog jd_eliminar_clase;
+    private javax.swing.JDialog jd_eliminaralumno;
+    private javax.swing.JDialog jd_eliminarmaster;
     private javax.swing.JDialog jd_maestro;
+    private javax.swing.JDialog jd_matricula;
+    private javax.swing.JDialog jd_menumodalumno;
+    private javax.swing.JDialog jd_menumodmaster;
+    private javax.swing.JDialog jd_modclase;
+    private javax.swing.JDialog jd_modificaralumno;
+    private javax.swing.JDialog jd_modificarclase;
+    private javax.swing.JDialog jd_modificarmaster;
     private javax.swing.JDialog jd_nuevaclase;
     private javax.swing.JDialog jd_nuevoalum;
     private javax.swing.JDialog jd_nuevomaster;
@@ -2032,21 +4149,81 @@ static Random ram = new Random();
     private javax.swing.JLabel jl_getcorreomaster;
     private javax.swing.JLabel jl_getcorreomaster1;
     private javax.swing.JLabel jl_getcorreomaster2;
+    private javax.swing.JLabel jl_getcorreomaster3;
+    private javax.swing.JLabel jl_getcorreomaster4;
+    private javax.swing.JLabel jl_getcorreomaster5;
+    private javax.swing.JLabel jl_getcorreomaster6;
+    private javax.swing.JLabel jl_getcorreomaster7;
+    private javax.swing.JLabel jl_getcorreomaster8;
     private javax.swing.JLabel jl_getnamemaster;
     private javax.swing.JLabel jl_getnamemaster1;
     private javax.swing.JLabel jl_getnamemaster2;
+    private javax.swing.JLabel jl_getnamemaster3;
+    private javax.swing.JLabel jl_getnamemaster4;
+    private javax.swing.JLabel jl_getnamemaster5;
+    private javax.swing.JLabel jl_getnamemaster6;
+    private javax.swing.JLabel jl_getnamemaster7;
+    private javax.swing.JLabel jl_getnamemaster8;
     private javax.swing.JLabel jl_getprofesion;
     private javax.swing.JLabel jl_getprofesion1;
+    private javax.swing.JLabel jl_getprofesion10;
+    private javax.swing.JLabel jl_getprofesion11;
+    private javax.swing.JLabel jl_getprofesion12;
+    private javax.swing.JLabel jl_getprofesion13;
+    private javax.swing.JLabel jl_getprofesion14;
+    private javax.swing.JLabel jl_getprofesion15;
+    private javax.swing.JLabel jl_getprofesion16;
     private javax.swing.JLabel jl_getprofesion2;
+    private javax.swing.JLabel jl_getprofesion3;
+    private javax.swing.JLabel jl_getprofesion4;
+    private javax.swing.JLabel jl_getprofesion5;
+    private javax.swing.JLabel jl_getprofesion6;
+    private javax.swing.JLabel jl_getprofesion7;
+    private javax.swing.JLabel jl_getprofesion8;
+    private javax.swing.JLabel jl_getprofesion9;
     private javax.swing.JLabel jl_getuserpw;
     private javax.swing.JLabel jl_getuserpw1;
+    private javax.swing.JLabel jl_getuserpw10;
+    private javax.swing.JLabel jl_getuserpw11;
+    private javax.swing.JLabel jl_getuserpw12;
+    private javax.swing.JLabel jl_getuserpw13;
+    private javax.swing.JLabel jl_getuserpw14;
+    private javax.swing.JLabel jl_getuserpw15;
+    private javax.swing.JLabel jl_getuserpw16;
     private javax.swing.JLabel jl_getuserpw2;
+    private javax.swing.JLabel jl_getuserpw3;
+    private javax.swing.JLabel jl_getuserpw4;
+    private javax.swing.JLabel jl_getuserpw5;
+    private javax.swing.JLabel jl_getuserpw6;
+    private javax.swing.JLabel jl_getuserpw7;
+    private javax.swing.JLabel jl_getuserpw8;
+    private javax.swing.JLabel jl_getuserpw9;
     private javax.swing.JLabel jl_huevos;
     private javax.swing.JLabel jl_huevos1;
+    private javax.swing.JLabel jl_huevos10;
+    private javax.swing.JLabel jl_huevos11;
+    private javax.swing.JLabel jl_huevos12;
+    private javax.swing.JLabel jl_huevos13;
+    private javax.swing.JLabel jl_huevos14;
+    private javax.swing.JLabel jl_huevos15;
+    private javax.swing.JLabel jl_huevos16;
     private javax.swing.JLabel jl_huevos2;
+    private javax.swing.JLabel jl_huevos3;
+    private javax.swing.JLabel jl_huevos4;
+    private javax.swing.JLabel jl_huevos5;
+    private javax.swing.JLabel jl_huevos6;
+    private javax.swing.JLabel jl_huevos7;
+    private javax.swing.JLabel jl_huevos8;
+    private javax.swing.JLabel jl_huevos9;
     private javax.swing.JLabel jl_id;
     private javax.swing.JLabel jl_id1;
     private javax.swing.JLabel jl_id2;
+    private javax.swing.JLabel jl_id3;
+    private javax.swing.JLabel jl_id4;
+    private javax.swing.JLabel jl_id5;
+    private javax.swing.JLabel jl_id6;
+    private javax.swing.JLabel jl_id7;
+    private javax.swing.JLabel jl_id8;
     private javax.swing.JLabel jl_ingresar;
     private javax.swing.JLabel jl_jaguar;
     private javax.swing.JLabel jl_library;
@@ -2060,10 +4237,16 @@ static Random ram = new Random();
     private javax.swing.JPanel jl_subpan3;
     private javax.swing.JLabel jl_subpan4;
     private javax.swing.JLabel jl_sueldo;
+    private javax.swing.JLabel jl_sueldo1;
+    private javax.swing.JLabel jl_sueldo2;
+    private javax.swing.JLabel jl_sueldo3;
+    private javax.swing.JLabel jl_sueldo4;
     private javax.swing.JLabel jl_textcer;
     private javax.swing.JLabel jl_uniteclogo;
     private javax.swing.JLabel jl_uniteclogo2;
     private javax.swing.JLabel jl_wlcom;
+    private javax.swing.JList<String> jlist_master5;
+    private javax.swing.JList<String> jlist_master6;
     private javax.swing.JPanel jp_alum;
     private javax.swing.JPanel jp_asig;
     private javax.swing.JPanel jp_botones;
@@ -2073,11 +4256,25 @@ static Random ram = new Random();
     private javax.swing.JPanel jp_fondo;
     private javax.swing.JPanel jp_fondo_crudmaster;
     private javax.swing.JPanel jp_fondo_crudmaster1;
+    private javax.swing.JPanel jp_fondo_crudmaster10;
+    private javax.swing.JPanel jp_fondo_crudmaster11;
+    private javax.swing.JPanel jp_fondo_crudmaster12;
+    private javax.swing.JPanel jp_fondo_crudmaster13;
+    private javax.swing.JPanel jp_fondo_crudmaster14;
+    private javax.swing.JPanel jp_fondo_crudmaster15;
+    private javax.swing.JPanel jp_fondo_crudmaster16;
+    private javax.swing.JPanel jp_fondo_crudmaster17;
+    private javax.swing.JPanel jp_fondo_crudmaster18;
+    private javax.swing.JPanel jp_fondo_crudmaster19;
     private javax.swing.JPanel jp_fondo_crudmaster2;
+    private javax.swing.JPanel jp_fondo_crudmaster20;
     private javax.swing.JPanel jp_fondo_crudmaster3;
     private javax.swing.JPanel jp_fondo_crudmaster4;
     private javax.swing.JPanel jp_fondo_crudmaster5;
     private javax.swing.JPanel jp_fondo_crudmaster6;
+    private javax.swing.JPanel jp_fondo_crudmaster7;
+    private javax.swing.JPanel jp_fondo_crudmaster8;
+    private javax.swing.JPanel jp_fondo_crudmaster9;
     private javax.swing.JPanel jp_ingresar;
     private javax.swing.JPanel jp_maestros;
     private javax.swing.JPanel jp_panelprincipal;
@@ -2087,26 +4284,83 @@ static Random ram = new Random();
     private javax.swing.JPanel jp_subpan;
     private javax.swing.JPanel jp_subpan2;
     private javax.swing.JPanel jp_subpan3;
+    private javax.swing.JSpinner js_hora;
+    private javax.swing.JSpinner js_horamod;
+    private javax.swing.JSpinner js_minutos;
+    private javax.swing.JSpinner js_minutosmod;
+    private javax.swing.JSpinner js_periodo;
+    private javax.swing.JSpinner js_periodomod;
+    private javax.swing.JSpinner js_semestre;
+    private javax.swing.JSpinner js_semestremod;
     private javax.swing.JSpinner js_sueldo;
+    private javax.swing.JSpinner js_sueldo1;
+    private javax.swing.JSpinner js_sueldo2;
+    private javax.swing.JSpinner js_sueldo3;
+    private javax.swing.JSpinner js_sueldomod;
+    private javax.swing.JSpinner js_uv;
+    private javax.swing.JSpinner js_uvmod;
+    private javax.swing.JTable jtable_alumnos;
+    private javax.swing.JTable jtable_alumnoseliminar;
+    private javax.swing.JTable jtable_clases;
+    private javax.swing.JTable jtable_claseseliminar;
+    private javax.swing.JTable jtable_masters;
+    private javax.swing.JTable jtable_masterseliminar;
+    private javax.swing.JTable jtable_muertos;
+    private javax.swing.JTextField jtct_nombreclase;
+    private javax.swing.JTextField jtct_nombreclasemod;
     private javax.swing.JTextField jtxt_carrera;
-    private javax.swing.JTextField jtxt_carrera1;
+    private javax.swing.JTextField jtxt_carreramod;
     private javax.swing.JTextField jtxt_correo;
     private javax.swing.JTextField jtxt_correouser;
+    private javax.swing.JTextField jtxt_correouser1;
     private javax.swing.JTextField jtxt_correouser2;
     private javax.swing.JTextField jtxt_correouser3;
+    private javax.swing.JTextField jtxt_correouser4;
+    private javax.swing.JTextField jtxt_correousermod;
+    private javax.swing.JTextField jtxt_correousermoda;
     private javax.swing.JTextField jtxt_cuenta;
-    private javax.swing.JTextField jtxt_cuenta1;
+    private javax.swing.JTextField jtxt_cuentamod;
+    private javax.swing.JTextField jtxt_idclase;
+    private javax.swing.JTextField jtxt_idclasemod;
     private javax.swing.JTextField jtxt_idprofe;
+    private javax.swing.JTextField jtxt_idprofe1;
+    private javax.swing.JTextField jtxt_idprofe2;
+    private javax.swing.JTextField jtxt_idprofe3;
+    private javax.swing.JTextField jtxt_idprofemod;
     private javax.swing.JTextField jtxt_masterpw;
+    private javax.swing.JTextField jtxt_masterpw1;
+    private javax.swing.JTextField jtxt_masterpw2;
+    private javax.swing.JTextField jtxt_masterpw3;
+    private javax.swing.JTextField jtxt_masterpwmod;
     private javax.swing.JTextField jtxt_nombrealmuno;
-    private javax.swing.JTextField jtxt_nombrealmuno1;
+    private javax.swing.JTextField jtxt_nombrealmunomod;
     private javax.swing.JTextField jtxt_nombremaster;
+    private javax.swing.JTextField jtxt_nombremaster1;
+    private javax.swing.JTextField jtxt_nombremaster2;
+    private javax.swing.JTextField jtxt_nombremaster3;
+    private javax.swing.JTextField jtxt_nombremastermod;
     private javax.swing.JPasswordField jtxt_pass;
     private javax.swing.JTextField jtxt_profesion;
+    private javax.swing.JTextField jtxt_profesion1;
+    private javax.swing.JTextField jtxt_profesion2;
+    private javax.swing.JTextField jtxt_profesion3;
+    private javax.swing.JTextField jtxt_profesionmod;
     private javax.swing.JTextField jtxt_pwalum;
-    private javax.swing.JTextField jtxt_pwalum1;
+    private javax.swing.JTextField jtxt_pwalummod;
+    private com.toedter.calendar.JYearChooser jyear;
+    private com.toedter.calendar.JYearChooser jyearmod;
     // End of variables declaration//GEN-END:variables
-ArrayList<Usuario> users = new ArrayList();
+    ArrayList<Usuario> users = new ArrayList();
+    ArrayList<Maestro> masters = new ArrayList();
+    ArrayList<Alumno> alumnos = new ArrayList();
+    ArrayList<Clase> clases = new ArrayList();
+    Maestro test = new Maestro(1111023, "Juan Perez", "Ingeniero Mecatronico", 50000, "1234", "juanp@gmail.com", "Profe");
+    Alumno test2 = new Alumno(111213, "Juan Perez", "Arquitectura", "1234", "juanp@gmail.com", "Estudiante");
+    Alumno alumnoselected;
+    Maestro masterselected;
+    Clase claseselected;
+    Date h = new Date();
 
-
+    Clase tes3 = new Clase("Programacion II", h, 2, "Q4", 1232, 5, 2023);
+    int pos;
 }

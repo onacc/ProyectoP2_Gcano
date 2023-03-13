@@ -11,10 +11,26 @@ import java.util.ArrayList;
  * @author gcano
  */
 public class Maestro extends Usuario {
-    private int id;
+    private int id,classid;
     private String Nombre, profesion;
     private double sueldo;
     private ArrayList <Clase> clases = new ArrayList();
+
+    public int getClassid() {
+        return classid;
+    }
+
+    public void setClassid(int classid) {
+        this.classid = classid;
+    }
+
+    public ArrayList<Clase> getClases() {
+        return clases;
+    }
+
+    public void setClases(ArrayList<Clase> clases) {
+        this.clases = clases;
+    }
 
     public Maestro() {
     super();
