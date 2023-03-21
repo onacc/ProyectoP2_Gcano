@@ -4,16 +4,28 @@
  */
 package proyectoprogra2_gcano;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
  *
  * @author gcano
  */
-public class Clase {
+public class Clase  implements Serializable {
     private String nombre,periodo;
     private Date hora; 
     private int id, unidadesval,annio,semestre;
+    private ArrayList<Examen> examenes = new ArrayList();
+    private static final long SerialVersionUID=557L;
+
+    public ArrayList<Examen> getExamenes() {
+        return examenes;
+    }
+
+    public void setExamenes(ArrayList<Examen> examenes) {
+        this.examenes = examenes;
+    }
 
     public Clase(String nombre, Date hora, int semestre, String periodo, int id, int unidadesval,int annio) {
         this.nombre = nombre;
