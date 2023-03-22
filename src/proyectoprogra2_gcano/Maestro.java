@@ -4,17 +4,19 @@
  */
 package proyectoprogra2_gcano;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author gcano
  */
-public class Maestro extends Usuario {
+public class Maestro extends Usuario implements Serializable {
     private int id,classid;
     private String Nombre, profesion;
     private double sueldo;
     private ArrayList <Clase> clases = new ArrayList();
+    private static final long SerialVersionUID=556L;
 
     public int getClassid() {
         return classid;

@@ -25,7 +25,7 @@ import javax.swing.table.DefaultTableModel;
  * @author gcano
  */
 public class Principal extends javax.swing.JFrame {
-    
+
     static Random ram = new Random();
 
     /**
@@ -35,42 +35,40 @@ public class Principal extends javax.swing.JFrame {
         initComponents();
         //setLocationRelativeTo(null);
         //adminClase ac = new adminClase("./Clases.cbm");
+        adminClase ac = new adminClase("./Clases.cbm");
+        adminUsuario au = new adminUsuario("./Users.cbm");
+        adminMaestro am = new adminMaestro("./Masters.cbm");
+        adminAlumno AA = new adminAlumno("./Alumnos.cbm");
         ac.cargarArchivo();
         au.cargarArchivo();
         am.cargarArchivo();
         AA.cargarArchivo();
-        clases =ac.getListaClases();
-        users = au.getListaUsuario();
-        alumnos=AA.getListaAlumno();
-        masters = am.getListaMaestro();
-        users.add(test);
-        //users.add(test2);
-        masters.add(test);
+
+        //am.setMaestro(test);
+        //am.escribirArchivo();
         //alumnos.add(test2);
-        
         //test2.getCursadas().add(tes3);
         h.setHours(7);
         h.setMinutes(0);
         //clases.add(tes3);
-        System.out.println(users);
+        //System.out.println(users);
         this.setExtendedState(MAXIMIZED_BOTH);
 
         //users.add(new Usuario("registro","admin1","registro"));
         setTitle("Pagina Prinicipal");
-        listartablemaster(jtable_masters, masters);
-        listartablemaster(jtable_masterseliminar, masters);
-        listartablealumno(jtable_alumnoseliminar, alumnos);
-        listartablealumno(jtable_alumnos, alumnos);
-        listartableclases(jtable_clases, clases);
-        listartableclases(jtable_claseseliminar, clases);
-        
-        listartablealumno(jtable_matricula, alumnos);
-        
-        listartablemaster(jtable_asignar, masters);
-        listartableclases(jtable_matriculaclase, clases);
-        listartableclases(jtable_mastermatricula, clases);
-        
-       
+        listartablemaster(jtable_masters, am.getListaMaestro());
+        listartablemaster(jtable_masterseliminar, am.getListaMaestro());
+        listartablealumno(jtable_alumnoseliminar, AA.getListaAlumno());
+        listartablealumno(jtable_alumnos, AA.getListaAlumno());
+        listartableclases(jtable_clases, ac.getListaClases());
+        listartableclases(jtable_claseseliminar, ac.getListaClases());
+
+        listartablealumno(jtable_matricula, AA.getListaAlumno());
+
+        listartablemaster(jtable_asignar, am.getListaMaestro());
+        listartableclases(jtable_matriculaclase, ac.getListaClases());
+        listartableclases(jtable_mastermatricula, ac.getListaClases());
+
         //this.setVisible(true);
     }
 
@@ -360,10 +358,6 @@ public class Principal extends javax.swing.JFrame {
         jl_menu2 = new javax.swing.JLabel();
         jSeparator13 = new javax.swing.JSeparator();
         jSeparator16 = new javax.swing.JSeparator();
-        jp_maestros3 = new javax.swing.JPanel();
-        jl_master3 = new javax.swing.JLabel();
-        jLabel38 = new javax.swing.JLabel();
-        jSeparator17 = new javax.swing.JSeparator();
         jp_placeholder2 = new javax.swing.JPanel();
         jl_wlcom2 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
@@ -376,9 +370,6 @@ public class Principal extends javax.swing.JFrame {
         jp_botones1 = new javax.swing.JPanel();
         jp_cerrar1 = new javax.swing.JPanel();
         jl_textcer1 = new javax.swing.JLabel();
-        jp_asig1 = new javax.swing.JPanel();
-        jl_asig1 = new javax.swing.JLabel();
-        jLabel29 = new javax.swing.JLabel();
         jp_alum1 = new javax.swing.JPanel();
         jl_alum1 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
@@ -389,7 +380,6 @@ public class Principal extends javax.swing.JFrame {
         jSeparator7 = new javax.swing.JSeparator();
         jSeparator8 = new javax.swing.JSeparator();
         jSeparator9 = new javax.swing.JSeparator();
-        jSeparator11 = new javax.swing.JSeparator();
         jp_placeholder1 = new javax.swing.JPanel();
         jl_wlcom1 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
@@ -419,7 +409,86 @@ public class Principal extends javax.swing.JFrame {
         jl_huevos17 = new javax.swing.JLabel();
         jScrollPane15 = new javax.swing.JScrollPane();
         jtable_clasesalum1 = new javax.swing.JTable();
-        btn_matricularalm2 = new javax.swing.JButton();
+        btn_resolvar = new javax.swing.JButton();
+        btn_matricularalm3 = new javax.swing.JButton();
+        jd_examenesalm = new javax.swing.JDialog();
+        jp_fondo_crudmaster23 = new javax.swing.JPanel();
+        jLabel27 = new javax.swing.JLabel();
+        btn_regresarclas2 = new javax.swing.JButton();
+        btn_listaexamn = new javax.swing.JButton();
+        btn_verres = new javax.swing.JButton();
+        jb_menu7 = new javax.swing.JLabel();
+        jd_verresalm = new javax.swing.JDialog();
+        jp_fondo_crudmaster27 = new javax.swing.JPanel();
+        jLabel40 = new javax.swing.JLabel();
+        ok = new javax.swing.JButton();
+        jl_huevos21 = new javax.swing.JLabel();
+        jScrollPane19 = new javax.swing.JScrollPane();
+        jtable_exams = new javax.swing.JTable();
+        jd_listaclasesmaster = new javax.swing.JDialog();
+        jp_fondo_crudmaster28 = new javax.swing.JPanel();
+        jLabel38 = new javax.swing.JLabel();
+        jl_huevos22 = new javax.swing.JLabel();
+        btn_asignar = new javax.swing.JButton();
+        btn_matricularalm4 = new javax.swing.JButton();
+        jScrollPane21 = new javax.swing.JScrollPane();
+        jtable_clasesmaster = new javax.swing.JTable();
+        jd_crear_Examen = new javax.swing.JDialog();
+        jp_fondo_crudmaster29 = new javax.swing.JPanel();
+        jLabel41 = new javax.swing.JLabel();
+        btn_crear = new javax.swing.JButton();
+        jl_huevos23 = new javax.swing.JLabel();
+        jl_getnamemaster3 = new javax.swing.JLabel();
+        jtxt_nombreexamen = new javax.swing.JTextField();
+        btn_regresasrasd = new javax.swing.JButton();
+        jl_getprofesion7 = new javax.swing.JLabel();
+        js_hora1 = new javax.swing.JSpinner();
+        js_minutos1 = new javax.swing.JSpinner();
+        jl_getprofesion8 = new javax.swing.JLabel();
+        jl_getprofesion9 = new javax.swing.JLabel();
+        btn_regresasrasd1 = new javax.swing.JButton();
+        pregutna = new javax.swing.JComboBox<>();
+        jd_truofal = new javax.swing.JDialog();
+        jp_fondo_crudmaster30 = new javax.swing.JPanel();
+        jLabel29 = new javax.swing.JLabel();
+        btn_regresarclas3 = new javax.swing.JButton();
+        jtxt_interrotru = new javax.swing.JTextField();
+        jl_getnamemaster4 = new javax.swing.JLabel();
+        jl_getnamemaster5 = new javax.swing.JLabel();
+        radioTRUE = new javax.swing.JRadioButton();
+        radioFALSE = new javax.swing.JRadioButton();
+        btn_regresarclas4 = new javax.swing.JButton();
+        js_minutos2 = new javax.swing.JSpinner();
+        jl_getprofesion17 = new javax.swing.JLabel();
+        jd_enum = new javax.swing.JDialog();
+        jp_fondo_crudmaster31 = new javax.swing.JPanel();
+        jLabel42 = new javax.swing.JLabel();
+        btn_regresarclas5 = new javax.swing.JButton();
+        jtxt_interroenum = new javax.swing.JTextField();
+        jl_getnamemaster9 = new javax.swing.JLabel();
+        jl_getnamemaster10 = new javax.swing.JLabel();
+        btn_regresarclas6 = new javax.swing.JButton();
+        js_minutos3 = new javax.swing.JSpinner();
+        jl_getprofesion18 = new javax.swing.JLabel();
+        jtxt_resp1 = new javax.swing.JTextField();
+        jtxt_resp3 = new javax.swing.JTextField();
+        jtxt_resp4 = new javax.swing.JTextField();
+        jtxt_resp2 = new javax.swing.JTextField();
+        jd_mult = new javax.swing.JDialog();
+        jp_fondo_crudmaster32 = new javax.swing.JPanel();
+        jLabel43 = new javax.swing.JLabel();
+        btn_regresarclas7 = new javax.swing.JButton();
+        jtxt_interromult = new javax.swing.JTextField();
+        jl_getnamemaster11 = new javax.swing.JLabel();
+        jl_getnamemaster12 = new javax.swing.JLabel();
+        btn_regresarclas8 = new javax.swing.JButton();
+        js_minutos4 = new javax.swing.JSpinner();
+        jl_getprofesion19 = new javax.swing.JLabel();
+        jtxt_resp11 = new javax.swing.JTextField();
+        jtxt_resp22 = new javax.swing.JTextField();
+        jtxt_resp33 = new javax.swing.JTextField();
+        jtxt_resp44 = new javax.swing.JTextField();
+        jl_getnamemaster13 = new javax.swing.JLabel();
         jp_panelprincipal = new javax.swing.JPanel();
         jp_fondo = new javax.swing.JPanel();
         jl_uniteclogo = new javax.swing.JLabel();
@@ -3295,41 +3364,6 @@ public class Principal extends javax.swing.JFrame {
         jl_menu2.setForeground(new java.awt.Color(102, 102, 102));
         jl_menu2.setText("Menú");
 
-        jp_maestros3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jp_maestros3.setForeground(new java.awt.Color(255, 255, 255));
-        jp_maestros3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jp_maestros3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jp_maestros3MouseClicked(evt);
-            }
-        });
-
-        jl_master3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
-        jl_master3.setText("Examenes");
-
-        jLabel38.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoprogra2_gcano/menu icon.jpg"))); // NOI18N
-
-        javax.swing.GroupLayout jp_maestros3Layout = new javax.swing.GroupLayout(jp_maestros3);
-        jp_maestros3.setLayout(jp_maestros3Layout);
-        jp_maestros3Layout.setHorizontalGroup(
-            jp_maestros3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jp_maestros3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel38)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jl_master3)
-                .addContainerGap(117, Short.MAX_VALUE))
-        );
-        jp_maestros3Layout.setVerticalGroup(
-            jp_maestros3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jp_maestros3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jp_maestros3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jl_master3)
-                    .addComponent(jLabel38))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
         javax.swing.GroupLayout jp_botones2Layout = new javax.swing.GroupLayout(jp_botones2);
         jp_botones2.setLayout(jp_botones2Layout);
         jp_botones2Layout.setHorizontalGroup(
@@ -3346,14 +3380,12 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(jp_botones2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jp_botones2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator16, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jp_botones2Layout.createSequentialGroup()
                         .addGroup(jp_botones2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jSeparator13, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jp_cerrar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jp_maestros3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jSeparator16, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jSeparator17))
+                            .addComponent(jp_cerrar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jp_botones2Layout.setVerticalGroup(
@@ -3367,10 +3399,6 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(jp_maestros2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator16, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jp_maestros3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator17, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jp_cerrar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(53, Short.MAX_VALUE))
@@ -3524,41 +3552,6 @@ public class Principal extends javax.swing.JFrame {
             .addComponent(jl_textcer1)
         );
 
-        jp_asig1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jp_asig1.setForeground(new java.awt.Color(255, 255, 255));
-        jp_asig1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jp_asig1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jp_asig1MouseClicked(evt);
-            }
-        });
-
-        jl_asig1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
-        jl_asig1.setText("Tareas");
-
-        jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoprogra2_gcano/menu icon.jpg"))); // NOI18N
-
-        javax.swing.GroupLayout jp_asig1Layout = new javax.swing.GroupLayout(jp_asig1);
-        jp_asig1.setLayout(jp_asig1Layout);
-        jp_asig1Layout.setHorizontalGroup(
-            jp_asig1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jp_asig1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel29)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jl_asig1)
-                .addContainerGap(155, Short.MAX_VALUE))
-        );
-        jp_asig1Layout.setVerticalGroup(
-            jp_asig1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jp_asig1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jp_asig1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel29)
-                    .addComponent(jl_asig1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
         jp_alum1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jp_alum1.setForeground(new java.awt.Color(255, 255, 255));
         jp_alum1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -3651,17 +3644,12 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(0, 93, Short.MAX_VALUE))
             .addGroup(jp_botones1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jp_botones1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jp_botones1Layout.createSequentialGroup()
-                        .addGroup(jp_botones1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jSeparator9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE)
-                            .addComponent(jSeparator8, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator7, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jp_cerrar1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jp_asig1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jSeparator11))
-                .addContainerGap())
+                .addGroup(jp_botones1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jSeparator9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE)
+                    .addComponent(jSeparator8, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator7, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jp_cerrar1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jp_botones1Layout.setVerticalGroup(
             jp_botones1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3678,13 +3666,9 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(jp_alum1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
                 .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jp_asig1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jSeparator11, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addComponent(jp_cerrar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(115, 115, 115))
+                .addContainerGap(191, Short.MAX_VALUE))
         );
 
         jp_placeholder1.setBackground(new java.awt.Color(37, 71, 106));
@@ -3698,7 +3682,7 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel32.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
         jLabel32.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel32.setText("Solucitudes a cambio de contraseña");
+        jLabel32.setText("Clases:");
 
         jtable_clasesdemasteringresado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -3989,6 +3973,8 @@ public class Principal extends javax.swing.JFrame {
             .addComponent(jp_fondo_crudmaster21, javax.swing.GroupLayout.PREFERRED_SIZE, 594, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
+        jd_examenes.setUndecorated(true);
+
         jp_fondo_crudmaster22.setBackground(new java.awt.Color(37, 71, 106));
         jp_fondo_crudmaster22.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -4008,14 +3994,25 @@ public class Principal extends javax.swing.JFrame {
         ));
         jScrollPane15.setViewportView(jtable_clasesalum1);
 
-        btn_matricularalm2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
-        btn_matricularalm2.setForeground(new java.awt.Color(0, 0, 0));
-        btn_matricularalm2.setText("OK");
-        btn_matricularalm2.setBorder(null);
-        btn_matricularalm2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_matricularalm2.addActionListener(new java.awt.event.ActionListener() {
+        btn_resolvar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btn_resolvar.setForeground(new java.awt.Color(0, 0, 0));
+        btn_resolvar.setText("Resolver");
+        btn_resolvar.setBorder(null);
+        btn_resolvar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_resolvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_matricularalm2ActionPerformed(evt);
+                btn_resolvarActionPerformed(evt);
+            }
+        });
+
+        btn_matricularalm3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btn_matricularalm3.setForeground(new java.awt.Color(0, 0, 0));
+        btn_matricularalm3.setText("Regresar");
+        btn_matricularalm3.setBorder(null);
+        btn_matricularalm3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_matricularalm3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_matricularalm3ActionPerformed(evt);
             }
         });
 
@@ -4026,9 +4023,6 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(jp_fondo_crudmaster22Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jp_fondo_crudmaster22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jp_fondo_crudmaster22Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btn_matricularalm2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane15, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE)
                     .addGroup(jp_fondo_crudmaster22Layout.createSequentialGroup()
                         .addGroup(jp_fondo_crudmaster22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -4038,7 +4032,11 @@ public class Principal extends javax.swing.JFrame {
                             .addGroup(jp_fondo_crudmaster22Layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addComponent(jl_huevos17)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_fondo_crudmaster22Layout.createSequentialGroup()
+                        .addComponent(btn_matricularalm3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_resolvar, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jp_fondo_crudmaster22Layout.setVerticalGroup(
@@ -4050,7 +4048,9 @@ public class Principal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btn_matricularalm2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jp_fondo_crudmaster22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_resolvar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_matricularalm3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(74, 74, 74))
         );
 
@@ -4063,6 +4063,794 @@ public class Principal extends javax.swing.JFrame {
         jd_examenesLayout.setVerticalGroup(
             jd_examenesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jp_fondo_crudmaster22, javax.swing.GroupLayout.PREFERRED_SIZE, 594, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        jd_examenesalm.setUndecorated(true);
+
+        jp_fondo_crudmaster23.setBackground(new java.awt.Color(37, 71, 106));
+        jp_fondo_crudmaster23.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoprogra2_gcano/unitec_logo2.jpg"))); // NOI18N
+
+        btn_regresarclas2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btn_regresarclas2.setForeground(new java.awt.Color(0, 0, 0));
+        btn_regresarclas2.setText("Regresar");
+        btn_regresarclas2.setBorder(null);
+        btn_regresarclas2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_regresarclas2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_regresarclas2ActionPerformed(evt);
+            }
+        });
+
+        btn_listaexamn.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btn_listaexamn.setForeground(new java.awt.Color(51, 51, 51));
+        btn_listaexamn.setText("Responer Examen");
+        btn_listaexamn.setBorder(null);
+        btn_listaexamn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_listaexamn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_listaexamnActionPerformed(evt);
+            }
+        });
+
+        btn_verres.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btn_verres.setForeground(new java.awt.Color(51, 51, 51));
+        btn_verres.setText("Notas Finales");
+        btn_verres.setBorder(null);
+        btn_verres.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_verres.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_verresActionPerformed(evt);
+            }
+        });
+
+        jb_menu7.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
+        jb_menu7.setForeground(new java.awt.Color(204, 204, 204));
+        jb_menu7.setText("Menú");
+
+        javax.swing.GroupLayout jp_fondo_crudmaster23Layout = new javax.swing.GroupLayout(jp_fondo_crudmaster23);
+        jp_fondo_crudmaster23.setLayout(jp_fondo_crudmaster23Layout);
+        jp_fondo_crudmaster23Layout.setHorizontalGroup(
+            jp_fondo_crudmaster23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_fondo_crudmaster23Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btn_regresarclas2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
+            .addGroup(jp_fondo_crudmaster23Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jp_fondo_crudmaster23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_verres, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_listaexamn, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jp_fondo_crudmaster23Layout.createSequentialGroup()
+                .addComponent(jLabel27)
+                .addGap(0, 269, Short.MAX_VALUE))
+            .addGroup(jp_fondo_crudmaster23Layout.createSequentialGroup()
+                .addGap(211, 211, 211)
+                .addComponent(jb_menu7)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jp_fondo_crudmaster23Layout.setVerticalGroup(
+            jp_fondo_crudmaster23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_fondo_crudmaster23Layout.createSequentialGroup()
+                .addComponent(jLabel27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jb_menu7)
+                .addGap(36, 36, 36)
+                .addComponent(btn_listaexamn, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48)
+                .addComponent(btn_verres, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 216, Short.MAX_VALUE)
+                .addComponent(btn_regresarclas2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout jd_examenesalmLayout = new javax.swing.GroupLayout(jd_examenesalm.getContentPane());
+        jd_examenesalm.getContentPane().setLayout(jd_examenesalmLayout);
+        jd_examenesalmLayout.setHorizontalGroup(
+            jd_examenesalmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jp_fondo_crudmaster23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jd_examenesalmLayout.setVerticalGroup(
+            jd_examenesalmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jp_fondo_crudmaster23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jd_verresalm.setUndecorated(true);
+
+        jp_fondo_crudmaster27.setBackground(new java.awt.Color(37, 71, 106));
+        jp_fondo_crudmaster27.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel40.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoprogra2_gcano/unitec_logo2.jpg"))); // NOI18N
+
+        ok.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        ok.setForeground(new java.awt.Color(0, 0, 0));
+        ok.setText("OK");
+        ok.setBorder(null);
+        ok.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ok.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                okActionPerformed(evt);
+            }
+        });
+
+        jl_huevos21.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jl_huevos21.setForeground(new java.awt.Color(204, 204, 204));
+        jl_huevos21.setText("Lista de Examenes");
+
+        jtable_exams.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Cuenta", "Nombre", "Examen I", "Examen II", "Examen III", "Nota Final"
+            }
+        ));
+        jScrollPane19.setViewportView(jtable_exams);
+
+        javax.swing.GroupLayout jp_fondo_crudmaster27Layout = new javax.swing.GroupLayout(jp_fondo_crudmaster27);
+        jp_fondo_crudmaster27.setLayout(jp_fondo_crudmaster27Layout);
+        jp_fondo_crudmaster27Layout.setHorizontalGroup(
+            jp_fondo_crudmaster27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_fondo_crudmaster27Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(jp_fondo_crudmaster27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jp_fondo_crudmaster27Layout.createSequentialGroup()
+                        .addGroup(jp_fondo_crudmaster27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jl_huevos21, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel40, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jp_fondo_crudmaster27Layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addGroup(jp_fondo_crudmaster27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane19, javax.swing.GroupLayout.PREFERRED_SIZE, 554, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jp_fondo_crudmaster27Layout.createSequentialGroup()
+                                .addGap(230, 230, 230)
+                                .addComponent(ok, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 25, Short.MAX_VALUE))))
+        );
+        jp_fondo_crudmaster27Layout.setVerticalGroup(
+            jp_fondo_crudmaster27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_fondo_crudmaster27Layout.createSequentialGroup()
+                .addComponent(jLabel40)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jl_huevos21)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(ok, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38))
+        );
+
+        javax.swing.GroupLayout jd_verresalmLayout = new javax.swing.GroupLayout(jd_verresalm.getContentPane());
+        jd_verresalm.getContentPane().setLayout(jd_verresalmLayout);
+        jd_verresalmLayout.setHorizontalGroup(
+            jd_verresalmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jp_fondo_crudmaster27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jd_verresalmLayout.setVerticalGroup(
+            jd_verresalmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jp_fondo_crudmaster27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jd_listaclasesmaster.setUndecorated(true);
+
+        jp_fondo_crudmaster28.setBackground(new java.awt.Color(37, 71, 106));
+        jp_fondo_crudmaster28.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel38.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoprogra2_gcano/unitec_logo2.jpg"))); // NOI18N
+
+        jl_huevos22.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jl_huevos22.setForeground(new java.awt.Color(204, 204, 204));
+        jl_huevos22.setText("Lista de Clases");
+
+        btn_asignar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btn_asignar.setForeground(new java.awt.Color(0, 0, 0));
+        btn_asignar.setText("Asignar");
+        btn_asignar.setBorder(null);
+        btn_asignar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_asignar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_asignarActionPerformed(evt);
+            }
+        });
+
+        btn_matricularalm4.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btn_matricularalm4.setForeground(new java.awt.Color(0, 0, 0));
+        btn_matricularalm4.setText("Regresar");
+        btn_matricularalm4.setBorder(null);
+        btn_matricularalm4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_matricularalm4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_matricularalm4ActionPerformed(evt);
+            }
+        });
+
+        jtable_clasesmaster.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre", "Hora", "Periodo"
+            }
+        ));
+        jScrollPane21.setViewportView(jtable_clasesmaster);
+
+        javax.swing.GroupLayout jp_fondo_crudmaster28Layout = new javax.swing.GroupLayout(jp_fondo_crudmaster28);
+        jp_fondo_crudmaster28.setLayout(jp_fondo_crudmaster28Layout);
+        jp_fondo_crudmaster28Layout.setHorizontalGroup(
+            jp_fondo_crudmaster28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_fondo_crudmaster28Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jp_fondo_crudmaster28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_fondo_crudmaster28Layout.createSequentialGroup()
+                        .addComponent(btn_matricularalm4, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_asignar, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jp_fondo_crudmaster28Layout.createSequentialGroup()
+                        .addGroup(jp_fondo_crudmaster28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jp_fondo_crudmaster28Layout.createSequentialGroup()
+                                .addGap(25, 25, 25)
+                                .addComponent(jLabel38))
+                            .addGroup(jp_fondo_crudmaster28Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jl_huevos22)))
+                        .addGap(0, 329, Short.MAX_VALUE))
+                    .addComponent(jScrollPane21, javax.swing.GroupLayout.DEFAULT_SIZE, 591, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jp_fondo_crudmaster28Layout.setVerticalGroup(
+            jp_fondo_crudmaster28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_fondo_crudmaster28Layout.createSequentialGroup()
+                .addComponent(jLabel38)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jl_huevos22)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jp_fondo_crudmaster28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_fondo_crudmaster28Layout.createSequentialGroup()
+                        .addComponent(btn_asignar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(25, 25, 25))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_fondo_crudmaster28Layout.createSequentialGroup()
+                        .addComponent(btn_matricularalm4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34))))
+        );
+
+        javax.swing.GroupLayout jd_listaclasesmasterLayout = new javax.swing.GroupLayout(jd_listaclasesmaster.getContentPane());
+        jd_listaclasesmaster.getContentPane().setLayout(jd_listaclasesmasterLayout);
+        jd_listaclasesmasterLayout.setHorizontalGroup(
+            jd_listaclasesmasterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jp_fondo_crudmaster28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jd_listaclasesmasterLayout.setVerticalGroup(
+            jd_listaclasesmasterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jp_fondo_crudmaster28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jd_crear_Examen.setUndecorated(true);
+
+        jp_fondo_crudmaster29.setBackground(new java.awt.Color(37, 71, 106));
+        jp_fondo_crudmaster29.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel41.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoprogra2_gcano/unitec_logo2.jpg"))); // NOI18N
+
+        btn_crear.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btn_crear.setForeground(new java.awt.Color(0, 0, 0));
+        btn_crear.setText("Crear");
+        btn_crear.setBorder(null);
+        btn_crear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_crear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_crearActionPerformed(evt);
+            }
+        });
+
+        jl_huevos23.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 18)); // NOI18N
+        jl_huevos23.setForeground(new java.awt.Color(204, 204, 204));
+
+        jl_getnamemaster3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jl_getnamemaster3.setForeground(new java.awt.Color(204, 204, 204));
+        jl_getnamemaster3.setText("Titulo de Examen:");
+
+        jtxt_nombreexamen.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 12)); // NOI18N
+
+        btn_regresasrasd.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btn_regresasrasd.setForeground(new java.awt.Color(0, 0, 0));
+        btn_regresasrasd.setText("Agregar Pregunta");
+        btn_regresasrasd.setBorder(null);
+        btn_regresasrasd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_regresasrasd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_regresasrasdActionPerformed(evt);
+            }
+        });
+
+        jl_getprofesion7.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jl_getprofesion7.setForeground(new java.awt.Color(204, 204, 204));
+        jl_getprofesion7.setText("Hora:");
+
+        js_hora1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        js_hora1.setModel(new javax.swing.SpinnerNumberModel(1, 1, 24, 1));
+        js_hora1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        js_minutos1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        js_minutos1.setModel(new javax.swing.SpinnerNumberModel(0, 0, 60, 5));
+        js_minutos1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jl_getprofesion8.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jl_getprofesion8.setForeground(new java.awt.Color(204, 204, 204));
+        jl_getprofesion8.setText("Minutos:");
+
+        jl_getprofesion9.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jl_getprofesion9.setForeground(new java.awt.Color(204, 204, 204));
+        jl_getprofesion9.setText(":");
+
+        btn_regresasrasd1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btn_regresasrasd1.setForeground(new java.awt.Color(0, 0, 0));
+        btn_regresasrasd1.setText("Regresar");
+        btn_regresasrasd1.setBorder(null);
+        btn_regresasrasd1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_regresasrasd1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_regresasrasd1ActionPerformed(evt);
+            }
+        });
+
+        pregutna.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        pregutna.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Verdadero o Falso", "Tipo Enumeracion", "Seleccion Multiple", " " }));
+
+        javax.swing.GroupLayout jp_fondo_crudmaster29Layout = new javax.swing.GroupLayout(jp_fondo_crudmaster29);
+        jp_fondo_crudmaster29.setLayout(jp_fondo_crudmaster29Layout);
+        jp_fondo_crudmaster29Layout.setHorizontalGroup(
+            jp_fondo_crudmaster29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_fondo_crudmaster29Layout.createSequentialGroup()
+                .addGroup(jp_fondo_crudmaster29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jp_fondo_crudmaster29Layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addGroup(jp_fondo_crudmaster29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jl_huevos23)
+                            .addComponent(jLabel41)))
+                    .addGroup(jp_fondo_crudmaster29Layout.createSequentialGroup()
+                        .addGap(56, 56, 56)
+                        .addGroup(jp_fondo_crudmaster29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jl_getnamemaster3)
+                            .addGroup(jp_fondo_crudmaster29Layout.createSequentialGroup()
+                                .addComponent(jl_getprofesion7)
+                                .addGap(71, 71, 71)
+                                .addComponent(jl_getprofesion8))
+                            .addComponent(pregutna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_regresasrasd, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jp_fondo_crudmaster29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(jp_fondo_crudmaster29Layout.createSequentialGroup()
+                                    .addComponent(btn_regresasrasd1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btn_crear, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jtxt_nombreexamen, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jp_fondo_crudmaster29Layout.createSequentialGroup()
+                                .addComponent(js_hora1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jl_getprofesion9, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(js_minutos1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(67, Short.MAX_VALUE))
+        );
+        jp_fondo_crudmaster29Layout.setVerticalGroup(
+            jp_fondo_crudmaster29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_fondo_crudmaster29Layout.createSequentialGroup()
+                .addComponent(jLabel41)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jl_huevos23)
+                .addGap(18, 18, 18)
+                .addComponent(jl_getnamemaster3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jtxt_nombreexamen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jp_fondo_crudmaster29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jl_getprofesion7)
+                    .addComponent(jl_getprofesion8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jp_fondo_crudmaster29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jl_getprofesion9)
+                    .addComponent(js_hora1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(js_minutos1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(pregutna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_regresasrasd, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addGroup(jp_fondo_crudmaster29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_regresasrasd1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_crear, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(74, 74, 74))
+        );
+
+        javax.swing.GroupLayout jd_crear_ExamenLayout = new javax.swing.GroupLayout(jd_crear_Examen.getContentPane());
+        jd_crear_Examen.getContentPane().setLayout(jd_crear_ExamenLayout);
+        jd_crear_ExamenLayout.setHorizontalGroup(
+            jd_crear_ExamenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jp_fondo_crudmaster29, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jd_crear_ExamenLayout.setVerticalGroup(
+            jd_crear_ExamenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jp_fondo_crudmaster29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jd_truofal.setUndecorated(true);
+
+        jp_fondo_crudmaster30.setBackground(new java.awt.Color(37, 71, 106));
+        jp_fondo_crudmaster30.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoprogra2_gcano/unitec_logo2.jpg"))); // NOI18N
+
+        btn_regresarclas3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btn_regresarclas3.setForeground(new java.awt.Color(0, 0, 0));
+        btn_regresarclas3.setText("Regresar");
+        btn_regresarclas3.setBorder(null);
+        btn_regresarclas3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_regresarclas3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_regresarclas3ActionPerformed(evt);
+            }
+        });
+
+        jtxt_interrotru.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 12)); // NOI18N
+
+        jl_getnamemaster4.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jl_getnamemaster4.setForeground(new java.awt.Color(204, 204, 204));
+        jl_getnamemaster4.setText("Interrogante:");
+
+        jl_getnamemaster5.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jl_getnamemaster5.setForeground(new java.awt.Color(204, 204, 204));
+        jl_getnamemaster5.setText("Seleccione respuesta");
+
+        radioTRUE.setText("V");
+
+        radioFALSE.setText("F");
+
+        btn_regresarclas4.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btn_regresarclas4.setForeground(new java.awt.Color(0, 0, 0));
+        btn_regresarclas4.setText("Agregar");
+        btn_regresarclas4.setBorder(null);
+        btn_regresarclas4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_regresarclas4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_regresarclas4ActionPerformed(evt);
+            }
+        });
+
+        js_minutos2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        js_minutos2.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, 10.0d, 1.0d));
+        js_minutos2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jl_getprofesion17.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jl_getprofesion17.setForeground(new java.awt.Color(204, 204, 204));
+        jl_getprofesion17.setText("Valor");
+
+        javax.swing.GroupLayout jp_fondo_crudmaster30Layout = new javax.swing.GroupLayout(jp_fondo_crudmaster30);
+        jp_fondo_crudmaster30.setLayout(jp_fondo_crudmaster30Layout);
+        jp_fondo_crudmaster30Layout.setHorizontalGroup(
+            jp_fondo_crudmaster30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_fondo_crudmaster30Layout.createSequentialGroup()
+                .addComponent(jLabel29)
+                .addGap(0, 232, Short.MAX_VALUE))
+            .addGroup(jp_fondo_crudmaster30Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addGroup(jp_fondo_crudmaster30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jl_getnamemaster4)
+                    .addGroup(jp_fondo_crudmaster30Layout.createSequentialGroup()
+                        .addGroup(jp_fondo_crudmaster30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jp_fondo_crudmaster30Layout.createSequentialGroup()
+                                .addComponent(radioTRUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(radioFALSE))
+                            .addComponent(jl_getnamemaster5))
+                        .addGap(86, 86, 86)
+                        .addGroup(jp_fondo_crudmaster30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jl_getprofesion17)
+                            .addComponent(js_minutos2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jp_fondo_crudmaster30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jp_fondo_crudmaster30Layout.createSequentialGroup()
+                            .addComponent(btn_regresarclas3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_regresarclas4, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jtxt_interrotru, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jp_fondo_crudmaster30Layout.setVerticalGroup(
+            jp_fondo_crudmaster30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_fondo_crudmaster30Layout.createSequentialGroup()
+                .addComponent(jLabel29)
+                .addGap(18, 18, 18)
+                .addComponent(jl_getnamemaster4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jp_fondo_crudmaster30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jp_fondo_crudmaster30Layout.createSequentialGroup()
+                        .addComponent(jtxt_interrotru, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jl_getnamemaster5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jp_fondo_crudmaster30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(radioTRUE)
+                            .addComponent(radioFALSE)))
+                    .addGroup(jp_fondo_crudmaster30Layout.createSequentialGroup()
+                        .addComponent(jl_getprofesion17)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(js_minutos2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(jp_fondo_crudmaster30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_regresarclas3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_regresarclas4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jd_truofalLayout = new javax.swing.GroupLayout(jd_truofal.getContentPane());
+        jd_truofal.getContentPane().setLayout(jd_truofalLayout);
+        jd_truofalLayout.setHorizontalGroup(
+            jd_truofalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jp_fondo_crudmaster30, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jd_truofalLayout.setVerticalGroup(
+            jd_truofalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jp_fondo_crudmaster30, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jd_enum.setUndecorated(true);
+
+        jp_fondo_crudmaster31.setBackground(new java.awt.Color(37, 71, 106));
+        jp_fondo_crudmaster31.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel42.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoprogra2_gcano/unitec_logo2.jpg"))); // NOI18N
+
+        btn_regresarclas5.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btn_regresarclas5.setForeground(new java.awt.Color(0, 0, 0));
+        btn_regresarclas5.setText("Regresar");
+        btn_regresarclas5.setBorder(null);
+        btn_regresarclas5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_regresarclas5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_regresarclas5ActionPerformed(evt);
+            }
+        });
+
+        jtxt_interroenum.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 12)); // NOI18N
+
+        jl_getnamemaster9.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jl_getnamemaster9.setForeground(new java.awt.Color(204, 204, 204));
+        jl_getnamemaster9.setText("Interrogante:");
+
+        jl_getnamemaster10.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jl_getnamemaster10.setForeground(new java.awt.Color(204, 204, 204));
+        jl_getnamemaster10.setText("Ingrese respuestas");
+
+        btn_regresarclas6.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btn_regresarclas6.setForeground(new java.awt.Color(0, 0, 0));
+        btn_regresarclas6.setText("Agregar");
+        btn_regresarclas6.setBorder(null);
+        btn_regresarclas6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_regresarclas6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_regresarclas6ActionPerformed(evt);
+            }
+        });
+
+        js_minutos3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        js_minutos3.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, 10.0d, 1.0d));
+        js_minutos3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jl_getprofesion18.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jl_getprofesion18.setForeground(new java.awt.Color(204, 204, 204));
+        jl_getprofesion18.setText("Valor");
+
+        jtxt_resp1.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 12)); // NOI18N
+
+        jtxt_resp3.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 12)); // NOI18N
+
+        jtxt_resp4.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 12)); // NOI18N
+
+        jtxt_resp2.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 12)); // NOI18N
+
+        javax.swing.GroupLayout jp_fondo_crudmaster31Layout = new javax.swing.GroupLayout(jp_fondo_crudmaster31);
+        jp_fondo_crudmaster31.setLayout(jp_fondo_crudmaster31Layout);
+        jp_fondo_crudmaster31Layout.setHorizontalGroup(
+            jp_fondo_crudmaster31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_fondo_crudmaster31Layout.createSequentialGroup()
+                .addComponent(jLabel42)
+                .addGap(0, 267, Short.MAX_VALUE))
+            .addGroup(jp_fondo_crudmaster31Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addGroup(jp_fondo_crudmaster31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jtxt_resp2, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtxt_resp4, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtxt_resp3, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jp_fondo_crudmaster31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jl_getnamemaster9)
+                        .addGroup(jp_fondo_crudmaster31Layout.createSequentialGroup()
+                            .addGroup(jp_fondo_crudmaster31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jl_getnamemaster10)
+                                .addComponent(jtxt_resp1, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jp_fondo_crudmaster31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(js_minutos3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jl_getprofesion18, javax.swing.GroupLayout.Alignment.TRAILING)))
+                        .addComponent(jtxt_interroenum, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jp_fondo_crudmaster31Layout.createSequentialGroup()
+                        .addComponent(btn_regresarclas5, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(259, 259, 259)
+                        .addComponent(btn_regresarclas6, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jp_fondo_crudmaster31Layout.setVerticalGroup(
+            jp_fondo_crudmaster31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_fondo_crudmaster31Layout.createSequentialGroup()
+                .addComponent(jLabel42)
+                .addGap(18, 18, 18)
+                .addComponent(jl_getnamemaster9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jtxt_interroenum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jp_fondo_crudmaster31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jl_getnamemaster10)
+                    .addComponent(jl_getprofesion18))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jp_fondo_crudmaster31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(js_minutos3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtxt_resp1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jtxt_resp2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jtxt_resp3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jtxt_resp4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addGroup(jp_fondo_crudmaster31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_regresarclas5, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_regresarclas6, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(58, 58, 58))
+        );
+
+        javax.swing.GroupLayout jd_enumLayout = new javax.swing.GroupLayout(jd_enum.getContentPane());
+        jd_enum.getContentPane().setLayout(jd_enumLayout);
+        jd_enumLayout.setHorizontalGroup(
+            jd_enumLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jp_fondo_crudmaster31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jd_enumLayout.setVerticalGroup(
+            jd_enumLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jp_fondo_crudmaster31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jd_mult.setUndecorated(true);
+
+        jp_fondo_crudmaster32.setBackground(new java.awt.Color(37, 71, 106));
+        jp_fondo_crudmaster32.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel43.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoprogra2_gcano/unitec_logo2.jpg"))); // NOI18N
+
+        btn_regresarclas7.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btn_regresarclas7.setForeground(new java.awt.Color(0, 0, 0));
+        btn_regresarclas7.setText("Regresar");
+        btn_regresarclas7.setBorder(null);
+        btn_regresarclas7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_regresarclas7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_regresarclas7ActionPerformed(evt);
+            }
+        });
+
+        jtxt_interromult.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 12)); // NOI18N
+
+        jl_getnamemaster11.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jl_getnamemaster11.setForeground(new java.awt.Color(204, 204, 204));
+        jl_getnamemaster11.setText("Interrogante:");
+
+        jl_getnamemaster12.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jl_getnamemaster12.setForeground(new java.awt.Color(204, 204, 204));
+        jl_getnamemaster12.setText("Ingrese respuesta correcta");
+
+        btn_regresarclas8.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        btn_regresarclas8.setForeground(new java.awt.Color(0, 0, 0));
+        btn_regresarclas8.setText("Agregar");
+        btn_regresarclas8.setBorder(null);
+        btn_regresarclas8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_regresarclas8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_regresarclas8ActionPerformed(evt);
+            }
+        });
+
+        js_minutos4.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        js_minutos4.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, 10.0d, 1.0d));
+        js_minutos4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jl_getprofesion19.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jl_getprofesion19.setForeground(new java.awt.Color(204, 204, 204));
+        jl_getprofesion19.setText("Valor");
+
+        jtxt_resp11.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 12)); // NOI18N
+
+        jtxt_resp22.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 12)); // NOI18N
+
+        jtxt_resp33.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 12)); // NOI18N
+
+        jtxt_resp44.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 12)); // NOI18N
+
+        jl_getnamemaster13.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jl_getnamemaster13.setForeground(new java.awt.Color(204, 204, 204));
+        jl_getnamemaster13.setText("Ingrese respuestas incorrectas");
+
+        javax.swing.GroupLayout jp_fondo_crudmaster32Layout = new javax.swing.GroupLayout(jp_fondo_crudmaster32);
+        jp_fondo_crudmaster32.setLayout(jp_fondo_crudmaster32Layout);
+        jp_fondo_crudmaster32Layout.setHorizontalGroup(
+            jp_fondo_crudmaster32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_fondo_crudmaster32Layout.createSequentialGroup()
+                .addComponent(jLabel43)
+                .addGap(0, 390, Short.MAX_VALUE))
+            .addGroup(jp_fondo_crudmaster32Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addGroup(jp_fondo_crudmaster32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jl_getnamemaster13)
+                    .addComponent(jtxt_resp44, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtxt_resp33, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtxt_resp22, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jp_fondo_crudmaster32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jl_getnamemaster11)
+                        .addGroup(jp_fondo_crudmaster32Layout.createSequentialGroup()
+                            .addGroup(jp_fondo_crudmaster32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jl_getnamemaster12)
+                                .addComponent(jtxt_resp11, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jp_fondo_crudmaster32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(js_minutos4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jl_getprofesion19, javax.swing.GroupLayout.Alignment.TRAILING)))
+                        .addComponent(jtxt_interromult, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jp_fondo_crudmaster32Layout.createSequentialGroup()
+                        .addComponent(btn_regresarclas7, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(259, 259, 259)
+                        .addComponent(btn_regresarclas8, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jp_fondo_crudmaster32Layout.setVerticalGroup(
+            jp_fondo_crudmaster32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_fondo_crudmaster32Layout.createSequentialGroup()
+                .addComponent(jLabel43)
+                .addGap(18, 18, 18)
+                .addComponent(jl_getnamemaster11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jtxt_interromult, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jp_fondo_crudmaster32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jl_getprofesion19)
+                    .addComponent(jl_getnamemaster12))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jp_fondo_crudmaster32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(js_minutos4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtxt_resp11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addComponent(jl_getnamemaster13)
+                .addGap(18, 18, 18)
+                .addComponent(jtxt_resp22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jtxt_resp33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jtxt_resp44, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addGroup(jp_fondo_crudmaster32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_regresarclas7, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_regresarclas8, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(58, 58, 58))
+        );
+
+        javax.swing.GroupLayout jd_multLayout = new javax.swing.GroupLayout(jd_mult.getContentPane());
+        jd_mult.getContentPane().setLayout(jd_multLayout);
+        jd_multLayout.setHorizontalGroup(
+            jd_multLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jp_fondo_crudmaster32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jd_multLayout.setVerticalGroup(
+            jd_multLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jp_fondo_crudmaster32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -4473,13 +5261,16 @@ public class Principal extends javax.swing.JFrame {
 
     private void jp_salirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jp_salirMouseClicked
         //jf_registro.dispose();
+        adminUsuario au = new adminUsuario("./Users.cbm");
+        au.cargarArchivo();
+        au.getListaUsuario().clear();
         dispose();
     }//GEN-LAST:event_jp_salirMouseClicked
 
     private void jtxt_correoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtxt_correoMousePressed
         if (jtxt_correo.getText().equals("Ingrese su usuario de correo")) {
             jtxt_correo.setText("");
-            
+
             jtxt_correo.setForeground(Color.black);
         }
         if (String.valueOf(jtxt_pass.getPassword()).isEmpty()) {
@@ -4500,11 +5291,24 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jtxt_passMousePressed
 
     private void jp_ingresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jp_ingresarMouseClicked
-    
-        
-        int cont=0;
-        for (int i = 0; i < users.size(); i++) {
-        
+
+        adminUsuario au = new adminUsuario("./Users.cbm");
+        adminMaestro am = new adminMaestro("./Masters.cbm");
+        adminAlumno AA = new adminAlumno("./Alumnos.cbm");
+        au.cargarArchivo();
+        am.cargarArchivo();
+        AA.cargarArchivo();
+        System.out.println(am.getListaMaestro());
+        System.out.println(AA.getListaAlumno());
+        for (int i = 0; i < am.getListaMaestro().size(); i++) {
+            au.getListaUsuario().add(am.getListaMaestro().get(i));
+        }
+        for (int i = 0; i < AA.getListaAlumno().size(); i++) {
+            au.getListaUsuario().add(AA.getListaAlumno().get(i));
+        }
+        int cont = 0;
+        for (int i = 0; i < au.getListaUsuario().size(); i++) {
+
             if (jtxt_correo.getText().equals("registro") & String.valueOf(jtxt_pass.getPassword()).equals("admin1")) {
                 jf_registro.setVisible(true);
                 jf_registro.setExtendedState(MAXIMIZED_BOTH);
@@ -4512,38 +5316,39 @@ public class Principal extends javax.swing.JFrame {
                 jtxt_correo.setText("Ingrese su usuario de correo");
                 jtxt_pass.setForeground(Color.gray);
                 jtxt_pass.setText("********");
-                cont --;
-                
-            } else if (jtxt_correo.getText().equals(users.get(i).getUser())
-                    & String.valueOf(jtxt_pass.getPassword()).equals(users.get(i).getPassword())
-                    & users.get(i) instanceof Alumno) {
+                cont--;
+
+            } else if (jtxt_correo.getText().equals(au.getListaUsuario().get(i).getUser())
+                    & String.valueOf(jtxt_pass.getPassword()).equals(au.getListaUsuario().get(i).getPassword())
+                    & au.getListaUsuario().get(i) instanceof Alumno) {
                 pepa = false;
-                
-                ingresado = (Alumno) users.get(i);
-                jl_wlcom2.setText("¡Bienvenido "+ingresado.getNombre()+"!");
-                listartableclases(jtable_clasesalum,ingresado.getCursadas());
-                
+
+                ingresado = (Alumno) au.getListaUsuario().get(i);
+                System.out.println(ingresado);
+                jl_wlcom2.setText("¡Bienvenid@ " + ingresado.getNombre() + "!");
+                listartableclases(jtable_clasesalum, ingresado.getCursadas());
+
                 //jtxt_prueba.setText(ingresado.getNombre());
-                
                 jf_alumno.setVisible(true);
                 jf_alumno.setExtendedState(MAXIMIZED_BOTH);
                 jtxt_correo.setForeground(Color.gray);
                 jtxt_correo.setText("Ingrese su usuario de correo");
                 jtxt_pass.setForeground(Color.gray);
                 jtxt_pass.setText("********");
-                
+
                 cont--;
-            }else if (jtxt_correo.getText().equals(users.get(i).getUser())
-                    & String.valueOf(jtxt_pass.getPassword()).equals(users.get(i).getPassword())
-                    & users.get(i) instanceof Maestro) {
+            } else if (jtxt_correo.getText().equals(au.getListaUsuario().get(i).getUser())
+                    & String.valueOf(jtxt_pass.getPassword()).equals(au.getListaUsuario().get(i).getPassword())
+                    & au.getListaUsuario().get(i) instanceof Maestro) {
                 pepa = false;
-                
-                ingresadomaster = (Maestro) users.get(i);
-                clasesingresados(jtable_clasesdemasteringresado,ingresadomaster.getClases());
-                jl_wlcom1.setText("¡Bienvenido "+ingresadomaster.getNombre()+"!");
-                
+
+                ingresadomaster = (Maestro) au.getListaUsuario().get(i);
+                clasesingresados(jtable_clasesdemasteringresado, ingresadomaster.getClases());
+                listartableclases(jtable_clasesmaster, ingresadomaster.getClases());
+                System.out.println(ingresadomaster);
+                jl_wlcom1.setText("¡Bienvenid@ " + ingresadomaster.getNombre() + "!");
+
                 //jtxt_prueba.setText(ingresadomaster.getNombre());
-                
                 jf_master.setVisible(true);
                 jf_master.setExtendedState(MAXIMIZED_BOTH);
                 jtxt_correo.setForeground(Color.gray);
@@ -4551,23 +5356,20 @@ public class Principal extends javax.swing.JFrame {
                 jtxt_pass.setForeground(Color.gray);
                 jtxt_pass.setText("********");
                 cont--;
-                
+
                 //tablas
-                
-                
-                
             }
-           cont++;
+            cont++;
         }
-        if(cont==users.size()){
-            pepa=true;
+        if (cont == au.getListaUsuario().size()) {
+            pepa = true;
         }
-        if(pepa ){
-        JOptionPane.showMessageDialog(this, "Credenciales no validas");
-                jtxt_correo.setForeground(Color.gray);
-                jtxt_correo.setText("Ingrese su usuario de correo");
-                jtxt_pass.setForeground(Color.gray);
-                jtxt_pass.setText("********");
+        if (pepa) {
+            JOptionPane.showMessageDialog(this, "Credenciales no validas");
+            jtxt_correo.setForeground(Color.gray);
+            jtxt_correo.setText("Ingrese su usuario de correo");
+            jtxt_pass.setForeground(Color.gray);
+            jtxt_pass.setText("********");
         }
 
     }//GEN-LAST:event_jp_ingresarMouseClicked
@@ -4579,18 +5381,8 @@ public class Principal extends javax.swing.JFrame {
     private void jp_cerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jp_cerrarMouseClicked
         jf_registro.setVisible(false);
         this.setVisible(true);
-        ac.setListaClasess(clases);
-        ac.escribirArchivo();
-        
-        am.setListaMaestro(masters);
-        am.escribirArchivo();
-        
-        AA.setListaAlumno(alumnos);
-        AA.escribirArchivo();
-        
-        au.setListaUsuario(users);
-        au.escribirArchivo();
-        
+
+
     }//GEN-LAST:event_jp_cerrarMouseClicked
 
     private void jp_maestrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jp_maestrosMouseClicked
@@ -4598,7 +5390,7 @@ public class Principal extends javax.swing.JFrame {
         jd_maestro.setLocationRelativeTo(jf_registro);
         jd_maestro.setModal(true);
         jd_maestro.setVisible(true);
-        
+
 
     }//GEN-LAST:event_jp_maestrosMouseClicked
 
@@ -4625,7 +5417,7 @@ public class Principal extends javax.swing.JFrame {
         jd_modificarmaster.setLocationRelativeTo(jd_maestro);
         jd_modificarmaster.setModal(true);
         jd_modificarmaster.setVisible(true);
-        
+
 
     }//GEN-LAST:event_btn_Modmaster1ActionPerformed
 
@@ -4671,11 +5463,16 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_regresarmaster2ActionPerformed
 
     private void btn_nuevomaster2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nuevomaster2ActionPerformed
+
+        adminUsuario au = new adminUsuario("./Users.cbm");
+        adminMaestro am = new adminMaestro("./Masters.cbm");
+        au.cargarArchivo();
+        am.cargarArchivo();
         try {
             Integer.parseInt(jtxt_idprofe.getText());
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(jd_nuevomaster, "El numero de ID unicamente puede incluir numeros enteros.");
-            
+
         }
         if (jtxt_idprofe.getText().equals("") || jtxt_nombremaster.getText().equals("") || jtxt_profesion.getText().equals("") || jtxt_masterpw.getText().equals("") || jtxt_correouser.getText().equals("")) {
             JOptionPane.showMessageDialog(jd_nuevomaster, "Uno o mas campos estan vacios.");
@@ -4685,9 +5482,11 @@ public class Principal extends javax.swing.JFrame {
                     jtxt_profesion.getText(), (double) js_sueldo.getValue(),
                     jtxt_masterpw.getText(), jtxt_correouser.getText(),
                     "Profesor");
-            users.add(nuevo);
-            masters.add(nuevo);
-            
+            am.getListaMaestro().add(nuevo);
+            am.escribirArchivo();
+            //au.getListaUsuario().add(nuevo);
+            //au.escribirArchivo();
+
             jd_nuevomaster.setVisible(false);
             //jd_maestro.setVisible(false);
             jtxt_idprofe.setText("");
@@ -4699,18 +5498,24 @@ public class Principal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(jd_maestro, "Maestro agregado a la base de datos exitosamente.");
             //actualizartables(jtable_masters, jtable_masterseliminar);
             limpiartabla(jtable_masters);
-            listartablemaster(jtable_masters, masters);
+            listartablemaster(jtable_masters, am.getListaMaestro());
             limpiartabla(jtable_masterseliminar);
-            listartablemaster(jtable_masterseliminar, masters);
-            
+            listartablemaster(jtable_masterseliminar, am.getListaMaestro());
+
             limpiartabla(jtable_asignar);
-            listartablemaster(jtable_asignar, masters);
+            listartablemaster(jtable_asignar, am.getListaMaestro());
         }
-        
+
 
     }//GEN-LAST:event_btn_nuevomaster2ActionPerformed
 
     private void btn_nuevomaster3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nuevomaster3ActionPerformed
+
+        adminUsuario au = new adminUsuario("./Users.cbm");
+
+        adminAlumno AA = new adminAlumno("./Alumnos.cbm");
+        au.cargarArchivo();
+        AA.cargarArchivo();
         try {
             Integer.parseInt(jtxt_cuenta.getText());
         } catch (NumberFormatException e) {
@@ -4725,9 +5530,12 @@ public class Principal extends javax.swing.JFrame {
                     jtxt_pwalum.getText(),
                     jtxt_correouser2.getText(),
                     "Alumno");
-            
-            users.add(nuevoalum);
-            alumnos.add(nuevoalum);
+
+            //au.getListaUsuario().add(nuevoalum);
+            //au.escribirArchivo();
+            AA.getListaAlumno().add(nuevoalum);
+            AA.escribirArchivo();
+
             jd_nuevoalum.setVisible(false);
             //jd_alumno.setVisible(false);
             jtxt_cuenta.setText("");
@@ -4737,12 +5545,12 @@ public class Principal extends javax.swing.JFrame {
             jtxt_correouser2.setText("");
             JOptionPane.showMessageDialog(jd_alumno, "Alumno agregado a la base de datos exitosamente.");
             limpiartabla(jtable_alumnos);
-            listartablealumno(jtable_alumnos, alumnos);
+            listartablealumno(jtable_alumnos, AA.getListaAlumno());
             limpiartabla(jtable_alumnoseliminar);
-            listartablealumno(jtable_alumnoseliminar, alumnos);
-            
+            listartablealumno(jtable_alumnoseliminar, AA.getListaAlumno());
+
             limpiartabla(jtable_matricula);
-            listartablealumno(jtable_matricula, alumnos);
+            listartablealumno(jtable_matricula, AA.getListaAlumno());
             //nuevoalum = new Alumno();
         }
 
@@ -4796,6 +5604,8 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_regresarclase2ActionPerformed
 
     private void btn_crearclaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_crearclaseActionPerformed
+        adminClase ac = new adminClase("./Clases.cbm");
+        ac.cargarArchivo();
         try {
             Integer.parseInt(jtxt_idclase.getText());
         } catch (NumberFormatException e) {
@@ -4807,34 +5617,36 @@ public class Principal extends javax.swing.JFrame {
             Date hora = new Date();
             hora.setHours((int) js_hora.getValue());
             hora.setMinutes((int) js_minutos.getValue());
-            
+
             Clase nuevaclase = new Clase(jtct_nombreclase.getText(),
                     hora, ((int) js_semestre.getValue()), (String) js_periodo.getValue().toString(),
                     Integer.parseInt(jtxt_idclase.getText()),
                     (int) js_uv.getValue(),
                     jyear.getValue());
-            
-            clases.add(nuevaclase);
+
+            ac.getListaClases().add(nuevaclase);
+            ac.escribirArchivo();
             jtxt_idclase.setText("");
             jtct_nombreclase.setText("");
             js_hora.setValue(1);
             js_minutos.setValue(0);
             js_uv.setValue(1);
-            
+
             jd_nuevaclase.setVisible(false);
             //jd_clase.setVisible(false);
             JOptionPane.showMessageDialog(jd_clase, "Clase agregada a la base de datos.");
+
             limpiartabla(jtable_clases);
-            listartableclases(jtable_clases, clases);
-            
+            listartableclases(jtable_clases, ac.getListaClases());
+
             limpiartabla(jtable_claseseliminar);
-            listartableclases(jtable_claseseliminar, clases);
-            
+            listartableclases(jtable_claseseliminar, ac.getListaClases());
+
             limpiartabla(jtable_matriculaclase);
-            listartableclases(jtable_matriculaclase, clases);
+            listartableclases(jtable_matriculaclase, ac.getListaClases());
             limpiartabla(jtable_mastermatricula);
-            listartableclases(jtable_mastermatricula, clases);
-            
+            listartableclases(jtable_mastermatricula, ac.getListaClases());
+
         }
     }//GEN-LAST:event_btn_crearclaseActionPerformed
 
@@ -4851,16 +5663,18 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_regresarmaster5ActionPerformed
 
     private void btn_borrarmasterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_borrarmasterActionPerformed
-        
-        eliminartable(jtable_masterseliminar, masters, jd_eliminarmaster, jd_maestro);
+        adminMaestro am = new adminMaestro("./Masters.cbm");
+        am.cargarArchivo();
+        eliminartable(jtable_masterseliminar, am.getListaMaestro(), jd_eliminarmaster, jd_maestro);
+        am.escribirArchivo();
         limpiartabla(jtable_masters);
-        listartablemaster(jtable_masters, masters);
+        listartablemaster(jtable_masters, am.getListaMaestro());
         limpiartabla(jtable_masterseliminar);
-        listartablemaster(jtable_masterseliminar, masters);
-        
+        listartablemaster(jtable_masterseliminar, am.getListaMaestro());
+
         limpiartabla(jtable_asignar);
-        listartablemaster(jtable_asignar, masters);
-        
+        listartablemaster(jtable_asignar, am.getListaMaestro());
+
 
     }//GEN-LAST:event_btn_borrarmasterActionPerformed
 
@@ -4918,48 +5732,57 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_regresaralumnoa2ActionPerformed
 
     private void btn_matricularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_matricularActionPerformed
+        adminAlumno AA = new adminAlumno("./Alumnos.cbm");
+        AA.cargarArchivo();
         if (jtable_matricula.getSelectionModel().isSelectionEmpty()) {
             JOptionPane.showMessageDialog(jd_matricula, "Seleccione un alumno que desea matricular.");
         } else {
-            alumnoselected = alumnos.get(jtable_matricula.getSelectedRow());
-            
+            alumnoselected = AA.getListaAlumno().get(jtable_matricula.getSelectedRow());
+            System.out.println(alumnoselected + "papas");
             pos = jtable_alumnos.getSelectedRow();
-            
+
             jd_listarclases.pack();
             jd_listarclases.setLocationRelativeTo(jd_matricula);
             jd_listarclases.setModal(true);
             jd_listarclases.setVisible(true);
-            
+
         }
     }//GEN-LAST:event_btn_matricularActionPerformed
 
     private void btn_asignarmasterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_asignarmasterActionPerformed
+
+        adminMaestro am = new adminMaestro("./Masters.cbm");
+        am.cargarArchivo();
         if (jtable_asignar.getSelectionModel().isSelectionEmpty()) {
             JOptionPane.showMessageDialog(jd_asignarmaster, "Seleccione un maestro que desea Asignar.");
         } else {
-            masterselected = masters.get(jtable_asignar.getSelectedRow());
-            
+            masterselected = am.getListaMaestro().get(jtable_asignar.getSelectedRow());
+
             pos = jtable_alumnos.getSelectedRow();
-            
+
             jd_listarclasemaster.pack();
             jd_listarclasemaster.setLocationRelativeTo(jd_asignarmaster);
             jd_listarclasemaster.setModal(true);
             jd_listarclasemaster.setVisible(true);
-            
+
         }
     }//GEN-LAST:event_btn_asignarmasterActionPerformed
 
     private void btn_modificarmaestrostablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarmaestrostablaActionPerformed
+
+        adminMaestro am = new adminMaestro("./Masters.cbm");
+        am.cargarArchivo();
         if (jtable_masters.getSelectionModel().isSelectionEmpty()) {
             JOptionPane.showMessageDialog(jd_modificarmaster, "Seleccione un elemento a modificar de la tabla.");
         } else {
             //DefaultTableModel modelo = (DefaultTableModel) jtable_masters.getModel();
-            masterselected = masters.get(jtable_masters.getSelectedRow());
+            masterselected = am.getListaMaestro().get(jtable_masters.getSelectedRow());
             jtxt_nombremastermod.setText(masterselected.getNombre());
-            
+            //System.out.println(masterselected);
+
             jtxt_correousermod.setText(masterselected.getUser());
             pos = jtable_masters.getSelectedRow();
-            
+
             jtxt_profesionmod.setText(masterselected.getProfesion());
             jtxt_idprofemod.setText(String.valueOf(masterselected.getId()));
             jtxt_masterpwmod.setText(masterselected.getPassword());
@@ -4968,17 +5791,22 @@ public class Principal extends javax.swing.JFrame {
             jd_menumodmaster.setLocationRelativeTo(jd_modificarmaster);
             jd_menumodmaster.setModal(true);
             jd_menumodmaster.setVisible(true);
-            //ButtonModel boton = (ButtonModel) btn_menumodmaster.getModel();
 
+            //ButtonModel boton = (ButtonModel) btn_menumodmaster.getModel();
         }
     }//GEN-LAST:event_btn_modificarmaestrostablaActionPerformed
 
     private void btn_menumodmasterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_menumodmasterActionPerformed
+
+        adminMaestro am = new adminMaestro("./Masters.cbm");
+        adminUsuario au = new adminUsuario("./Users.cbm");
+        au.cargarArchivo();
+        am.cargarArchivo();
         try {
             Integer.parseInt(jtxt_idprofemod.getText());
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(jd_menumodmaster, "El numero de ID unicamente puede incluir numeros enteros.");
-            
+
         }
         if (jtxt_idprofemod.getText().equals("") || jtxt_nombremastermod.getText().equals("") || jtxt_profesionmod.getText().equals("") || jtxt_masterpwmod.getText().equals("") || jtxt_correousermod.getText().equals("")) {
             JOptionPane.showMessageDialog(jd_nuevomaster, "Uno o mas campos estan vacios.");
@@ -4990,10 +5818,24 @@ public class Principal extends javax.swing.JFrame {
             masterselected.setUser(jtxt_correousermod.getText());
             masterselected.setProfesion(jtxt_profesionmod.getText());
             masterselected.setRol("Profe");
-            
-            masterselected = masters.get(pos);
+
+            //System.out.println(masterselected+"90");
+            am.getListaMaestro().get(pos).setNombre(masterselected.getNombre());
+            am.getListaMaestro().get(pos).setId(masterselected.getId());
+            am.getListaMaestro().get(pos).setPassword(masterselected.getPassword());
+
+            am.getListaMaestro().get(pos).setSueldo(masterselected.getSueldo());
+            am.getListaMaestro().get(pos).setUser(masterselected.getUser());
+            am.getListaMaestro().get(pos).setProfesion(masterselected.getProfesion());
+
+            System.out.println(am.getListaMaestro().get(pos));
+            //System.out.println(am.getListaMaestro().get(pos)+"webos");
+            //System.out.println(masterselected+"20000000");
+            am.escribirArchivo();
+            //au.escribirArchivo();
+
             jd_menumodmaster.setVisible(false);
-            
+
             jtxt_nombremastermod.setText("");
             jtxt_correousermod.setText("");
             jtxt_profesionmod.setText("");
@@ -5004,12 +5846,13 @@ public class Principal extends javax.swing.JFrame {
             js_sueldomod.setValue(40000);
             JOptionPane.showMessageDialog(jd_modificarmaster, "Maestro modificado exitosamente.");
             limpiartabla(jtable_masters);
-            listartablemaster(jtable_masters, masters);
+            listartablemaster(jtable_masters, am.getListaMaestro());
             limpiartabla(jtable_masterseliminar);
-            listartablemaster(jtable_masterseliminar, masters);
-            
+            listartablemaster(jtable_masterseliminar, am.getListaMaestro());
+
             limpiartabla(jtable_asignar);
-            listartablemaster(jtable_asignar, masters);
+            listartablemaster(jtable_asignar, am.getListaMaestro());
+
             masterselected = new Maestro();
         }
     }//GEN-LAST:event_btn_menumodmasterActionPerformed
@@ -5025,11 +5868,15 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_cancelarActionPerformed
 
     private void btn_eliminarstudentiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarstudentiActionPerformed
-        eliminartable(jtable_alumnoseliminar, alumnos, jd_eliminaralumno, jd_alumno);
+
+        adminAlumno AA = new adminAlumno("./Alumnos.cbm");
+        AA.cargarArchivo();
+        eliminartable(jtable_alumnoseliminar, AA.getListaAlumno(), jd_eliminaralumno, jd_alumno);
+        AA.escribirArchivo();
         limpiartabla(jtable_alumnos);
-        listartablealumno(jtable_alumnos, alumnos);
+        listartablealumno(jtable_alumnos, AA.getListaAlumno());
         limpiartabla(jtable_alumnoseliminar);
-        listartablealumno(jtable_alumnoseliminar, alumnos);
+        listartablealumno(jtable_alumnoseliminar, AA.getListaAlumno());
     }//GEN-LAST:event_btn_eliminarstudentiActionPerformed
 
     private void btn_regresarmaster12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_regresarmaster12ActionPerformed
@@ -5037,28 +5884,34 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_regresarmaster12ActionPerformed
 
     private void btn_modalmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modalmActionPerformed
+
+        adminAlumno AA = new adminAlumno("./Alumnos.cbm");
+        AA.cargarArchivo();
         if (jtable_alumnos.getSelectionModel().isSelectionEmpty()) {
             JOptionPane.showMessageDialog(jd_modificaralumno, "Seleccione un elemento a modificar de la tabla.");
         } else {
-            alumnoselected = alumnos.get(jtable_alumnos.getSelectedRow());
-            
+            alumnoselected = AA.getListaAlumno().get(jtable_alumnos.getSelectedRow());
+
             pos = jtable_alumnos.getSelectedRow();
-            
+
             jtxt_cuentamod.setText(String.valueOf(alumnoselected.getCuenta()));
             jtxt_nombrealmunomod.setText(alumnoselected.getNombre());
             jtxt_carreramod.setText(alumnoselected.getCarrera());
             jtxt_pwalummod.setText(alumnoselected.getPassword());
             jtxt_correousermoda.setText(alumnoselected.getUser());
-            
+
             jd_menumodalumno.pack();
             jd_menumodalumno.setLocationRelativeTo(jd_modificaralumno);
             jd_menumodalumno.setModal(true);
             jd_menumodalumno.setVisible(true);
-            
+
         }
     }//GEN-LAST:event_btn_modalmActionPerformed
 
     private void btn_modalmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modalmaActionPerformed
+
+        adminAlumno AA = new adminAlumno("./Alumnos.cbm");
+        AA.cargarArchivo();
         try {
             Integer.parseInt(jtxt_cuentamod.getText());
         } catch (NumberFormatException e) {
@@ -5073,42 +5926,56 @@ public class Principal extends javax.swing.JFrame {
             alumnoselected.setUser(jtxt_correousermoda.getText());
             alumnoselected.setCuenta(Integer.parseInt(jtxt_cuentamod.getText()));
             alumnoselected.setRol("Estudiante");
-            
-            alumnoselected = alumnos.get(pos);
+
+            //alumnoselected = AA.getListaAlumno().get(pos);
+            System.out.println(alumnoselected);
+            AA.getListaAlumno().get(pos).setCarrera(alumnoselected.getCarrera());
+            AA.getListaAlumno().get(pos).setNombre(alumnoselected.getNombre());
+            AA.getListaAlumno().get(pos).setPassword(alumnoselected.getPassword());
+            AA.getListaAlumno().get(pos).setCuenta(alumnoselected.getCuenta());
+            AA.getListaAlumno().get(pos).setRol(alumnoselected.getRol());
+            AA.getListaAlumno().get(pos).setUser(alumnoselected.getUser());
+            AA.escribirArchivo();
             jd_menumodalumno.setVisible(false);
-            
+
             JOptionPane.showMessageDialog(jd_modificaralumno, "Alumno modificado exitosamente.");
-            
+
             jtxt_cuentamod.setText("");
             jtxt_nombrealmunomod.setText("");
             jtxt_carreramod.setText("");
             jtxt_pwalummod.setText("");
             jtxt_correousermoda.setText("");
             limpiartabla(jtable_alumnos);
-            listartablealumno(jtable_alumnos, alumnos);
+            listartablealumno(jtable_alumnos, AA.getListaAlumno());
             limpiartabla(jtable_alumnoseliminar);
-            listartablealumno(jtable_alumnoseliminar, alumnos);
-            
+            listartablealumno(jtable_alumnoseliminar, AA.getListaAlumno());
+
             limpiartabla(jtable_matricula);
-            listartablealumno(jtable_matricula, alumnos);
+            listartablealumno(jtable_matricula, AA.getListaAlumno());
             alumnoselected = new Alumno();
-            
+
         }
     }//GEN-LAST:event_btn_modalmaActionPerformed
 
     private void btn_elminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_elminarActionPerformed
-        eliminartable(jtable_claseseliminar, clases, jd_eliminar_clase, jd_clase);
+        adminClase ac = new adminClase("./Clases.cbm");
+
+        adminAlumno AA = new adminAlumno("./Alumnos.cbm");
+        AA.cargarArchivo();
+        ac.cargarArchivo();
+        eliminartable(jtable_claseseliminar, ac.getListaClases(), jd_eliminar_clase, jd_clase);
+        ac.escribirArchivo();
         limpiartabla(jtable_clases);
-        listartableclases(jtable_clases, clases);
+        listartableclases(jtable_clases, ac.getListaClases());
         limpiartabla(jtable_claseseliminar);
-        listartableclases(jtable_claseseliminar, clases);
+        listartableclases(jtable_claseseliminar, ac.getListaClases());
         limpiartabla(jtable_matriculaclase);
-        listartableclases(jtable_matriculaclase, clases);
-        
+        listartableclases(jtable_matriculaclase, ac.getListaClases());
+
         limpiartabla(jtable_matricula);
-        listartablealumno(jtable_matricula, alumnos);
+        listartablealumno(jtable_matricula, AA.getListaAlumno());
         limpiartabla(jtable_mastermatricula);
-        listartableclases(jtable_mastermatricula, clases);
+        listartableclases(jtable_mastermatricula, ac.getListaClases());
     }//GEN-LAST:event_btn_elminarActionPerformed
 
     private void btn_regresarclase3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_regresarclase3ActionPerformed
@@ -5116,6 +5983,8 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_regresarclase3ActionPerformed
 
     private void btn_modclassssActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modclassssActionPerformed
+        adminClase ac = new adminClase("./Clases.cbm");
+        ac.cargarArchivo();
         try {
             Integer.parseInt(jtxt_idclasemod.getText());
         } catch (NumberFormatException e) {
@@ -5127,7 +5996,7 @@ public class Principal extends javax.swing.JFrame {
             Date hora = new Date();
             hora.setHours((int) js_horamod.getValue());
             hora.setMinutes((int) js_minutosmod.getValue());
-            
+
             claseselected.setNombre(jtct_nombreclasemod.getText());
             claseselected.setId(Integer.parseInt(jtxt_idclasemod.getText()) + 1 + ram.nextInt(10));
             claseselected.setHora(hora);
@@ -5135,30 +6004,40 @@ public class Principal extends javax.swing.JFrame {
             claseselected.setUnidadesval((int) js_uvmod.getValue());
             claseselected.setAnnio(jyearmod.getValue());
             claseselected.setSemestre((int) js_semestremod.getValue());
-            
-            claseselected = clases.get(pos);
+
+            //claseselected = ac.getListaClases().get(pos);
+            ac.getListaClases().get(pos).setHora(claseselected.getHora());
+            ac.getListaClases().get(pos).setNombre(claseselected.getNombre());
+            ac.getListaClases().get(pos).setId(claseselected.getId());
+            ac.getListaClases().get(pos).setAnnio(claseselected.getAnnio());
+            ac.getListaClases().get(pos).setSemestre(claseselected.getSemestre());
+            ac.getListaClases().get(pos).setPeriodo(claseselected.getPeriodo());
+            ac.getListaClases().get(pos).setUnidadesval(claseselected.getUnidadesval());
+            ac.escribirArchivo();
             jd_modclase.setVisible(false);
-            
+
             JOptionPane.showMessageDialog(jd_modificarclase, "Clase modificada exitosamente");
-            
+
             limpiartabla(jtable_clases);
-            listartableclases(jtable_clases, clases);
+            listartableclases(jtable_clases, ac.getListaClases());
             limpiartabla(jtable_claseseliminar);
-            listartableclases(jtable_claseseliminar, clases);
-            
+            listartableclases(jtable_claseseliminar, ac.getListaClases());
+
             limpiartabla(jtable_matriculaclase);
-            listartableclases(jtable_matriculaclase, clases);
-            
+            listartableclases(jtable_matriculaclase, ac.getListaClases());
+
         }
     }//GEN-LAST:event_btn_modclassssActionPerformed
 
     private void btn_modclaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modclaseActionPerformed
+        adminClase ac = new adminClase("./Clases.cbm");
+        ac.cargarArchivo();
         if (jtable_clases.getSelectionModel().isSelectionEmpty()) {
             JOptionPane.showMessageDialog(jd_modificarclase, "Seleccione un elemento a modificar de la tabla.");
         } else {
-            claseselected = clases.get(jtable_clases.getSelectedRow());
+            claseselected = ac.getListaClases().get(jtable_clases.getSelectedRow());
             pos = jtable_clases.getSelectedRow();
-            
+
             jtxt_idclasemod.setText(String.valueOf(claseselected.getId()));
             jtct_nombreclasemod.setText(claseselected.getNombre());
             js_horamod.setValue(claseselected.getHora().getHours());
@@ -5171,7 +6050,7 @@ public class Principal extends javax.swing.JFrame {
             jd_modclase.setLocationRelativeTo(jd_modificarclase);
             jd_modclase.setModal(true);
             jd_modclase.setVisible(true);
-            
+
         }
     }//GEN-LAST:event_btn_modclaseActionPerformed
 
@@ -5180,20 +6059,28 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_regresarmaster9ActionPerformed
 
     private void btn_matricularalmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_matricularalmActionPerformed
-        
+        adminClase ac = new adminClase("./Clases.cbm");
+        adminAlumno aa = new adminAlumno("./Alumnos.cbm");
+        pos = jtable_matricula.getSelectedRow();
+        pos2 = jtable_matriculaclase.getSelectedRow();
+        aa.cargarArchivo();
+        ac.cargarArchivo();
+        //System.out.println(aa.getListaAlumno().get(pos).getCursadas());
+        if (aa.getListaAlumno().get(pos).getCursadas().contains(ac.getListaClases().get(pos2))) {
+
+            JOptionPane.showMessageDialog(jd_listarclases, "El alumno ya ha sido matriculado en la clase seleccionada.");
+        } else {
+            aa.getListaAlumno().get(pos).getCursadas().add(ac.getListaClases().get(pos2));
+            aa.escribirArchivo();
+
+            JOptionPane.showMessageDialog(jd_listarclases, "Alumno matriculado a " + ac.getListaClases().get(pos2).getNombre() + " existosamente");
+
+        }
         if (jtable_matriculaclase.getSelectionModel().isSelectionEmpty()) {
             JOptionPane.showMessageDialog(jd_listarclases, "Seleccione una clase a asignar de la tabla.");
-        } else {
-            claseselected = clases.get(jtable_matriculaclase.getSelectedRow());
-            
-            if (alumnoselected.getCursadas().contains(claseselected)) {
-                JOptionPane.showMessageDialog(jd_listarclases, "El alumno ya ha sido matriculado en la clase seleccionada.");
-            } else {
-                alumnoselected.getCursadas().add(claseselected);
-                JOptionPane.showMessageDialog(jd_listarclases, "Alumno matriculado a " + claseselected.getNombre() + " existosamente");
-            }
-            
         }
+        aa.escribirArchivo();
+
     }//GEN-LAST:event_btn_matricularalmActionPerformed
 
     private void btn_regresarmaster10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_regresarmaster10ActionPerformed
@@ -5201,19 +6088,29 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_regresarmaster10ActionPerformed
 
     private void btn_asginarmaster2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_asginarmaster2ActionPerformed
+        adminClase ac = new adminClase("./Clases.cbm");
+        adminMaestro am = new adminMaestro("./Masters.cbm");
+        am.cargarArchivo();
+        ac.cargarArchivo();
+        pos = jtable_asignar.getSelectedRow();
+        pos2 = jtable_mastermatricula.getSelectedRow();
+
         if (jtable_mastermatricula.getSelectionModel().isSelectionEmpty()) {
             JOptionPane.showMessageDialog(jd_listarclasemaster, "Seleccione una clase a asignar de la tabla.");
         } else {
-            claseselected = clases.get(jtable_mastermatricula.getSelectedRow());
-            
+            claseselected = ac.getListaClases().get(jtable_mastermatricula.getSelectedRow());
+
             if (masterselected.getClases().contains(claseselected)) {
                 JOptionPane.showMessageDialog(jd_listarclasemaster, "El Maestro ya ha sido asignado en la clase seleccionada.");
             } else {
-                masterselected.getClases().add(claseselected);
+                am.getListaMaestro().get(pos).getClases().add(ac.getListaClases().get(jtable_mastermatricula.getSelectedRow()));
+                am.escribirArchivo();
                 JOptionPane.showMessageDialog(jd_listarclasemaster, "Maestro asignado a " + claseselected.getNombre() + " existosamente");
+
             }
-            
+
         }
+        am.escribirArchivo();
     }//GEN-LAST:event_btn_asginarmaster2ActionPerformed
 
     private void jp_cerrar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jp_cerrar1MouseClicked
@@ -5222,19 +6119,18 @@ public class Principal extends javax.swing.JFrame {
         limpiartabla(jtable_clasesdemasteringresado);
         ingresadomaster = new Maestro();
         //limpiar 
-        
-    }//GEN-LAST:event_jp_cerrar1MouseClicked
 
-    private void jp_asig1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jp_asig1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jp_asig1MouseClicked
+    }//GEN-LAST:event_jp_cerrar1MouseClicked
 
     private void jp_alum1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jp_alum1MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jp_alum1MouseClicked
 
     private void jf_examenesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jf_examenesMouseClicked
-        // TODO add your handling code here:
+        jd_listaclasesmaster.pack();
+        jd_listaclasesmaster.setLocationRelativeTo(jf_alumno);
+        jd_listaclasesmaster.setModal(true);
+        jd_listaclasesmaster.setVisible(true);
     }//GEN-LAST:event_jf_examenesMouseClicked
 
     private void jp_maestros2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jp_maestros2MouseClicked
@@ -5251,10 +6147,6 @@ public class Principal extends javax.swing.JFrame {
         limpiartabla(jtable_clasesalum);
     }//GEN-LAST:event_jp_cerrar2MouseClicked
 
-    private void jp_maestros3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jp_maestros3MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jp_maestros3MouseClicked
-
     private void btn_regresarclas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_regresarclas1ActionPerformed
         jd_alumnosclases.setVisible(false);
     }//GEN-LAST:event_btn_regresarclas1ActionPerformed
@@ -5267,20 +6159,162 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_verclasesActionPerformed
 
     private void btn_cuadronotasalumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cuadronotasalumnoActionPerformed
-        // TODO add your handling code here:
+        jd_verresalm.pack();
+        jd_verresalm.setLocationRelativeTo(jf_alumno);
+        jd_verresalm.setModal(true);
+        jd_verresalm.setVisible(true);
     }//GEN-LAST:event_btn_cuadronotasalumnoActionPerformed
 
     private void btn_examenesalumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_examenesalumnoActionPerformed
-        // TODO add your handling code here:
+        jd_examenes.pack();
+        jd_examenes.setLocationRelativeTo(jf_alumno);
+        jd_examenes.setModal(true);
+        jd_examenes.setVisible(true);
     }//GEN-LAST:event_btn_examenesalumnoActionPerformed
 
     private void btn_matricularalm1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_matricularalm1ActionPerformed
         jd_listadeclasesalumno.setVisible(false);
     }//GEN-LAST:event_btn_matricularalm1ActionPerformed
 
-    private void btn_matricularalm2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_matricularalm2ActionPerformed
+    private void btn_resolvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_resolvarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_matricularalm2ActionPerformed
+    }//GEN-LAST:event_btn_resolvarActionPerformed
+
+    private void btn_regresarclas2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_regresarclas2ActionPerformed
+        jd_examenesalm.setVisible(false);
+    }//GEN-LAST:event_btn_regresarclas2ActionPerformed
+
+    private void btn_listaexamnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_listaexamnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_listaexamnActionPerformed
+
+    private void btn_verresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_verresActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_verresActionPerformed
+
+    private void okActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okActionPerformed
+        jd_verresalm.setVisible(false);
+
+    }//GEN-LAST:event_okActionPerformed
+
+    private void btn_matricularalm3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_matricularalm3ActionPerformed
+        jd_examenes.setVisible(false);
+    }//GEN-LAST:event_btn_matricularalm3ActionPerformed
+
+    private void btn_asignarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_asignarActionPerformed
+        if (jtable_clasesmaster.getSelectionModel().isSelectionEmpty()) {
+            JOptionPane.showMessageDialog(jd_listarclasemaster, "Seleccione una clase");
+        } else {
+            jd_crear_Examen.pack();
+            jd_crear_Examen.setLocationRelativeTo(jf_master);
+            jd_crear_Examen.setModal(true);
+            jd_crear_Examen.setVisible(true);
+        }
+    }//GEN-LAST:event_btn_asignarActionPerformed
+
+    private void btn_matricularalm4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_matricularalm4ActionPerformed
+        jd_listaclasesmaster.setVisible(false);
+        //jtxt_nombreexamen.setText("");
+    }//GEN-LAST:event_btn_matricularalm4ActionPerformed
+
+    private void btn_crearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_crearActionPerformed
+        //claseselected.getExamenes().add(examen);
+        jd_crear_Examen.setVisible(false);
+        JOptionPane.showMessageDialog(jf_registro,"Examen Creado");
+    }//GEN-LAST:event_btn_crearActionPerformed
+
+    private void btn_regresasrasdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_regresasrasdActionPerformed
+
+        if (pregutna.getSelectedIndex() == 0) {
+            //JOptionPane.showMessageDialog(jd_crear_Examen, "Verdadero o falso");
+            jd_truofal.pack();
+            jd_truofal.setLocationRelativeTo(jf_master);
+            jd_truofal.setModal(true);
+            jd_truofal.setVisible(true);
+        } else if (pregutna.getSelectedIndex() == 1) {
+            //JOptionPane.showMessageDialog(jf_master, "Tipo Enumarcion");
+            jd_enum.pack();
+            jd_enum.setLocationRelativeTo(jf_master);
+            jd_enum.setModal(true);
+            jd_enum.setVisible(true);
+        } else if (pregutna.getSelectedIndex() == 2) {
+            //JOptionPane.showMessageDialog(jf_master, "Multiple choice");
+            jd_mult.pack();
+            jd_mult.setLocationRelativeTo(jf_master);
+            jd_mult.setModal(true);
+            jd_mult.setVisible(true);
+        }
+    }//GEN-LAST:event_btn_regresasrasdActionPerformed
+
+    private void btn_regresasrasd1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_regresasrasd1ActionPerformed
+        jd_crear_Examen.setVisible(false);
+        jtxt_nombreexamen.setText("");
+    }//GEN-LAST:event_btn_regresasrasd1ActionPerformed
+
+    private void btn_regresarclas3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_regresarclas3ActionPerformed
+        jd_truofal.setVisible(false);
+        jtxt_interrotru.setText("");
+    }//GEN-LAST:event_btn_regresarclas3ActionPerformed
+
+    private void btn_regresarclas4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_regresarclas4ActionPerformed
+        tru = new TrueorFalse();
+        tru.setInterrogante(jtxt_interrotru.getText());
+        tru.setValor((double) js_minutos2.getValue());
+        if (radioTRUE.isSelected()) {
+            tru.setVerdadero(true);
+            tru.setFalso(false);
+        } else {
+            tru.setVerdadero(false);
+            tru.setFalso(true);
+        }
+        examen.getPreguntas().add(tru);
+        tru = new TrueorFalse();
+        JOptionPane.showMessageDialog(jd_truofal, "Pregunta Agregada");
+        jd_truofal.setVisible(false);
+    }//GEN-LAST:event_btn_regresarclas4ActionPerformed
+
+    private void btn_regresarclas5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_regresarclas5ActionPerformed
+        jd_enum.setVisible(false);
+        jtxt_interroenum.setText("");
+        jtxt_resp1.setText("");
+        jtxt_resp2.setText("");
+        jtxt_resp3.setText("");
+        jtxt_resp4.setText("");
+    }//GEN-LAST:event_btn_regresarclas5ActionPerformed
+
+    private void btn_regresarclas6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_regresarclas6ActionPerformed
+        enume = new Enumeracion();
+        enume.setInterrogante(jtxt_interroenum.getText());
+        enume.setPopcion1(jtxt_resp1.getText());
+        enume.setPopcion2(jtxt_resp2.getText());
+        enume.setPopcion3(jtxt_resp3.getText());
+        enume.setPopcion4(jtxt_resp4.getText());
+        enume.setValor((double) js_minutos3.getValue());
+        examen.getPreguntas().add(enume);
+        JOptionPane.showMessageDialog(jd_enum, "Pregunta Agregada");
+        jd_enum.setVisible(false);
+    }//GEN-LAST:event_btn_regresarclas6ActionPerformed
+
+    private void btn_regresarclas7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_regresarclas7ActionPerformed
+        jd_mult.setVisible(false);
+        jtxt_interroenum.setText("");
+        jtxt_resp11.setText("");
+        jtxt_resp22.setText("");
+        jtxt_resp33.setText("");
+        jtxt_resp44.setText("");
+        
+    }//GEN-LAST:event_btn_regresarclas7ActionPerformed
+
+    private void btn_regresarclas8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_regresarclas8ActionPerformed
+        Multiplechoice mc = new Multiplechoice();
+        mc.setInterrogante(jtxt_interroenum.getText());
+        mc.setValor((double) js_minutos4.getValue());
+        //mc.setpOpcion1(jtxt_resp11.getText());
+        examen.getPreguntas().add(mc);
+        JOptionPane.showMessageDialog(jd_mult, "Pregunta Agregada");
+        jd_mult.setVisible(false);
+        
+    }//GEN-LAST:event_btn_regresarclas8ActionPerformed
     public void listartablemaster(JTable tabla, ArrayList users) {
         DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
         Object[] ob = new Object[3];
@@ -5293,8 +6327,7 @@ public class Principal extends javax.swing.JFrame {
             }
         }
     }
-    
-    
+
     public void listartablealumno(JTable table, ArrayList users) {
         DefaultTableModel modelo = (DefaultTableModel) table.getModel();
         Object[] ob = new Object[3];
@@ -5307,29 +6340,29 @@ public class Principal extends javax.swing.JFrame {
             }
         }
     }
-    
+
     public void actualizartables(JTable tabl1, JTable tabl2) {
         DefaultTableModel modelo = (DefaultTableModel) tabl1.getModel();
         DefaultTableModel modelo2 = (DefaultTableModel) tabl2.getModel();
         modelo.fireTableDataChanged();
         modelo2.fireTableDataChanged();
-        
+
     }
-    
+
     public void listartableclases(JTable table, ArrayList users) {
         DefaultTableModel modelo = (DefaultTableModel) table.getModel();
         Object[] ob = new Object[3];
-        
+
         for (int i = 0; i < users.size(); i++) {
             SimpleDateFormat sdf = new SimpleDateFormat("hh:mm");
             ob[0] = ((Clase) users.get(i)).getNombre();
             ob[1] = sdf.format(((Clase) users.get(i)).getHora());
             ob[2] = ((Clase) users.get(i)).getPeriodo();
             modelo.addRow(ob);
-            
+
         }
     }
-    
+
     public void limpiartabla(JTable table) {
         DefaultTableModel modelo = (DefaultTableModel) table.getModel();
         for (int i = 0; i < table.getRowCount(); i++) {
@@ -5337,32 +6370,33 @@ public class Principal extends javax.swing.JFrame {
             i--;
         }
     }
-    
+
     public void eliminartable(JTable tabla, ArrayList lista, JDialog ventana, JDialog padre) {
         if (tabla.getSelectionModel().isSelectionEmpty()) {
             JOptionPane.showMessageDialog(ventana, "Seleccione un elemento a eliminar de la tabla.");
         } else {
-            
+
             DefaultTableModel modelo = (DefaultTableModel) tabla.getModel();
             lista.remove(tabla.getSelectedRow());
             modelo.removeRow(tabla.getSelectedRow());
             ventana.setVisible(false);
             JOptionPane.showMessageDialog(padre, "Elemento eliminado de la base de datos.");
-            
+
         }
     }
-    public void clasesingresados(JTable table, ArrayList users){
+
+    public void clasesingresados(JTable table, ArrayList users) {
         DefaultTableModel modelo = (DefaultTableModel) table.getModel();
         Object[] ob = new Object[3];
-        
+
         for (int i = 0; i < users.size(); i++) {
             SimpleDateFormat sdf = new SimpleDateFormat("hh:mm");
             ob[0] = ((Clase) users.get(i)).getId();
             ob[1] = ((Clase) users.get(i)).getNombre();
             ob[2] = sdf.format(((Clase) users.get(i)).getHora());
-            
+
             modelo.addRow(ob);
-            
+
         }
     }
 
@@ -5406,10 +6440,15 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton btn_Modalum;
     private javax.swing.JButton btn_Modmaster1;
     private javax.swing.JButton btn_asginarmaster2;
+    private javax.swing.JButton btn_asignar;
     private javax.swing.JButton btn_asignarmaster;
     private javax.swing.JButton btn_asignmaster;
     private javax.swing.JButton btn_borrarmaster;
+    private javax.swing.JButton btn_borrarmaster1;
+    private javax.swing.JButton btn_borrarmaster2;
+    private javax.swing.JButton btn_borrarmaster3;
     private javax.swing.JButton btn_cancelar;
+    private javax.swing.JButton btn_crear;
     private javax.swing.JButton btn_crearclase;
     private javax.swing.JButton btn_cuadronotasalumno;
     private javax.swing.JButton btn_eliminaralum;
@@ -5418,11 +6457,13 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton btn_eliminarstudenti;
     private javax.swing.JButton btn_elminar;
     private javax.swing.JButton btn_examenesalumno;
+    private javax.swing.JButton btn_listaexamn;
     private javax.swing.JButton btn_matalum;
     private javax.swing.JButton btn_matricular;
     private javax.swing.JButton btn_matricularalm;
     private javax.swing.JButton btn_matricularalm1;
-    private javax.swing.JButton btn_matricularalm2;
+    private javax.swing.JButton btn_matricularalm3;
+    private javax.swing.JButton btn_matricularalm4;
     private javax.swing.JButton btn_menumodmaster;
     private javax.swing.JButton btn_modalm;
     private javax.swing.JButton btn_modalma;
@@ -5441,12 +6482,22 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton btn_regresaralumnoa2;
     private javax.swing.JButton btn_regresarclas;
     private javax.swing.JButton btn_regresarclas1;
+    private javax.swing.JButton btn_regresarclas2;
+    private javax.swing.JButton btn_regresarclas3;
+    private javax.swing.JButton btn_regresarclas4;
+    private javax.swing.JButton btn_regresarclas5;
+    private javax.swing.JButton btn_regresarclas6;
+    private javax.swing.JButton btn_regresarclas7;
+    private javax.swing.JButton btn_regresarclas8;
     private javax.swing.JButton btn_regresarclase2;
     private javax.swing.JButton btn_regresarclase3;
     private javax.swing.JButton btn_regresarmaster;
     private javax.swing.JButton btn_regresarmaster1;
     private javax.swing.JButton btn_regresarmaster10;
+    private javax.swing.JButton btn_regresarmaster11;
     private javax.swing.JButton btn_regresarmaster12;
+    private javax.swing.JButton btn_regresarmaster13;
+    private javax.swing.JButton btn_regresarmaster14;
     private javax.swing.JButton btn_regresarmaster2;
     private javax.swing.JButton btn_regresarmaster3;
     private javax.swing.JButton btn_regresarmaster4;
@@ -5455,7 +6506,11 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton btn_regresarmaster7;
     private javax.swing.JButton btn_regresarmaster8;
     private javax.swing.JButton btn_regresarmaster9;
+    private javax.swing.JButton btn_regresasrasd;
+    private javax.swing.JButton btn_regresasrasd1;
+    private javax.swing.JButton btn_resolvar;
     private javax.swing.JButton btn_verclases;
+    private javax.swing.JButton btn_verres;
     private javax.swing.JPanel fondo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -5476,6 +6531,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
@@ -5483,10 +6540,16 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -5502,7 +6565,12 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane13;
     private javax.swing.JScrollPane jScrollPane14;
     private javax.swing.JScrollPane jScrollPane15;
+    private javax.swing.JScrollPane jScrollPane16;
+    private javax.swing.JScrollPane jScrollPane17;
+    private javax.swing.JScrollPane jScrollPane18;
+    private javax.swing.JScrollPane jScrollPane19;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane21;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
@@ -5511,10 +6579,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator11;
     private javax.swing.JSeparator jSeparator13;
     private javax.swing.JSeparator jSeparator16;
-    private javax.swing.JSeparator jSeparator17;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
@@ -5528,15 +6594,20 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jb_menu4;
     private javax.swing.JLabel jb_menu5;
     private javax.swing.JLabel jb_menu6;
+    private javax.swing.JLabel jb_menu7;
     private javax.swing.JDialog jd_alumno;
     private javax.swing.JDialog jd_alumnosclases;
     private javax.swing.JDialog jd_asig;
     private javax.swing.JDialog jd_asignarmaster;
     private javax.swing.JDialog jd_clase;
+    private javax.swing.JDialog jd_crear_Examen;
     private javax.swing.JDialog jd_eliminar_clase;
     private javax.swing.JDialog jd_eliminaralumno;
     private javax.swing.JDialog jd_eliminarmaster;
+    private javax.swing.JDialog jd_enum;
     private javax.swing.JDialog jd_examenes;
+    private javax.swing.JDialog jd_examenesalm;
+    private javax.swing.JDialog jd_listaclasesmaster;
     private javax.swing.JDialog jd_listadeclasesalumno;
     private javax.swing.JDialog jd_listarclasemaster;
     private javax.swing.JDialog jd_listarclases;
@@ -5548,9 +6619,12 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JDialog jd_modificaralumno;
     private javax.swing.JDialog jd_modificarclase;
     private javax.swing.JDialog jd_modificarmaster;
+    private javax.swing.JDialog jd_mult;
     private javax.swing.JDialog jd_nuevaclase;
     private javax.swing.JDialog jd_nuevoalum;
     private javax.swing.JDialog jd_nuevomaster;
+    private javax.swing.JDialog jd_truofal;
+    private javax.swing.JDialog jd_verresalm;
     private javax.swing.JFrame jf_alumno;
     private javax.swing.JPanel jf_examenes;
     private javax.swing.JFrame jf_master;
@@ -5558,7 +6632,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jl_alum;
     private javax.swing.JLabel jl_alum1;
     private javax.swing.JLabel jl_asig;
-    private javax.swing.JLabel jl_asig1;
     private javax.swing.JLabel jl_canvaslogo;
     private javax.swing.JLabel jl_canvaslogo2;
     private javax.swing.JLabel jl_clases;
@@ -5573,10 +6646,18 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jl_getcorreomaster8;
     private javax.swing.JLabel jl_getnamemaster;
     private javax.swing.JLabel jl_getnamemaster1;
+    private javax.swing.JLabel jl_getnamemaster10;
+    private javax.swing.JLabel jl_getnamemaster11;
+    private javax.swing.JLabel jl_getnamemaster12;
+    private javax.swing.JLabel jl_getnamemaster13;
     private javax.swing.JLabel jl_getnamemaster2;
+    private javax.swing.JLabel jl_getnamemaster3;
+    private javax.swing.JLabel jl_getnamemaster4;
+    private javax.swing.JLabel jl_getnamemaster5;
     private javax.swing.JLabel jl_getnamemaster6;
     private javax.swing.JLabel jl_getnamemaster7;
     private javax.swing.JLabel jl_getnamemaster8;
+    private javax.swing.JLabel jl_getnamemaster9;
     private javax.swing.JLabel jl_getprofesion;
     private javax.swing.JLabel jl_getprofesion1;
     private javax.swing.JLabel jl_getprofesion10;
@@ -5586,19 +6667,28 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jl_getprofesion14;
     private javax.swing.JLabel jl_getprofesion15;
     private javax.swing.JLabel jl_getprofesion16;
+    private javax.swing.JLabel jl_getprofesion17;
+    private javax.swing.JLabel jl_getprofesion18;
+    private javax.swing.JLabel jl_getprofesion19;
     private javax.swing.JLabel jl_getprofesion2;
     private javax.swing.JLabel jl_getprofesion3;
     private javax.swing.JLabel jl_getprofesion4;
     private javax.swing.JLabel jl_getprofesion5;
     private javax.swing.JLabel jl_getprofesion6;
+    private javax.swing.JLabel jl_getprofesion7;
+    private javax.swing.JLabel jl_getprofesion8;
+    private javax.swing.JLabel jl_getprofesion9;
     private javax.swing.JLabel jl_getuserpw;
     private javax.swing.JLabel jl_getuserpw1;
     private javax.swing.JLabel jl_getuserpw10;
     private javax.swing.JLabel jl_getuserpw11;
     private javax.swing.JLabel jl_getuserpw12;
+    private javax.swing.JLabel jl_getuserpw13;
     private javax.swing.JLabel jl_getuserpw14;
     private javax.swing.JLabel jl_getuserpw15;
     private javax.swing.JLabel jl_getuserpw16;
+    private javax.swing.JLabel jl_getuserpw17;
+    private javax.swing.JLabel jl_getuserpw18;
     private javax.swing.JLabel jl_getuserpw2;
     private javax.swing.JLabel jl_getuserpw3;
     private javax.swing.JLabel jl_getuserpw4;
@@ -5617,7 +6707,13 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jl_huevos15;
     private javax.swing.JLabel jl_huevos16;
     private javax.swing.JLabel jl_huevos17;
+    private javax.swing.JLabel jl_huevos18;
+    private javax.swing.JLabel jl_huevos19;
     private javax.swing.JLabel jl_huevos2;
+    private javax.swing.JLabel jl_huevos20;
+    private javax.swing.JLabel jl_huevos21;
+    private javax.swing.JLabel jl_huevos22;
+    private javax.swing.JLabel jl_huevos23;
     private javax.swing.JLabel jl_huevos3;
     private javax.swing.JLabel jl_huevos4;
     private javax.swing.JLabel jl_huevos5;
@@ -5639,7 +6735,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jl_master;
     private javax.swing.JLabel jl_master1;
     private javax.swing.JLabel jl_master2;
-    private javax.swing.JLabel jl_master3;
     private javax.swing.JLabel jl_menu;
     private javax.swing.JLabel jl_menu1;
     private javax.swing.JLabel jl_menu2;
@@ -5663,7 +6758,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jp_alum;
     private javax.swing.JPanel jp_alum1;
     private javax.swing.JPanel jp_asig;
-    private javax.swing.JPanel jp_asig1;
     private javax.swing.JPanel jp_botones;
     private javax.swing.JPanel jp_botones1;
     private javax.swing.JPanel jp_botones2;
@@ -5689,7 +6783,17 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jp_fondo_crudmaster20;
     private javax.swing.JPanel jp_fondo_crudmaster21;
     private javax.swing.JPanel jp_fondo_crudmaster22;
+    private javax.swing.JPanel jp_fondo_crudmaster23;
+    private javax.swing.JPanel jp_fondo_crudmaster24;
+    private javax.swing.JPanel jp_fondo_crudmaster25;
+    private javax.swing.JPanel jp_fondo_crudmaster26;
+    private javax.swing.JPanel jp_fondo_crudmaster27;
+    private javax.swing.JPanel jp_fondo_crudmaster28;
+    private javax.swing.JPanel jp_fondo_crudmaster29;
     private javax.swing.JPanel jp_fondo_crudmaster3;
+    private javax.swing.JPanel jp_fondo_crudmaster30;
+    private javax.swing.JPanel jp_fondo_crudmaster31;
+    private javax.swing.JPanel jp_fondo_crudmaster32;
     private javax.swing.JPanel jp_fondo_crudmaster4;
     private javax.swing.JPanel jp_fondo_crudmaster5;
     private javax.swing.JPanel jp_fondo_crudmaster6;
@@ -5699,7 +6803,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jp_ingresar;
     private javax.swing.JPanel jp_maestros;
     private javax.swing.JPanel jp_maestros2;
-    private javax.swing.JPanel jp_maestros3;
     private javax.swing.JPanel jp_panelprincipal;
     private javax.swing.JPanel jp_placeholder;
     private javax.swing.JPanel jp_placeholder1;
@@ -5712,8 +6815,13 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jp_subpan2;
     private javax.swing.JPanel jp_subpan3;
     private javax.swing.JSpinner js_hora;
+    private javax.swing.JSpinner js_hora1;
     private javax.swing.JSpinner js_horamod;
     private javax.swing.JSpinner js_minutos;
+    private javax.swing.JSpinner js_minutos1;
+    private javax.swing.JSpinner js_minutos2;
+    private javax.swing.JSpinner js_minutos3;
+    private javax.swing.JSpinner js_minutos4;
     private javax.swing.JSpinner js_minutosmod;
     private javax.swing.JSpinner js_periodo;
     private javax.swing.JSpinner js_periodomod;
@@ -5731,10 +6839,15 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTable jtable_clasesalum1;
     private javax.swing.JTable jtable_clasesdemasteringresado;
     private javax.swing.JTable jtable_claseseliminar;
+    private javax.swing.JTable jtable_clasesmaster;
     private javax.swing.JTable jtable_examenes;
+    private javax.swing.JTable jtable_exams;
     private javax.swing.JTable jtable_mastermatricula;
     private javax.swing.JTable jtable_masters;
     private javax.swing.JTable jtable_masterseliminar;
+    private javax.swing.JTable jtable_masterseliminar1;
+    private javax.swing.JTable jtable_masterseliminar2;
+    private javax.swing.JTable jtable_masterseliminar3;
     private javax.swing.JTable jtable_matricula;
     private javax.swing.JTable jtable_matriculaclase;
     private javax.swing.JTable jtable_muertos;
@@ -5753,10 +6866,14 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextField jtxt_idclasemod;
     private javax.swing.JTextField jtxt_idprofe;
     private javax.swing.JTextField jtxt_idprofemod;
+    private javax.swing.JTextField jtxt_interroenum;
+    private javax.swing.JTextField jtxt_interromult;
+    private javax.swing.JTextField jtxt_interrotru;
     private javax.swing.JTextField jtxt_masterpw;
     private javax.swing.JTextField jtxt_masterpwmod;
     private javax.swing.JTextField jtxt_nombrealmuno;
     private javax.swing.JTextField jtxt_nombrealmunomod;
+    private javax.swing.JTextField jtxt_nombreexamen;
     private javax.swing.JTextField jtxt_nombremaster;
     private javax.swing.JTextField jtxt_nombremastermod;
     private javax.swing.JPasswordField jtxt_pass;
@@ -5764,28 +6881,39 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextField jtxt_profesionmod;
     private javax.swing.JTextField jtxt_pwalum;
     private javax.swing.JTextField jtxt_pwalummod;
+    private javax.swing.JTextField jtxt_resp1;
+    private javax.swing.JTextField jtxt_resp11;
+    private javax.swing.JTextField jtxt_resp2;
+    private javax.swing.JTextField jtxt_resp22;
+    private javax.swing.JTextField jtxt_resp3;
+    private javax.swing.JTextField jtxt_resp33;
+    private javax.swing.JTextField jtxt_resp4;
+    private javax.swing.JTextField jtxt_resp44;
     private com.toedter.calendar.JYearChooser jyear;
     private com.toedter.calendar.JYearChooser jyearmod;
+    private javax.swing.JButton ok;
+    private javax.swing.JComboBox<String> pregutna;
+    private javax.swing.JRadioButton radioFALSE;
+    private javax.swing.JRadioButton radioTRUE;
     // End of variables declaration//GEN-END:variables
-    ArrayList<Usuario> users = new ArrayList();
-    boolean pepa=false;
-    ArrayList<Maestro> masters = new ArrayList();
-    ArrayList<Alumno> alumnos = new ArrayList();
-    ArrayList<Clase> clases = new ArrayList();
+
+    boolean pepa = false;
+    int pos2;
     Maestro test = new Maestro(1111023, "Juan Perez", "Ingeniero Mecatronico", 50000, "1234", "juanp@gmail.com", "Profe");
     Alumno test2 = new Alumno(111213, "Juan Perez", "Arquitectura", "1236", "juanp@gmail.com", "Estudiante");
-    
+
     Alumno alumnoselected;
     Maestro masterselected;
     Clase claseselected;
     Date h = new Date();
-    
+
     //Clase tes3 = new Clase("Programacion II", h, 2, "Q4", 1232, 5, 2023);
     int pos;
     Alumno ingresado;
     Maestro ingresadomaster;
-    adminClase ac = new adminClase("./Clases.cbm");
-    adminUsuario au = new adminUsuario("./Users.cbm");
-    adminMaestro am = new adminMaestro("./Masters.cbm");
-    adminAlumno AA = new adminAlumno("./Alumnos.cbm");
+    Examen examen = new Examen();
+    //Pregunta pregunta = new Pregunta();
+    TrueorFalse tru = new TrueorFalse();
+    Enumeracion enume = new Enumeracion();
+
 }

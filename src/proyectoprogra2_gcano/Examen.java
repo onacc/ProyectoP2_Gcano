@@ -17,12 +17,17 @@ import javax.swing.Timer;
  * @author gcano
  */
 public class Examen {
+
+    public Examen() {
+    }
+    
     private String Descripcion,Titulo;
     private ArrayList<Pregunta> preguntas = new ArrayList();
     private double nota;
     private Timer time;
     private Calendar date =Calendar.getInstance();
     private JDialog frame = new JDialog();
+    
 
     public JDialog getFrame() {
         return frame;

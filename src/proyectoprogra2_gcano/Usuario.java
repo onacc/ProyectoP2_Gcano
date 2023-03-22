@@ -4,12 +4,15 @@
  */
 package proyectoprogra2_gcano;
 
+import java.io.Serializable;
+
 /**
  *
  * @author gcano
  */
-public class Usuario {
+public class Usuario implements Serializable {
     protected String password, user, rol;
+    private static final long SerialVersionUID=559L;
 
     public Usuario(String password, String user, String rol) {
         this.password = password;

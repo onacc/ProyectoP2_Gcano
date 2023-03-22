@@ -4,18 +4,28 @@
  */
 package proyectoprogra2_gcano;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author gcano
  */
-public class Alumno extends Usuario {
+public class Alumno extends Usuario implements Serializable {
     private int cuenta;
     //private ArrayList<Clase> clases = new ArrayList();
     private String nombre, carrera;
     private ArrayList <Clase> cursadas = new ArrayList();
+    private static final long SerialVersionUID=515L;
+    private ArrayList<Examen> lista = new ArrayList();
 
+    public ArrayList<Examen> getLista() {
+        return lista;
+    }
+
+    public void setLista(ArrayList<Examen> lista) {
+        this.lista = lista;
+    }
     
    
 
